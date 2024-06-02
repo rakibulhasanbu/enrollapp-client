@@ -1,9 +1,52 @@
+// "use client";
+
+import AppButton from "../ui/AppButton";
+
 const Navbar = () => {
-    return (
-        <div className=''>
-            This is Navbar Components
+  const navItems = [
+    {
+      name: "Home",
+      link: "/",
+      //   icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "About",
+      link: "/about",
+      //   icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+      //   icon: (
+      //     "DF"
+      //     // <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
+      //   ),
+    },
+  ];
+  return (
+    <>
+      <div className=" fixed  w-full">
+        <div className="  w-[1100px] mx-auto flex items-center justify-between bg-[#171717] border  rounded-full px-10 py-3  mt-10 ">
+          <div>
+            <h1 className="text-[32px] font-bold text-[#FFFFFF]">Logo</h1>
+          </div>
+          <div className="flex justify-center items-center gap-10 text-[#94A3B8] text-[16px]">
+            <p>Home</p>
+            <p>Event</p>
+            <p>About Us</p>
+            <p>Contact Us</p>
+          </div>
+          <div className="flex gap-6">
+            <AppButton label="Signup" />
+            <AppButton label="Login" />
+          </div>
         </div>
-    );
+      </div>
+      {/* <div className="relative  w-full">
+        <FloatingNav navItems={navItems} />
+      </div> */}
+    </>
+  );
 };
 
 export default Navbar;
