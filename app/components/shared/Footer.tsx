@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className=" w-[1100px] mx-auto flex flex-col  justify-center">
+    <footer className=" w-[80%] mx-auto flex flex-col  justify-center">
       <div className="flex justify-between items-center my-10">
         <div>
           <h1 className="text-[32px] font-bold">Logo</h1>
@@ -28,9 +28,9 @@ const Footer = () => {
       </div>
       <div className="flex justify-between items-center">
         <div>
-          <p>© Copyright 2022, All Rights Reserved</p>
+          <p>© Copyright 2024, All Rights Reserved</p>
         </div>
-        <div className="flex justify-between items-center gap-6 mb-10">
+        <div className="flex justify-center items-center gap-6 mb-10">
           <p>Privacy Policy </p>
           <p>Terms & Conditions</p>
         </div>
