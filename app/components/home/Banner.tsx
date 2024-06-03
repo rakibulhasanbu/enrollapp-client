@@ -23,7 +23,7 @@ const Banner = () => {
           id=""
           className="bg-transparent outline-none "
         />
-        <img className="w-[20px]" src="/assets/search.png" alt="" />
+        <img className="w-[20px]" src="/assets/search.png" alt="#" />
       </div>
       <div className="mt-5 text-white flex justify-center items-center gap-5">
         <AppButton label="Explore Event" />

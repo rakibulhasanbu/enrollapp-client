@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#0074D9",
+        backgroundColor: "#E6F1FB",
       },
       backgroundImage: {
         bannerImage: "url('/assets/banner.png')",
