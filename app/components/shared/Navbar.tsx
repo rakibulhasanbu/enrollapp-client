@@ -11,12 +11,17 @@ const Navbar = () => {
       //   icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "About",
+      name: "Event",
+      link: "/",
+      //   icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "About Us",
       link: "/about",
       //   icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "Contact",
+      name: "Contact Us",
       link: "/contact",
       //   icon: (
       //     "DF"
@@ -34,10 +39,9 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex justify-center items-center gap-10 text-[#94A3B8] text-[16px]">
-            <p>Home</p>
-            <p>Event</p>
-            <p>About Us</p>
-            <p>Contact Us</p>
+            {navItems.map((item) => (
+              <Link key={item?.name} href={item?.link}>{item.name}</Link>
+            ))}
           </div>
           <div className="flex gap-4 cursor-pointer">
             <AppButton label="Signup" variant="noDesign" href="/auth/sign-up" />
