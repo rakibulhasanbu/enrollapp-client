@@ -9,14 +9,7 @@ const page = () => {
           <h1 className="font-bold text-[32px]">Explore New Opportunities</h1>
           <p>Log in or sign up in seconds</p>
         </div>
-        <div className="flex items-center justify-center">
-          <AppButton
-            label="Continue With Google"
-            variant="outlined"
-            icon={<FcGoogle className="text-xl" />}
-            iconPosition="left"
-          />
-        </div>
+
         <p>Or</p>
         <p>Do you want to</p>
         <p>

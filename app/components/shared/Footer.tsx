@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className=" w-[80%] mx-auto flex flex-col  justify-center">
+    <footer className=" w-[80%] mx-auto flex flex-col  justify-center mt-40">
       <div className="flex justify-between items-center my-10">
         <div>
           <h1 className="text-[32px] font-bold">Logo</h1>

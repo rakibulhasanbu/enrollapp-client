@@ -2,18 +2,22 @@ import Link from "next/link";
 import { ReactNode } from "react";
 type TAppButton = {
   label: string;
+  className?: string;
   type?: "button" | "reset" | "submit";
   href?: string;
   variant?: "filled" | "outlined" | "noDesign";
   icon?: ReactNode;
+  iconPosition?: "left" | "right";
 };
 
 const AppButton = ({
   label,
+  className,
   type = "button",
   href,
   variant = "filled",
   icon,
+  iconPosition = "right",
 }: TAppButton) => {
   const filledClass =
     "border border-primary bg-primary/90 text-white px-4 py-2 rounded-full hover:bg-primary transition-all ";
@@ -31,10 +35,11 @@ const AppButton = ({
             : variant === "outlined"
             ? outlineClass
             : noDesignClass
-        }`}
+        } ${className}`}
         type={type}
       >
-        {label}
+        {iconPosition === "left" && icon} {label}{" "}
+        {iconPosition === "right" && icon}
       </button>
     </Link>
   ) : (
@@ -45,10 +50,11 @@ const AppButton = ({
           : variant === "outlined"
           ? outlineClass
           : noDesignClass
-      }`}
+      } ${className}`}
       type={type}
     >
-      {label} {icon}
+      {iconPosition === "left" && icon} {label}{" "}
+      {iconPosition === "right" && icon}
     </button>
   );
 };

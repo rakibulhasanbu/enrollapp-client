@@ -15,7 +15,7 @@ export const Promotion = () => {
           technologies that
         </p>
       </div>
-      <div>
+      <div className="w-[500px]">
         <Image
           src="/assets/4 1.png"
           alt="#"

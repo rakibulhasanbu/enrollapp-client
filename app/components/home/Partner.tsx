@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Partner = () => {
   return (
-    <div className="w-[500px] mx-auto my-40 ">
+    <div className="w-[500px] mx-auto my-20 ">
       <div className="relative">
         <div className="w-[207px]">
           <Image

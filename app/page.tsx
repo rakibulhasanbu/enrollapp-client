@@ -9,6 +9,9 @@ import { Choose } from "./components/home/Choose";
 import { Promotion } from "./components/home/Promotion";
 import { Enroll } from "./components/home/Enroll";
 import { Partner } from "./components/home/Partner";
+import { PartnerDetails } from "./components/home/PartnerDetails";
+import { Faq } from "./components/home/Faq";
+import Subscription from "./components/home/Subscription";
 
 const page = () => {
   return (
@@ -41,6 +44,9 @@ const page = () => {
       <Promotion />
       <Enroll />
       <Partner />
+      <PartnerDetails />
+      <Faq />
+      <Subscription />
     </>
   );
 };
