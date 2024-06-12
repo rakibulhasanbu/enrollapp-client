@@ -4,10 +4,10 @@ import AppButton from "../../components/ui/AppButton";
 const page = () => {
   return (
     <div className="min-h-[80vh] flex pt-40 justify-center items-center mx-auto text-center ">
-      <div className="bg-white p-16  flex flex-col gap-6 rounded-3xl shadow-2xl">
+      <div className="bg-white p-16  flex flex-col gap-5 rounded-3xl shadow-2xl">
         <div>
           <h1 className="font-bold text-[32px]">Explore New Opportunities</h1>
-          <p>Log in or sign up in seconds</p>
+          <p className="text-sm font-medium">Log in or sign up in seconds</p>
         </div>
         <div className="flex items-center justify-center">
           <AppButton
@@ -17,22 +17,25 @@ const page = () => {
             iconPosition="left"
           />
         </div>
-        <p>Or</p>
-        <p>Do you want to</p>
-        <p>
-          <span className="font-bold">Create</span> or
-          <span className="font-bold"> Share</span> events
-        </p>
+        <p className="text-[#64748B]/50">Or</p>
+        <div>
+          <p>Do you want to</p>
+          <p>
+            <span className="font-bold">Create</span> or
+            <span className="font-bold"> Share</span> events ?
+          </p>
+        </div>
         <div className="px-12 w-full">
           <AppButton
-            href="/auth/organizer-login"
+            href="/auth/organizer-register"
             label="Join as a Organiser"
-            className="w-full"
+            className="w-full text-lg"
           />
         </div>
 
-        <p className={`mt-5`}>
-          By continuing, you agree to Our Terms of Use.Read our Privacy Policy
+        <p className={`mt-3 text-sm text-gray-600`}>
+          By continuing, you agree to Terms of Service and have Read our Privacy
+          Policy.
         </p>
       </div>
     </div>

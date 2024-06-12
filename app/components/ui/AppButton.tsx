@@ -35,7 +35,7 @@ const AppButton = ({
             : variant === "outlined"
             ? outlineClass
             : noDesignClass
-        } ${className}`}
+        } text-sm md:text-base lg:text-lg xl:text-xl font-semibold ${className} `}
         type={type}
       >
         {iconPosition === "left" && icon} {label}{" "}
@@ -50,7 +50,7 @@ const AppButton = ({
           : variant === "outlined"
           ? outlineClass
           : noDesignClass
-      } ${className}`}
+      } text-sm md:text-base xl:text-lg font-semibold ${className}`}
       type={type}
     >
       {iconPosition === "left" && icon} {label}{" "}

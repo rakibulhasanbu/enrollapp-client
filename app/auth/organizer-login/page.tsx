@@ -1,35 +1,71 @@
+"use client";
+
 import { FcGoogle } from "react-icons/fc";
 import AppButton from "../../components/ui/AppButton";
+import { useForm, SubmitHandler } from "react-hook-form";
+import AppFormInput from "@/app/components/ui/AppFormInput";
 
-const page = () => {
+type Inputs = {
+  name: string;
+  password: string;
+  orgType: string;
+  confirmPassword: string;
+  email: string;
+};
+
+const OrganizerLogin = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+  };
   return (
     <div className="min-h-[80vh] flex pt-40 justify-center items-center mx-auto text-center ">
-      <div className="bg-white p-16  flex flex-col gap-6 rounded-3xl shadow-2xl">
+      <div className="bg-white p-16  flex flex-col gap-5 rounded-3xl shadow-2xl">
         <div>
           <h1 className="font-bold text-[32px]">Explore New Opportunities</h1>
-          <p>Log in or sign up in seconds</p>
+          <p className="text-sm font-medium">It&apos;s Free</p>
         </div>
-
-        <p>Or</p>
-        <p>Do you want to</p>
-        <p>
-          <span className="font-bold">Create</span> or
-          <span className="font-bold"> Share</span> events
-        </p>
-        <div className="px-12 w-full">
-          <AppButton
-            href="/auth/organizer-login"
-            label="Join as a Organiser"
-            className="w-full"
+        {/* form start */}
+        <form onSubmit={handleSubmit(onSubmit)} className=" space-y-3 ">
+          <AppFormInput
+            name="email"
+            label="Email"
+            type="email"
+            register={register}
+            placeholder="Enter your email"
+            error={errors.email}
+            required
           />
-        </div>
+          <AppFormInput
+            name="password"
+            label="Password"
+            type="password"
+            register={register}
+            placeholder="Enter your password"
+            error={errors.password}
+            required
+          />
 
-        <p className={`mt-5`}>
-          By continuing, you agree to Our Terms of Use.Read our Privacy Policy
+          <div className="pt-4 w-full">
+            <AppButton type="submit" label="Sign In" className="w-full" />
+          </div>
+        </form>
+        {/* form end */}
+        <h3>
+          Already have an Account? <span>Login here</span>{" "}
+        </h3>
+        <p className={`mt-3 text-sm text-gray-600`}>
+          By continuing, you agree to Terms of Service and have Read our Privacy
+          Policy.
         </p>
       </div>
     </div>
   );
 };
 
-export default page;
+export default OrganizerLogin;

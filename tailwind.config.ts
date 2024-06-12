@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         primary: "#0074D9",
         backgroundColor: "#E6F1FB",
+        borderColor: "#64748B",
       },
       backgroundImage: {
         bannerImage: "url('/assets/banner.png')",

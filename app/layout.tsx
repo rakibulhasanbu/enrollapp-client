@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
+import { Providers } from "./components/shared/Provider";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +23,24 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-backgroundColor ${inter.className}`}>
         <Navbar />
-        <div>{children}</div>
+        <Providers>
+          {children}
+
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            stacked
+            // transition:Bounce
+          />
+        </Providers>
         <Footer />
       </body>
     </html>
