@@ -20,3 +20,15 @@ export interface TOrganizer {
   };
   orgLogo: string;
 }
+
+export const OrganizationType = [
+  "Non-Profit Organization",
+  "Youth Organization",
+  "Non-Governmental Organization (NGO)",
+  "Governmental Organization",
+  "Skill Development Institution",
+  "Social Club or Society",
+  "University Club or Society",
+  "EduTech Company",
+  "Educational Institution",
+];

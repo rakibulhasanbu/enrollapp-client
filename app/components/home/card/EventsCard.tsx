@@ -3,16 +3,16 @@
 import AppButton from "../../ui/AppButton";
 
 type Appevents = {
-  imgUrl1: any;
-  imgUrl2: any;
-  dateName: string;
-  title: string;
-  uerImg: any;
-  userName: string;
-  userDegisnation: string;
-  author: string;
-  Registration: string;
-  RegistrationAmount: string;
+  imgUrl1?: any;
+  imgUrl2?: any;
+  dateName?: string;
+  title?: string;
+  uerImg?: any;
+  userName?: string;
+  userDegisnation?: string;
+  author?: string;
+  Registration?: string;
+  RegistrationAmount?: string;
 };
 
 const EventsCard = ({

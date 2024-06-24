@@ -1,13 +1,13 @@
 "use client";
 
-import { FcGoogle } from "react-icons/fc";
 import AppButton from "../../components/ui/AppButton";
 import { useForm, SubmitHandler } from "react-hook-form";
 import AppFormInput from "@/app/components/ui/AppFormInput";
 import Link from "next/link";
-import { METHOD } from "@/redux/api/tagTypesList";
 import { toast } from "react-toastify";
 import { useOrganizerRegisterMutation } from "@/redux/features/auth/authApi";
+import AppFormSelect from "@/app/components/ui/AppFormSelect";
+import { OrganizationType } from "@/types";
 
 type Inputs = {
   name: string;
@@ -22,6 +22,7 @@ const OrganizerLogin = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -34,13 +35,24 @@ const OrganizerLogin = () => {
 
     await registerOrganizer(data)
       .unwrap()
-      .then((res: { success: any; message: any }) => {
-        toast.success("Rooms are added successfully!");
+      .then((res: any) => {
+        console.log(res);
+        toast.success("Organizer registered successfully!", {
+          toastId: 1,
+        });
       })
-      .catch((res: { success: any; message: any }) => {
-        toast.error(res.message || "Something went wrong");
+      .catch((res: any) => {
+        console.log(res);
+        toast.error(res.message || "Something went wrong", {
+          toastId: 1,
+        });
       });
   };
+
+  const organizationTypeOptions = OrganizationType.map((type) => ({
+    value: type,
+    label: type,
+  }));
 
   return (
     <div className="min-h-[80vh] flex pt-40 justify-center items-center mx-auto text-center ">
@@ -60,16 +72,6 @@ const OrganizerLogin = () => {
             error={errors.name}
             required
           />
-
-          <AppFormInput
-            name="orgType"
-            label="Organization type"
-            type="text"
-            register={register}
-            placeholder="Type of The Organization "
-            error={errors.orgType}
-            required
-          />
           <AppFormInput
             name="email"
             label="Email"
@@ -79,6 +81,16 @@ const OrganizerLogin = () => {
             error={errors.email}
             required
           />
+
+          <AppFormSelect
+            label="Organization type"
+            name="orgType"
+            placeholder="Type of The Organization "
+            required
+            control={control}
+            options={organizationTypeOptions}
+          />
+
           <AppFormInput
             name="password"
             label="New Password"
