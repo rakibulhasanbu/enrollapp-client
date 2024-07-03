@@ -37,6 +37,7 @@ const Profile = () => {
                   variant="outlined"
                   icon={<FcGoogle className="text-xl" />}
                   iconPosition="left"
+                  // onClick={() => console.log("object")}
                 />
               </div>
             </div>
