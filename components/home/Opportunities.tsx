@@ -1,5 +1,5 @@
-import { OpportunitiesCard } from "@/app/components/home/card/OpportunitiesCard";
-import MyCardAssets from "@/app/components/home/card/cardAssets/cardAssets";
+import { OpportunitiesCard } from "@/components/home/card/OpportunitiesCard";
+import MyCardAssets from "@/components/home/card/cardAssets/cardAssets";
 
 export const Opportunities = () => {
   return (

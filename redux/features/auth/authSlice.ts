@@ -16,7 +16,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action) => {
+    setOrganizer: (state, action) => {
       const { organizer, accessToken } = action.payload;
 
       state.organizer = organizer;
@@ -29,8 +29,9 @@ const authSlice = createSlice({
   },
 });
 
-export const { setUser, logOut } = authSlice.actions;
+export const { setOrganizer, logOut } = authSlice.actions;
 export default authSlice.reducer;
 
 export const useCurrentToken = (state: RootState) => state.auth.accessToken;
-export const selectCurrentUser = (state: RootState) => state.auth.organizer;
+export const selectCurrentOrganizer = (state: RootState) =>
+  state.auth.organizer;

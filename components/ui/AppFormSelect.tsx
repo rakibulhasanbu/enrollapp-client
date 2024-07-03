@@ -40,8 +40,8 @@ const AppFormSelect = ({
       rules={
         required
           ? {
-              required: `${name} field is required`,
-            }
+            required: `${name} field is required`,
+          }
           : undefined
       }
       defaultValue={defaultValue}
@@ -59,16 +59,15 @@ const AppFormSelect = ({
             onChange={handleChange ? handleChange : onChange}
             size={size}
             popupClassName="capitalize"
-            className={`${
-              className ? className : ""
-            }`}
+            className={`${className ? className : ""
+              }`}
             options={options}
             value={value ? value : renderValue}
             style={{ width: "100%" }}
             placeholder={placeholder}
           />
           {fieldState.error && (
-            <p className="text-sm text-red font-normal">
+            <p className="text-sm text-red-500 font-normal">
               {fieldState.error?.message}
             </p>
           )}

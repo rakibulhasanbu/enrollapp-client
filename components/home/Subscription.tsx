@@ -1,5 +1,4 @@
 import AppButton from "../ui/AppButton";
-import { Title } from "../ui/Title";
 
 const Subscription = () => {
   return (

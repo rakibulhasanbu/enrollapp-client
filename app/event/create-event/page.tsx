@@ -1,10 +1,11 @@
 "use client";
+
 import { FaLongArrowAltRight } from "react-icons/fa";
-import EventBanner from "@/app/components/event/EventBanner";
-import AppButton from "@/app/components/ui/AppButton";
-import AppFormInput from "@/app/components/ui/AppFormInput";
+import EventBanner from "@/components/event/EventBanner";
+import AppButton from "@/components/ui/AppButton";
+import AppFormInput from "@/components/ui/AppFormInput";
 import { useForm, SubmitHandler } from "react-hook-form";
-import AppFormSelect from "@/app/components/ui/AppFormSelect";
+import AppFormSelect from "@/components/ui/AppFormSelect";
 import { OrganizationType } from "@/types";
 
 type Inputs = {
@@ -22,6 +23,7 @@ type Inputs = {
   endDate: string;
   description: string;
 };
+
 const Page = () => {
   const {
     register,
@@ -69,7 +71,7 @@ const Page = () => {
           required
         />
         <p className="text-[#475569] text-[20px]">Add Types</p>
-        <div className="grid grid-cols-3 gap-4 items-end">
+        <div className="grid grid-cols-3 gap-4">
           <AppFormSelect
             placeholder="Category"
             name="Category"

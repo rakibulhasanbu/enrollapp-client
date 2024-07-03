@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./components/shared/Navbar";
-import Footer from "./components/shared/Footer";
-import { Providers } from "./components/shared/Provider";
+
 import { ToastContainer } from "react-toastify";
+import Navbar from "@/components/shared/Navbar";
+import { Providers } from "@/components/shared/Provider";
+import Footer from "@/components/shared/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`bg-backgroundColor ${inter.className}`}>
-        <Navbar />
         <Providers>
+          <Navbar />
           {children}
 
           <ToastContainer
@@ -38,7 +39,7 @@ export default function RootLayout({
             pauseOnHover
             theme="light"
             stacked
-            // transition:Bounce
+          // transition:Bounce
           />
         </Providers>
         <Footer />

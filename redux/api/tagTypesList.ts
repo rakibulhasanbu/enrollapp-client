@@ -1,5 +1,6 @@
 export enum tagTypes {
   organizer = "organizer",
+  event = "event",
 }
 export const tagTypesList = Object.values(tagTypes);
 

@@ -1,10 +1,10 @@
 import { FcGoogle } from "react-icons/fc";
-import AppButton from "../components/ui/AppButton";
-import ProfileCard from "./profilecard/ProfileCard";
-import HostEventCard from "./profilecard/HostEventCard";
-import AnalyticCard from "./profilecard/AnalyticCard";
-import EventsCard from "../components/home/card/EventsCard";
-import ProfileCardBottom from "./profilecard/profilecardassets/ProfileCardBottom";
+import AppButton from "../../components/ui/AppButton";
+import ProfileCard from "../../components/event/ProfileCard";
+import HostEventCard from "../../components/event/HostEventCard";
+import AnalyticCard from "../../components/event/AnalyticCard";
+import ProfileCardBottom from "../../components/event/profilecardassets/ProfileCardBottom";
+import EventsCard from "@/components/home/card/EventsCard";
 
 const Profile = () => {
   return (
@@ -37,7 +37,7 @@ const Profile = () => {
                   variant="outlined"
                   icon={<FcGoogle className="text-xl" />}
                   iconPosition="left"
-                  // onClick={() => console.log("object")}
+                // onClick={() => console.log("object")}
                 />
               </div>
             </div>

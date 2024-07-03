@@ -29,17 +29,16 @@ const AppFormInput = ({
         {label}
       </label>
       <input
-        className={`outline-none border   p-3 rounded-lg w-full text-[16px] ${
-          error ? "border-red-500" : "border-borderColor"
-        }`}
+        className={`outline-none border   p-3 rounded-lg w-full text-[16px] ${error ? "border-red-500" : "border-borderColor"
+          }`}
         {...register(name, { ...(required && { required: true }) })}
         placeholder={placeholder}
         type={
           type !== "password"
             ? type
             : type === "password" && !show
-            ? "password"
-            : "text"
+              ? "password"
+              : "text"
         }
       />
 
@@ -47,12 +46,12 @@ const AppFormInput = ({
         (show ? (
           <IoEyeOffOutline
             onClick={() => setShow(false)}
-            className="absolute right-4 text-lg 2xl:text-xl cursor-pointer 2xl:right-4 top-[60%]"
+            className={`absolute right-4 text-lg 2xl:text-xl cursor-pointer 2xl:right-4  ${error ? "top-[48%]" : "top-[60%]"}`}
           />
         ) : (
           <IoEyeOutline
             onClick={() => setShow(true)}
-            className="absolute right-4 text-lg 2xl:text-xl cursor-pointer 2xl:right-4 top-[60%]"
+            className={`absolute right-4 text-lg 2xl:text-xl cursor-pointer 2xl:right-4  ${error ? "top-[48%]" : "top-[60%]"}`}
           />
         ))}
 

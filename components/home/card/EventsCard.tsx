@@ -1,6 +1,7 @@
 "use client";
 
-import AppButton from "../../ui/AppButton";
+import AppButton from "@/components/ui/AppButton";
+
 
 type Appevents = {
   imgUrl1?: any;

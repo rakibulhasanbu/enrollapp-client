@@ -11,9 +11,9 @@ const authApi = baseApi.injectEndpoints({
       }),
     }),
 
-    login: builder.mutation({
+    organizerLogin: builder.mutation({
       query: (userInfo) => ({
-        url: "/login",
+        url: "/auth/organizer-login",
         method: "POST",
         body: userInfo,
       }),
@@ -21,4 +21,5 @@ const authApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useOrganizerRegisterMutation } = authApi;
+export const { useOrganizerLoginMutation, useOrganizerRegisterMutation } =
+  authApi;
