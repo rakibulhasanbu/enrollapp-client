@@ -2,32 +2,17 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FC } from "react";
+import imgUrl1 from "./card/cardAssets/Rectangle 10.png";
+import imgUrl2 from "./card/cardAssets/Rectangle 11.png";
 import EventsCard from "./card/EventsCard";
-// import img1 from "../home/card/cardAssets/Rectangle 11.png";
-// import img2 from "../home/card/cardAssets/Frame 1 (1).png";
-// import user from "../home/card/cardAssets/Rectangle 10.png";
 
-interface Event {
-  imgUrl1: any;
-  imgUrl2: any;
-  dateName: string;
-  title: string;
-  uerImg: any;
-  userName: string;
-  userDegisnation: string;
-  author: string;
-  Registration: string;
-  RegistrationAmount: string;
-}
-
-const eventcart: Event[] = [
+const eventcart = [
   {
-    imgUrl1: "#",
-    imgUrl2: "#",
+    imgUrl1: imgUrl1,
+    imgUrl2: imgUrl2,
     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
     title: "Career Meetup with Design & Development",
-    uerImg: "#",
+    uerImg: "#", // Replace with actual user image URL
     userName: "Barkot Ali",
     userDegisnation: "Product Designer",
     author: "Hosted",
@@ -35,11 +20,11 @@ const eventcart: Event[] = [
     RegistrationAmount: "100tk",
   },
   {
-    imgUrl1: "#",
-    imgUrl2: "#",
+    imgUrl1: imgUrl1,
+    imgUrl2: imgUrl2,
     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
     title: "Career Meetup with Design & Development",
-    uerImg: "#",
+    uerImg: "#", // Replace with actual user image URL
     userName: "Barkot Ali",
     userDegisnation: "Product Designer",
     author: "Hosted",
@@ -47,11 +32,11 @@ const eventcart: Event[] = [
     RegistrationAmount: "100tk",
   },
   {
-    imgUrl1: "#",
-    imgUrl2: "#",
+    imgUrl1: imgUrl1,
+    imgUrl2: imgUrl2,
     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
     title: "Career Meetup with Design & Development",
-    uerImg: "#",
+    uerImg: "#", // Replace with actual user image URL
     userName: "Barkot Ali",
     userDegisnation: "Product Designer",
     author: "Hosted",
@@ -60,7 +45,7 @@ const eventcart: Event[] = [
   },
 ];
 
-export const Events: FC = () => {
+export const Events = () => {
   const settings = {
     dots: false,
     infinite: true,
@@ -68,15 +53,15 @@ export const Events: FC = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000, // Corrected to 2000ms (2 seconds)
+    autoplaySpeed: 2000,
     arrows: false,
   };
-
+  console.log(imgUrl1);
   return (
-    <div className="w-[80%] mx-auto ">
+    <div className="w-[80%] mx-auto">
       <Slider {...settings}>
-        {eventcart.map((data) => (
-          <EventsCard key={data.title} {...data} />
+        {eventcart.map((data, index) => (
+          <EventsCard key={index} {...data} />
         ))}
       </Slider>
     </div>

@@ -46,7 +46,10 @@ const page = () => {
       <Partner />
       <PartnerDetails />
       <Faq />
-      <Subscription />
+      <div className="w-[80%] mx-auto">
+        {" "}
+        <Subscription />
+      </div>
     </>
   );
 };

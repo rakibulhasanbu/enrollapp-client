@@ -1,14 +1,13 @@
 "use client";
-
 import AppButton from "@/components/ui/AppButton";
-
+import Image, { StaticImageData } from "next/image";
 
 type Appevents = {
-  imgUrl1?: any;
-  imgUrl2?: any;
+  imgUrl1?: StaticImageData;
+  imgUrl2?: StaticImageData;
   dateName?: string;
   title?: string;
-  uerImg?: any;
+  uerImg?: string;
   userName?: string;
   userDegisnation?: string;
   author?: string;
@@ -29,30 +28,43 @@ const EventsCard = ({
   RegistrationAmount,
 }: Appevents) => {
   return (
-    <div className=" p-10 shadow-xl rounded bg-[#F1F5F9] m-[10px] ">
+    <div className=" shadow-md rounded-md bg-[#F1F5F9] m-3 w-full">
       <div className="relative">
-        <div>{imgUrl1}</div>
-        <div className="absulate">{imgUrl2}</div>
+        <p className="bg-[#D0F5E1] text-[12px] rounded-full text-[#27BE69] w-25 absolute right-4 top-4 py-1 px-2 ">
+          Seats available
+        </p>
+        <Image
+          src={imgUrl2 as StaticImageData}
+          alt="Event"
+          className="bg-cover  h-[280px]"
+        />
       </div>
-      <p className="text-primary text-[16px]">{dateName}</p>
-      <h2 className="text-[#334155] font-bold text-[24px]">{title}</h2>
-      <div className="flex justify-between items-center ">
-        <div>
-          <p>{uerImg}</p>
-          <div>
-            <p className="text-[#0D0D0D] text-[12px] font-bold">{userName}</p>
-            <p className="text-[#404040] text-[12px]">{userDegisnation}</p>
+      <div className="p-4">
+        <p className="text-primary text-[16px] mb-2">{dateName}</p>
+        <h2 className="text-[#334155] font-bold text-[24px] mb-4">{title}</h2>
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <Image
+              src={imgUrl1 as StaticImageData}
+              alt="Event"
+              className="w-10 rounded-full"
+            />
+            <div>
+              <p className="text-[#0D0D0D] text-[12px] font-bold">{userName}</p>
+              <p className="text-[#404040] text-[12px]">{userDegisnation}</p>
+            </div>
           </div>
+          <p className="text-[#64748B] text-[16px]">{author}</p>
         </div>
-        <p className="text-[#64748B] text-[16px]">{author}</p>
-      </div>
-      <div className="flex justify-between items-center ">
-        <p className="text-[#64748B] text-[16px]">{Registration}</p>
-        <p className="text-[32px] text-primary">{RegistrationAmount}</p>
-      </div>
-      <div className="flex justify-between items-center">
-        <AppButton label="Enroll Now" variant="filled" />
-        <AppButton label="More details" variant="outlined" />
+
+        <div className="flex justify-between items-center mt-4 mb-2">
+          <p className="text-[#64748B] text-[16px]">{Registration}</p>
+          <p className="text-[32px] text-primary">{RegistrationAmount}</p>
+        </div>
+        <div className="flex justify-between items-center">
+          <AppButton label="Enroll Now" variant="filled" />
+          <AppButton label="More details" variant="outlined" />
+        </div>
       </div>
     </div>
   );

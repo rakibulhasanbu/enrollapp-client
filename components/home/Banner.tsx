@@ -1,4 +1,5 @@
 import AppButton from "../ui/AppButton";
+import AppSearchbtn from "../ui/AppSearchInput";
 
 const Banner = () => {
   return (
@@ -15,16 +16,7 @@ const Banner = () => {
       <p className="text-[16px] text-[#F1F5F9] my-3">
         A Platform Where You Can Find Events According to Your Passion
       </p>
-      <div className="  w-[30%] flex justify-between items-center text-white py-2 border  rounded-full px-5 mt-5">
-        <input
-          type="text"
-          placeholder="Search event"
-          name=""
-          id=""
-          className="bg-transparent outline-none "
-        />
-        <img className="w-[20px]" src="/assets/search.png" alt="#" />
-      </div>
+      <AppSearchbtn variant="white" />
       <div className="mt-5 text-white flex justify-center items-center gap-5">
         <AppButton label="Explore Event" />
         <p>Or</p>
