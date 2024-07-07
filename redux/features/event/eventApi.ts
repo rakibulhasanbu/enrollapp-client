@@ -11,14 +11,6 @@ const EventApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.event],
     }),
 
-    getMyEvents: builder.query({
-      query: () => ({
-        url: `/my-events`,
-        method: METHOD.GET,
-      }),
-      providesTags: [tagTypes.event],
-    }),
-
     getEventById: builder.query({
       query: (id) => ({
         url: `/event/${id}`,
@@ -26,11 +18,11 @@ const EventApi = baseApi.injectEndpoints({
       }),
     }),
 
-    addEvent: builder.mutation({
-      query: (EventData) => ({
+    createEvent: builder.mutation({
+      query: (eventData) => ({
         url: "/event",
         method: METHOD.POST,
-        body: EventData,
+        body: eventData,
       }),
       invalidatesTags: [tagTypes.event],
     }),
@@ -55,10 +47,9 @@ const EventApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useCreateEventMutation,
   useGetEventsQuery,
-  useGetMyEventsQuery,
   useGetEventByIdQuery,
-  useAddEventMutation,
   useUpdatedEventMutation,
   useDeleteEventMutation,
 } = EventApi;

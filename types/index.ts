@@ -33,6 +33,20 @@ export const OrganizationType = [
   "Educational Institution",
 ];
 
+export interface IEvent {
+  organizer: string;
+  title: string;
+  category: string;
+  eventType: string;
+  location: string;
+  eventDate: Date;
+  registrationDeadline: Date;
+  description: string;
+  registrationFee: number;
+  eventBanner: string;
+  registrationFormId: string;
+}
+
 export interface INavItems {
   to: string;
   matchUrl: string;

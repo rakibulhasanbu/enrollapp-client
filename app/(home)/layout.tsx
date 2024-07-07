@@ -1,5 +1,5 @@
+import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
-import { Footer } from "antd/es/layout/layout";
 
 const HomeLayout = ({
     children,
@@ -9,7 +9,9 @@ const HomeLayout = ({
     return (
         <div className=''>
             <Navbar />
-            {children}
+            <div>
+                {children}
+            </div>
             <Footer />
         </div>
     );

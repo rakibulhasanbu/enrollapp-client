@@ -6,7 +6,7 @@ type TAppFormInputProps = {
   label?: string;
   name: string;
   placeholder: string;
-  type?: "text" | "email" | "file" | "number" | "password" | "textarea";
+  type?: "text" | "email" | "file" | "number" | "password" | "textarea" | "date";
   error: any;
   register: UseFormRegister<any>;
   required?: boolean;
@@ -31,7 +31,8 @@ const AppFormInput = ({
       <input
         className={`outline-none border   p-3 rounded-lg w-full text-[16px] ${error ? "border-red-500" : "border-borderColor"
           }`}
-        {...register(name, { ...(required && { required: true }) })}
+        // {...register(name, { ...(required && { required: true }) })}
+        {...register(name, { ...(required && { required: true }), ...(type === "number" && { valueAsNumber: true }) })}
         placeholder={placeholder}
         type={
           type !== "password"

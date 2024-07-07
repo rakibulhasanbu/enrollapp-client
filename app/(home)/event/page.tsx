@@ -1,7 +1,7 @@
 import AppButton from "@/components/ui/AppButton";
 import AppSearchInput from "@/components/ui/AppSearchInput";
-import imgUrl1 from "../../components/home/card/cardAssets/Rectangle 10.png";
-import imgUrl2 from "../../components/home/card/cardAssets/Rectangle 11.png";
+import imgUrl1 from "../../../components/home/card/cardAssets/Rectangle 10.png";
+import imgUrl2 from "../../../components/home/card/cardAssets/Rectangle 11.png";
 import EventsCard from "@/components/home/card/EventsCard";
 import Subscription from "@/components/home/Subscription";
 

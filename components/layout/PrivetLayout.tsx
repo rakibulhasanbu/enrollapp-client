@@ -1,23 +1,23 @@
 import React, { ReactNode, useEffect } from "react";
 import { useAppSelector } from "@/redux/hook";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
+import { selectCurrentOrganizer, useCurrentToken } from "@/redux/features/auth/authSlice";
 
 interface PrivateLayoutProps {
     children: ReactNode;
 }
 
 const PrivateLayout: React.FC<PrivateLayoutProps> = ({ children }) => {
-    const { organizer } = useAppSelector((state) => state.auth);
+    const pathname = usePathname();
     const router = useRouter();
-
+    const accessToken = useAppSelector(useCurrentToken);
+    const organizer = useAppSelector(selectCurrentOrganizer)
     useEffect(() => {
-        if (!organizer?.email) {
-            router.push({
-                pathname: "/auth/sign-in",
-                query: { from: router?.pathname },
-            });
+        if (!accessToken || !organizer?.email) {
+            const redirectTo = `/auth/sign-in?from=${encodeURIComponent(pathname)}`;
+            router.push(redirectTo);
         }
-    }, [organizer, router]);
+    }, [accessToken, organizer, pathname, router]);
 
     // if (isLoading) {
     //     return (
