@@ -12,7 +12,7 @@ import img7 from "./profilecardassets/web-design-02.png";
 // };
 const ProfileCard = () => {
   return (
-    <div className="bg-white w-auto rounded-xl shadow-xl p-5">
+    <div className="bg-white w-auto rounded-xl shadow-xl p-5 h-[300px] ">
       <div className="flex items-center justify-center gap-2 mb-4">
         <img src="/assets/elements.png" alt="" />
         <p className="text-[12px] w-full">Contact Details</p>
@@ -20,9 +20,9 @@ const ProfileCard = () => {
       {profileIcon.map((items) => (
         <div
           key={items.description}
-          className="flex items-center justify-center gap-1"
+          className="flex items-center justify-center"
         >
-          <div className="w-[200px] flex items-center justify-start gap-1 mt-2">
+          <div className="w-[200px] flex items-center justify-start gap-1 mb-5">
             <Image src={items.imgUrl} alt="Icon" className="w-[20px]" />
             <div className="text-[16px] text-[#64748B]">
               {items.description}

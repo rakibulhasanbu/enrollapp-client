@@ -39,7 +39,7 @@ export const PartnerDetails = () => {
           <img
             src="/assets/comma (1).png"
             alt=""
-            className="w-[69px] absolute right-0 "
+            className="w-[69px] absolute lg:right-0 "
           />
         </div>
       </div>

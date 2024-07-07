@@ -5,8 +5,8 @@ import { FaArrowRight } from "react-icons/fa";
 
 export const Faq = () => {
   return (
-    <div className=" w-[80%] mx-auto flex  items-center justify-between gap-[50px]">
-      <div className="flex flex-col gap-6 w-[800px]">
+    <div className="w-full mt-40 p-4 lg:w-[80%] mx-auto flex  flex-col lg:flex-row items-center justify-between gap-[50px]">
+      <div className=" text-center lg:text-left flex flex-col gap-6 lg:w-[800px]">
         <div>
           <h1 className="text-[48px] font-bold">Frequently asked Questions</h1>
         </div>

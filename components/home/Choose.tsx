@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Choose = () => {
   return (
-    <div className="flex justify-center items-center gap-20 w-[80%] mx-auto mt-10">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-20 w-full p-4 lg:w-[80%] mx-auto mt-10">
       <div>
         <Image
           src="/assets/3 1.png"

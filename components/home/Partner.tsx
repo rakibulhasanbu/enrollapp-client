@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export const Partner = () => {
   return (
-    <div className="w-[500px] mx-auto my-20 ">
+    <div className=" lg:w-[500px] mx-auto my-20 w-full p-4 ">
       <div className="relative">
-        <div className="w-[207px]">
+        <div className="lg:w-[207px] w-40 absolute left-20 lg:left-0 lg:top-0 top-6 ">
           <Image
             src="/assets/Rectangle 657.png"
             alt="#"
@@ -14,12 +14,12 @@ export const Partner = () => {
           />
         </div>
         <div className="absolute top-5 left-12 ">
-          <h1 className="text-[48px] font-bold w-full">
+          <h1 className="text-[48px] text-center lg:text-left font-semibold lg:font-bold w-full">
             <span className="text-white"> What </span> our Partner says About Us
           </h1>
         </div>
 
-        <div className="w-[371px] absolute right-4 top-40">
+        <div className="lg:w-[371px] absolute right-4 lg:top-40 top-60 w-80">
           <Image
             src="/assets/Vector 5 (1).png"
             alt="#"

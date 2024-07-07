@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Promotion = () => {
   return (
-    <div className="flex flex-1 justify-between my-20 items-center w-[80%] mx-auto">
+    <div className="flex flex-col-reverse lg:flex-row justify-between my-20 items-center w-[80%] mx-auto">
       <div className="w-[407px]">
         <h2 className="text-[36px] font-bold ">
           <span className="text-primary">1+ million </span> Learns have already
@@ -15,7 +15,7 @@ export const Promotion = () => {
           technologies that
         </p>
       </div>
-      <div className="w-[500px]">
+      <div className="lg:w-[500px] w-80">
         <Image
           src="/assets/4 1.png"
           alt="#"

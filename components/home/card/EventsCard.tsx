@@ -28,15 +28,15 @@ const EventsCard = ({
   RegistrationAmount,
 }: Appevents) => {
   return (
-    <div className=" shadow-md rounded-md bg-[#F1F5F9] m-3 w-full">
+    <div className="shadow-md rounded-md flex flex-col gap-6 bg-[#F1F5F9] w-full">
       <div className="relative">
-        <p className="bg-[#D0F5E1] text-[12px] rounded-full text-[#27BE69] w-25 absolute right-4 top-4 py-1 px-2 ">
+        <p className="bg-[#D0F5E1] text-[12px] rounded-full text-[#27BE69] w-25 absolute right-4 top-4 py-1 px-2">
           Seats available
         </p>
         <Image
           src={imgUrl2 as StaticImageData}
           alt="Event"
-          className="bg-cover  h-[280px]"
+          className="bg-cover h-[280px] w-full"
         />
       </div>
       <div className="p-4">
@@ -56,7 +56,6 @@ const EventsCard = ({
           </div>
           <p className="text-[#64748B] text-[16px]">{author}</p>
         </div>
-
         <div className="flex justify-between items-center mt-4 mb-2">
           <p className="text-[#64748B] text-[16px]">{Registration}</p>
           <p className="text-[32px] text-primary">{RegistrationAmount}</p>

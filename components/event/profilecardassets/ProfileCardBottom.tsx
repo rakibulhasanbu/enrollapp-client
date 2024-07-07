@@ -3,8 +3,8 @@ import { IoLogoInstagram } from "react-icons/io5";
 
 const ProfileCardBottom = () => {
   return (
-    <div className="bg-white rounded-xl shadow-lg ">
-      <div className="flex items-center justify-center gap-4">
+    <div className="bg-white rounded-xl shadow-lg h-[200px] flex flex-col gap-2 pt-3">
+      <div className="flex items-center justify-center gap-4 ">
         <img src="/assets/elements (1).png" alt="" className="w-5" />
         <p>Social Media</p>
       </div>

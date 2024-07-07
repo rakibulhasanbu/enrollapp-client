@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-backgroundColor ${inter.className}`}>
         <Providers>
-          <Navbar />
+          {/* <Navbar /> */}
           {children}
 
           <ToastContainer

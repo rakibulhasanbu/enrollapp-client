@@ -55,13 +55,40 @@ export const Events = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 768, // Mobile breakpoint (you can adjust this value)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024, // Tablet breakpoint (you can adjust this value)
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1200, // Large screen breakpoint (you can adjust this value)
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-  console.log(imgUrl1);
+
   return (
-    <div className="w-[80%] mx-auto">
+    <div className="w-full p-4 lg:w-[80%] mx-auto">
       <Slider {...settings}>
         {eventcart.map((data, index) => (
-          <EventsCard key={index} {...data} />
+          <div key={index} className="px-2">
+            {" "}
+            {/* Add padding here */}
+            <EventsCard {...data} />
+          </div>
         ))}
       </Slider>
     </div>

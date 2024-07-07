@@ -1,16 +1,19 @@
-import { FcGoogle } from "react-icons/fc";
 import AppButton from "../../../components/ui/AppButton";
 import ProfileCard from "../../../components/event/ProfileCard";
 import HostEventCard from "../../../components/event/HostEventCard";
 import AnalyticCard from "../../../components/event/AnalyticCard";
 import ProfileCardBottom from "../../../components/event/profilecardassets/ProfileCardBottom";
 import EventsCard from "@/components/home/card/EventsCard";
+import { LuPencilLine } from "react-icons/lu";
+
+import imgurl1 from "@/components/home/card/cardAssets/Rectangle 10.png";
+import imgurl2 from "@/components/home/card/cardAssets/Rectangle 11.png";
 
 const Profile = () => {
   return (
     <section className="w-[80%] mx-auto pt-40">
       <div className="flex justify-center items-center gap-5">
-        <div className="w-[70%] bg-white rounded-xl shadow-xl relative">
+        <div className="w-[80%] bg-white rounded-xl shadow-xl relative">
           <div className="h-[250px] bg-[#8ABFEE] rounded-xl relative">
             <div className="right-5 absolute top-5 ">
               <img src="/assets/Frame 1618872988.png" alt="" className="w-10" />
@@ -35,8 +38,8 @@ const Profile = () => {
                 <AppButton
                   label="Edit details"
                   variant="outlined"
-                  icon={<FcGoogle className="text-xl" />}
-                  iconPosition="left"
+                  icon={<LuPencilLine className="text-xl" />}
+                  iconPosition="right"
                   // onClick={() => console.log("object")}
                 />
               </div>
@@ -61,7 +64,17 @@ const Profile = () => {
       <HostEventCard />
       <AnalyticCard />
       <div className="w-[35%] mt-5">
-        <EventsCard dateName="12" />
+        <EventsCard
+          author="Ater Ali"
+          Registration="Ater Ali"
+          dateName="jhdjhd jdbhjbnhdjf jdbhdjhjd "
+          title="ete"
+          imgUrl1={imgurl1}
+          imgUrl2={imgurl2}
+          userDegisnation="rtrrtt"
+          userName="feef"
+        
+        />
       </div>
     </section>
   );

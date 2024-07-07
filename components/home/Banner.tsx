@@ -4,16 +4,16 @@ import AppSearchbtn from "../ui/AppSearchInput";
 const Banner = () => {
   return (
     <div
-      className="bg-cover bg-center h-screen flex flex-col justify-center items-center"
+      className="bg-cover w-full p-4  h-[400px] lg:w-screen mx-auto  bg-center lg:h-screen flex flex-col justify-center items-center "
       style={{
         backgroundImage: "url('/assets/banner.png')",
       }}
     >
-      <h1 className="text-white text-[56px] max-w-[70%] text-center font-bold">
+      <h1 className="text-white  lg:text-[56px]  lg:max-w-[70%] text-center font-bold ">
         <span className="text-[#0074D9]"> Present</span> your Passion in a
         unique outstanding <span className="text-[#0074D9]">Mind</span>
       </h1>
-      <p className="text-[16px] text-[#F1F5F9] my-3">
+      <p className="lg:text-[16px] text-center text-[#F1F5F9] lg:my-3">
         A Platform Where You Can Find Events According to Your Passion
       </p>
       <AppSearchbtn variant="white" />

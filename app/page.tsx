@@ -22,7 +22,7 @@ const page = () => {
         <Title head="Explore Opportunities" paragraph="" />
       </div>
       <Opportunities />
-      <div className="flex flex-1 justify-between items-center mx-[100px]">
+      <div className="text-center lg:text-left flex flex-col lg:flex-row justify-between items-center lg:w-[80%] lg:mx-auto">
         <Title
           head="Upcoming Events"
           paragraph="A Platform Where You Can Find Events  According to Your Passion"
@@ -44,9 +44,9 @@ const page = () => {
       <Promotion />
       <Enroll />
       <Partner />
-      <PartnerDetails />
+      {/* <PartnerDetails /> */}
       <Faq />
-      <div className="w-[80%] mx-auto">
+      <div className=" lg:w-[80%] mx-auto">
         {" "}
         <Subscription />
       </div>
