@@ -1,6 +1,5 @@
 "use client";
 
-import AppButton from "../../../components/ui/AppButton";
 import { useForm, SubmitHandler } from "react-hook-form";
 import AppFormInput from "@/components/ui/AppFormInput";
 import Link from "next/link";
@@ -13,6 +12,7 @@ import { useAppDispatch } from "@/redux/hook";
 import { verifyToken } from "@/utils/verifyToken";
 import { useRouter } from "next/navigation";
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
+import AppButton from "@/components/ui/AppButton";
 
 type Inputs = {
   name: string;

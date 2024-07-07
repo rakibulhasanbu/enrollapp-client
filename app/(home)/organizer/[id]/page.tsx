@@ -1,13 +1,13 @@
-import AppButton from "../../../components/ui/AppButton";
-import ProfileCard from "../../../components/event/ProfileCard";
-import HostEventCard from "../../../components/event/HostEventCard";
-import AnalyticCard from "../../../components/event/AnalyticCard";
-import ProfileCardBottom from "../../../components/event/profilecardassets/ProfileCardBottom";
 import EventsCard from "@/components/home/card/EventsCard";
 import { LuPencilLine } from "react-icons/lu";
 
 import imgurl1 from "@/components/home/card/cardAssets/Rectangle 10.png";
 import imgurl2 from "@/components/home/card/cardAssets/Rectangle 11.png";
+import AppButton from "@/components/ui/AppButton";
+import ProfileCard from "@/components/event/ProfileCard";
+import ProfileCardBottom from "@/components/event/profilecardassets/ProfileCardBottom";
+import HostEventCard from "@/components/event/HostEventCard";
+import AnalyticCard from "@/components/event/AnalyticCard";
 
 const Profile = () => {
   return (
@@ -40,7 +40,7 @@ const Profile = () => {
                   variant="outlined"
                   icon={<LuPencilLine className="text-xl" />}
                   iconPosition="right"
-                  // onClick={() => console.log("object")}
+                // onClick={() => console.log("object")}
                 />
               </div>
             </div>
@@ -73,7 +73,7 @@ const Profile = () => {
           imgUrl2={imgurl2}
           userDegisnation="rtrrtt"
           userName="feef"
-        
+
         />
       </div>
     </section>

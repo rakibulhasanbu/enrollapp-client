@@ -1,6 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
-import AppButton from "../../../components/ui/AppButton";
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
+import AppButton from "@/components/ui/AppButton";
 
 const page = () => {
   return (

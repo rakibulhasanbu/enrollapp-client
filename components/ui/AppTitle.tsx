@@ -1,8 +1,8 @@
-type appTitle = {
+type appAppTitle = {
   head: string;
   paragraph?: string;
 };
-export const Title = ({ head, paragraph }: appTitle) => {
+export const AppTitle = ({ head, paragraph }: appAppTitle) => {
   return (
     <div className="my-10  w-[80%] mx-auto">
       <div className="text-black text-[40px] font-bold ">{head}</div>

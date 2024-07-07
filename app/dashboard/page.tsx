@@ -1,7 +1,7 @@
 const page = () => {
     return (
         <div className=''>
-            This is dashboard Components
+            This is page Components
         </div>
     );
 };

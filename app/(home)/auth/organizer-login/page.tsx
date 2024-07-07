@@ -1,7 +1,5 @@
 "use client";
 
-import { FcGoogle } from "react-icons/fc";
-import AppButton from "../../../components/ui/AppButton";
 import { useForm, SubmitHandler } from "react-hook-form";
 import AppFormInput from "@/components/ui/AppFormInput";
 import Link from "next/link";
@@ -12,6 +10,7 @@ import { setOrganizer } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { useRouter } from "next/navigation";
 import AnimationWrapper from "@/components/ui/AnimationWrapper";
+import AppButton from "@/components/ui/AppButton";
 
 type Inputs = {
   name: string;

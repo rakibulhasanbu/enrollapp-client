@@ -32,3 +32,22 @@ export const OrganizationType = [
   "EduTech Company",
   "Educational Institution",
 ];
+
+export interface INavItems {
+  to: string;
+  matchUrl: string;
+  name: string;
+  icon: any;
+}
+
+export interface TNavItems {
+  label: string;
+  path: string;
+  Icon: React.ComponentType<any>;
+}
+
+export enum UserRole {
+  User = "user",
+  Organizer = "organizer",
+  SuperAdmin = "superAdmin",
+}
