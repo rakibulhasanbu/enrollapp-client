@@ -1,9 +1,9 @@
 import { LuSearch } from "react-icons/lu";
 import { Table } from "antd";
 import { ReactNode, useEffect, useState } from "react";
-import useDebounce from "../../../../../Work/new-acctbazaar/src/hooks/useDebounce";
 import AppTableSkeleton from "./AppTableSkeleton";
 import AppRenderReduxData from "./AppRenderReduxData";
+import useDebounce from "@/hooks/useDebounce";
 
 
 type TTableProps = {
