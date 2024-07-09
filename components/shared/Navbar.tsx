@@ -7,6 +7,7 @@ import { selectCurrentOrganizer } from "@/redux/features/auth/authSlice";
 import ProfileDetailsPopUp from "../home/ProfileDetailsPopUp";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Image from "next/image";
 
 const Navbar = () => {
   const organizer = useAppSelector(selectCurrentOrganizer);
@@ -36,7 +37,8 @@ const Navbar = () => {
       <div className="w-full px-4 lg:w-[80%] mx-auto flex items-center justify-between bg-[#171717] lg:border lg:rounded-full lg:px-10 py-3 lg:mt-8">
         <div>
           <Link href={"/"}>
-            <h1 className="text-[32px] font-bold text-[#FFFFFF]">Logo</h1>
+            {/* <h1 className="text-[32px] font-bold text-[#FFFFFF]">Logo</h1> */}
+            <Image className="object-cover w-full h-full" src={"/assets/logo.png"} width={80} height={40} alt="logo" />
           </Link>
         </div>
         <div className="md:hidden flex items-center">

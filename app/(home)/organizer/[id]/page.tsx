@@ -64,7 +64,7 @@ const Profile = () => {
       <HostEventCard />
       <AnalyticCard />
       <div className="w-[35%] mt-5">
-        <EventsCard
+        {/* <EventsCard
           author="Ater Ali"
           Registration="Ater Ali"
           dateName="jhdjhd jdbhjbnhdjf jdbhdjhjd "
@@ -74,7 +74,7 @@ const Profile = () => {
           userDegisnation="rtrrtt"
           userName="feef"
 
-        />
+        /> */}
       </div>
     </section>
   );

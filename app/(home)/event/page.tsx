@@ -7,80 +7,6 @@ import Subscription from "@/components/home/Subscription";
 import { useGetEventsQuery } from "@/redux/features/event/eventApi";
 import { IEvent } from "@/types";
 
-// const eventcart = [
-//   {
-//     imgUrl1: imgUrl1,
-//     imgUrl2: imgUrl2,
-//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-//     title: "Career Meetup with Design & Development",
-//     uerImg: "#", // Replace with actual user image URL
-//     userName: "Barkot Ali",
-//     userDegisnation: "Product Designer",
-//     author: "Hosted",
-//     Registration: "Registration Fee",
-//     RegistrationAmount: "100tk",
-//   },
-//   {
-//     imgUrl1: imgUrl1,
-//     imgUrl2: imgUrl2,
-//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-//     title: "Career Meetup with Design & Development",
-//     uerImg: "#", // Replace with actual user image URL
-//     userName: "Barkot Ali",
-//     userDegisnation: "Product Designer",
-//     author: "Hosted",
-//     Registration: "Registration Fee",
-//     RegistrationAmount: "100tk",
-//   },
-//   {
-//     imgUrl1: imgUrl1,
-//     imgUrl2: imgUrl2,
-//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-//     title: "Career Meetup with Design & Development",
-//     uerImg: "#", // Replace with actual user image URL
-//     userName: "Barkot Ali",
-//     userDegisnation: "Product Designer",
-//     author: "Hosted",
-//     Registration: "Registration Fee",
-//     RegistrationAmount: "100tk",
-//   },
-//   {
-//     imgUrl1: imgUrl1,
-//     imgUrl2: imgUrl2,
-//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-//     title: "Career Meetup with Design & Development",
-//     uerImg: "#", // Replace with actual user image URL
-//     userName: "Barkot Ali",
-//     userDegisnation: "Product Designer",
-//     author: "Hosted",
-//     Registration: "Registration Fee",
-//     RegistrationAmount: "100tk",
-//   },
-//   {
-//     imgUrl1: imgUrl1,
-//     imgUrl2: imgUrl2,
-//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-//     title: "Career Meetup with Design & Development",
-//     uerImg: "#", // Replace with actual user image URL
-//     userName: "Barkot Ali",
-//     userDegisnation: "Product Designer",
-//     author: "Hosted",
-//     Registration: "Registration Fee",
-//     RegistrationAmount: "100tk",
-//   },
-//   {
-//     imgUrl1: imgUrl1,
-//     imgUrl2: imgUrl2,
-//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-//     title: "Career Meetup with Design & Development",
-//     uerImg: "#", // Replace with actual user image URL
-//     userName: "Barkot Ali",
-//     userDegisnation: "Product Designer",
-//     author: "Hosted",
-//     Registration: "Registration Fee",
-//     RegistrationAmount: "100tk",
-//   },
-// ];
 
 const Page = () => {
   const { data } = useGetEventsQuery("");
@@ -100,8 +26,8 @@ const Page = () => {
         <AppButton label="Campus Ambassador Program" variant="outlined" />
       </div>
 
-      <div className="w-full mx-auto grid grid-cols-3 gap-4 py-12">
-        {data?.organizations?.map((event: IEvent) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 py-12">
+        {data?.data?.events?.map((event: IEvent) => (
           <EventsCard event={event} key={event?._id} />
         ))}
       </div>

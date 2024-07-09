@@ -14,6 +14,7 @@ export interface TOrganizer {
   website: string;
   socialMediaLinks: string[];
   contactPerson: {
+    imageUrl: string;
     name: string;
     phoneNumber: string;
     roleInOrg: string;
@@ -35,13 +36,13 @@ export const OrganizationType = [
 
 export interface IEvent {
   _id: string;
-  organizer: string;
+  organizer: TOrganizer;
   title: string;
   category: string;
   eventType: string;
   location: string;
-  eventDate: Date;
-  registrationDeadline: Date;
+  eventDate: string;
+  registrationDeadline: string;
   description: string;
   registrationFee: number;
   eventBanner: string;

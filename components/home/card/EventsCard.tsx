@@ -4,6 +4,7 @@ import imgUrl1 from "../../../components/home/card/cardAssets/Rectangle 10.png";
 import imgUrl2 from "../../../components/home/card/cardAssets/Rectangle 11.png";
 import AppButton from "@/components/ui/AppButton";
 import { IEvent } from "@/types";
+import { formatDate } from "@/utils/formateDate";
 import Image, { StaticImageData } from "next/image";
 
 type TEventsCard = {
@@ -24,7 +25,7 @@ const EventsCard = ({ event }: TEventsCard) => {
         />
       </div>
       <div className="p-4">
-        <p className="text-primary text-[16px] mb-2">{event?.eventDate}</p>
+        <p className="text-primary font-medium flex items-center gap-2 mb-2"><span>{formatDate(event?.eventDate)}</span> <span className="border-l-2 pl-2">{event?.location}</span></p>
         <h2 className="text-[#334155] font-bold text-[24px] mb-4">
           {event?.title}
         </h2>
@@ -36,19 +37,19 @@ const EventsCard = ({ event }: TEventsCard) => {
               className="w-10 rounded-full"
             />
             <div>
-              <p className="text-[#0D0D0D] text-[12px] font-bold">{userName}</p>
-              <p className="text-[#404040] text-[12px]">{userDegisnation}</p>
+              <p className="text-[#0D0D0D] text-[12px] font-bold">{event?.organizer?.contactPerson?.name}</p>
+              <p className="text-[#404040] text-[12px]">{event?.organizer?.contactPerson?.roleInOrg}</p>
             </div>
           </div>
-          <p className="text-[#64748B] text-[16px]">{author}</p>
+          <p className="text-[#64748B]">Hosted</p>
         </div>
         <div className="flex justify-between items-center mt-4 mb-2">
-          <p className="text-[#64748B] text-[16px]">{Registration}</p>
-          <p className="text-[32px] text-primary">{RegistrationAmount}</p>
+          <p className="text-[#334155] font-medium">Registration Fee</p>
+          <p className="text-2xl font-semibold text-primary">TK {event?.registrationFee}</p>
         </div>
         <div className="flex justify-between items-center">
           <AppButton label="Enroll Now" variant="filled" />
-          <AppButton label="More details" variant="outlined" />
+          <AppButton href={`/event/${event?._id}`} label="More details" variant="outlined" />
         </div>
       </div>
     </div>
