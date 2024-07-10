@@ -1,32 +1,16 @@
 "use client";
+
+import imgUrl1 from "../../../components/home/card/cardAssets/Rectangle 10.png";
+import imgUrl2 from "../../../components/home/card/cardAssets/Rectangle 11.png";
 import AppButton from "@/components/ui/AppButton";
+import { IEvent } from "@/types";
 import Image, { StaticImageData } from "next/image";
 
-type Appevents = {
-  imgUrl1?: StaticImageData;
-  imgUrl2?: StaticImageData;
-  dateName?: string;
-  title?: string;
-  uerImg?: string;
-  userName?: string;
-  userDegisnation?: string;
-  author?: string;
-  Registration?: string;
-  RegistrationAmount?: string;
+type TEventsCard = {
+  event: IEvent;
 };
 
-const EventsCard = ({
-  dateName,
-  imgUrl1,
-  imgUrl2,
-  title,
-  uerImg,
-  userName,
-  userDegisnation,
-  author,
-  Registration,
-  RegistrationAmount,
-}: Appevents) => {
+const EventsCard = ({ event }: TEventsCard) => {
   return (
     <div className="shadow-md rounded-md flex flex-col gap-6 bg-[#F1F5F9] w-full">
       <div className="relative">
@@ -34,14 +18,16 @@ const EventsCard = ({
           Seats available
         </p>
         <Image
-          src={imgUrl2 as StaticImageData}
+          src={imgUrl2}
           alt="Event"
           className="bg-cover h-[280px] w-full"
         />
       </div>
       <div className="p-4">
-        <p className="text-primary text-[16px] mb-2">{dateName}</p>
-        <h2 className="text-[#334155] font-bold text-[24px] mb-4">{title}</h2>
+        <p className="text-primary text-[16px] mb-2">{event?.eventDate}</p>
+        <h2 className="text-[#334155] font-bold text-[24px] mb-4">
+          {event?.title}
+        </h2>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Image

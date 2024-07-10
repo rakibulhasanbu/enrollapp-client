@@ -1,4 +1,5 @@
-import Question from "@/components/event/form/Question";
+import AppQuestion from "@/components/event/form/AppQuestion";
+import Question from "@/components/event/form/AppQuestion";
 import { CgProfile } from "react-icons/cg";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { HiArrowUturnLeft, HiArrowUturnRight } from "react-icons/hi2";
@@ -75,7 +76,9 @@ const page = () => {
             className="p-2 border border-blue-700 rounded-md"
           />
         </div>
-        <Question />
+        <AppQuestion />
+        <AppQuestion />
+        <AppQuestion />
       </div>
     </div>
   );

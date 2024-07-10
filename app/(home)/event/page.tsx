@@ -1,86 +1,90 @@
+"use client";
+
 import AppButton from "@/components/ui/AppButton";
 import AppSearchInput from "@/components/ui/AppSearchInput";
-import imgUrl1 from "../../../components/home/card/cardAssets/Rectangle 10.png";
-import imgUrl2 from "../../../components/home/card/cardAssets/Rectangle 11.png";
 import EventsCard from "@/components/home/card/EventsCard";
 import Subscription from "@/components/home/Subscription";
+import { useGetEventsQuery } from "@/redux/features/event/eventApi";
+import { IEvent } from "@/types";
 
-const eventcart = [
-  {
-    imgUrl1: imgUrl1,
-    imgUrl2: imgUrl2,
-    dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-    title: "Career Meetup with Design & Development",
-    uerImg: "#", // Replace with actual user image URL
-    userName: "Barkot Ali",
-    userDegisnation: "Product Designer",
-    author: "Hosted",
-    Registration: "Registration Fee",
-    RegistrationAmount: "100tk",
-  },
-  {
-    imgUrl1: imgUrl1,
-    imgUrl2: imgUrl2,
-    dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-    title: "Career Meetup with Design & Development",
-    uerImg: "#", // Replace with actual user image URL
-    userName: "Barkot Ali",
-    userDegisnation: "Product Designer",
-    author: "Hosted",
-    Registration: "Registration Fee",
-    RegistrationAmount: "100tk",
-  },
-  {
-    imgUrl1: imgUrl1,
-    imgUrl2: imgUrl2,
-    dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-    title: "Career Meetup with Design & Development",
-    uerImg: "#", // Replace with actual user image URL
-    userName: "Barkot Ali",
-    userDegisnation: "Product Designer",
-    author: "Hosted",
-    Registration: "Registration Fee",
-    RegistrationAmount: "100tk",
-  },
-  {
-    imgUrl1: imgUrl1,
-    imgUrl2: imgUrl2,
-    dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-    title: "Career Meetup with Design & Development",
-    uerImg: "#", // Replace with actual user image URL
-    userName: "Barkot Ali",
-    userDegisnation: "Product Designer",
-    author: "Hosted",
-    Registration: "Registration Fee",
-    RegistrationAmount: "100tk",
-  },
-  {
-    imgUrl1: imgUrl1,
-    imgUrl2: imgUrl2,
-    dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-    title: "Career Meetup with Design & Development",
-    uerImg: "#", // Replace with actual user image URL
-    userName: "Barkot Ali",
-    userDegisnation: "Product Designer",
-    author: "Hosted",
-    Registration: "Registration Fee",
-    RegistrationAmount: "100tk",
-  },
-  {
-    imgUrl1: imgUrl1,
-    imgUrl2: imgUrl2,
-    dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
-    title: "Career Meetup with Design & Development",
-    uerImg: "#", // Replace with actual user image URL
-    userName: "Barkot Ali",
-    userDegisnation: "Product Designer",
-    author: "Hosted",
-    Registration: "Registration Fee",
-    RegistrationAmount: "100tk",
-  },
-];
+// const eventcart = [
+//   {
+//     imgUrl1: imgUrl1,
+//     imgUrl2: imgUrl2,
+//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
+//     title: "Career Meetup with Design & Development",
+//     uerImg: "#", // Replace with actual user image URL
+//     userName: "Barkot Ali",
+//     userDegisnation: "Product Designer",
+//     author: "Hosted",
+//     Registration: "Registration Fee",
+//     RegistrationAmount: "100tk",
+//   },
+//   {
+//     imgUrl1: imgUrl1,
+//     imgUrl2: imgUrl2,
+//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
+//     title: "Career Meetup with Design & Development",
+//     uerImg: "#", // Replace with actual user image URL
+//     userName: "Barkot Ali",
+//     userDegisnation: "Product Designer",
+//     author: "Hosted",
+//     Registration: "Registration Fee",
+//     RegistrationAmount: "100tk",
+//   },
+//   {
+//     imgUrl1: imgUrl1,
+//     imgUrl2: imgUrl2,
+//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
+//     title: "Career Meetup with Design & Development",
+//     uerImg: "#", // Replace with actual user image URL
+//     userName: "Barkot Ali",
+//     userDegisnation: "Product Designer",
+//     author: "Hosted",
+//     Registration: "Registration Fee",
+//     RegistrationAmount: "100tk",
+//   },
+//   {
+//     imgUrl1: imgUrl1,
+//     imgUrl2: imgUrl2,
+//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
+//     title: "Career Meetup with Design & Development",
+//     uerImg: "#", // Replace with actual user image URL
+//     userName: "Barkot Ali",
+//     userDegisnation: "Product Designer",
+//     author: "Hosted",
+//     Registration: "Registration Fee",
+//     RegistrationAmount: "100tk",
+//   },
+//   {
+//     imgUrl1: imgUrl1,
+//     imgUrl2: imgUrl2,
+//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
+//     title: "Career Meetup with Design & Development",
+//     uerImg: "#", // Replace with actual user image URL
+//     userName: "Barkot Ali",
+//     userDegisnation: "Product Designer",
+//     author: "Hosted",
+//     Registration: "Registration Fee",
+//     RegistrationAmount: "100tk",
+//   },
+//   {
+//     imgUrl1: imgUrl1,
+//     imgUrl2: imgUrl2,
+//     dateName: "Wed, May 20 | 7.30 pm (Bashundhara)",
+//     title: "Career Meetup with Design & Development",
+//     uerImg: "#", // Replace with actual user image URL
+//     userName: "Barkot Ali",
+//     userDegisnation: "Product Designer",
+//     author: "Hosted",
+//     Registration: "Registration Fee",
+//     RegistrationAmount: "100tk",
+//   },
+// ];
 
-const page = () => {
+const Page = () => {
+  const { data } = useGetEventsQuery("");
+  console.log(data);
   return (
     <div className="pt-40 w-[80%] mx-auto">
       <div className="h-[350px] bg-[#8F8F8F] rounded-md mb-10"></div>
@@ -97,8 +101,8 @@ const page = () => {
       </div>
 
       <div className="w-full mx-auto grid grid-cols-3 gap-4 py-12">
-        {eventcart.map((data, index) => (
-          <EventsCard key={index} {...data} />
+        {data?.organizations?.map((event: IEvent) => (
+          <EventsCard event={event} key={event?._id} />
         ))}
       </div>
 
@@ -109,4 +113,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

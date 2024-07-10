@@ -10,6 +10,7 @@ import { OrganizationType } from "@/types";
 import { useCreateEventMutation } from "@/redux/features/event/eventApi";
 import { toast } from "react-toastify";
 import PrivateLayout from "@/components/layout/PrivetLayout";
+import { useRouter } from "next/navigation";
 
 type Inputs = {
   title: string;
@@ -24,7 +25,8 @@ type Inputs = {
 };
 
 const Page = () => {
-  const [createEvent] = useCreateEventMutation()
+  const router = useRouter();
+  const [createEvent] = useCreateEventMutation();
   const {
     register,
     handleSubmit,
@@ -35,14 +37,21 @@ const Page = () => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log(data);
     const submittedData = {
-      ...data, eventBanner: "https://", registrationFormId: '66850ecb9af8d0e462d0ddd7'
-    }
-    await createEvent(submittedData).unwrap()
+      ...data,
+      eventBanner: "https",
+      registrationFormId: "66850ecb9af8d0e462d0ddd7",
+    };
+    await createEvent(submittedData)
+      .unwrap()
       .then((res: any) => {
         toast.success("Event Create successful!", { toastId: 1 });
-      }).catch((res: any) => {
+        router.push("/event");
+      })
+      .catch((res: any) => {
         console.log(res);
-        toast.error(res?.data?.message || "Something went wrong", { toastId: 1 });
+        toast.error(res?.data?.message || "Something went wrong", {
+          toastId: 1,
+        });
       });
   };
 
@@ -97,7 +106,6 @@ const Page = () => {
               control={control}
               options={organizationTypeOptions}
             />
-
           </div>
           <div className="flex justify-between items-start gap-4 ">
             <AppFormInput

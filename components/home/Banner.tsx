@@ -20,7 +20,11 @@ const Banner = () => {
       <div className="mt-5 text-white flex justify-center items-center gap-5">
         <AppButton label="Explore Event" />
         <p>Or</p>
-        <AppButton label="Create Event" variant="outlined" />
+        <AppButton
+          href="/event/create-event"
+          label="Create Event"
+          variant="outlined"
+        />
       </div>
     </div>
   );

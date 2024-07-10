@@ -34,6 +34,7 @@ export const OrganizationType = [
 ];
 
 export interface IEvent {
+  _id: string;
   organizer: string;
   title: string;
   category: string;
