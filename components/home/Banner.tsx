@@ -4,7 +4,7 @@ import AppSearchbtn from "../ui/AppSearchInput";
 const Banner = () => {
   return (
     <div
-      className="bg-cover w-full p-4  h-[400px] lg:w-screen mx-auto  bg-center lg:h-screen flex flex-col justify-center items-center "
+      className="bg-cover w-full p-4  h-[400px] bg-center lg:h-screen flex flex-col justify-center items-center "
       style={{
         backgroundImage: "url('/assets/banner.png')",
       }}

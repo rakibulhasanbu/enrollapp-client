@@ -9,11 +9,12 @@ import { IoCallOutline, IoHomeOutline } from "react-icons/io5";
 import { MdOutlineEventAvailable } from "react-icons/md";
 import { BsBodyText } from "react-icons/bs";
 import { IoMdLogOut } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa6";
 
 const ProfileDetailsBody = () => {
   const organizer = useAppSelector(selectCurrentOrganizer);
   const dispatch = useAppDispatch();
-
+  console.log(organizer);
   const navItems = [
     // {
     //   name: "Home",
@@ -32,8 +33,8 @@ const ProfileDetailsBody = () => {
     // },
     {
       name: "Profile",
-      link: "/contact",
-      icon: <IoCallOutline />,
+      link: `/organizer/${organizer?.id}`,
+      icon: <FaRegUser />,
     },
     {
       name: "Log out",

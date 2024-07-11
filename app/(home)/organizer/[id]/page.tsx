@@ -1,3 +1,5 @@
+"use client"
+
 import EventsCard from "@/components/home/card/EventsCard";
 import { LuPencilLine } from "react-icons/lu";
 
@@ -8,8 +10,16 @@ import ProfileCard from "@/components/event/ProfileCard";
 import ProfileCardBottom from "@/components/event/profilecardassets/ProfileCardBottom";
 import HostEventCard from "@/components/event/HostEventCard";
 import AnalyticCard from "@/components/event/AnalyticCard";
+import { useParams } from "next/navigation";
+import { useGetOrganizerByIdQuery } from "@/redux/features/organizer/organizerApi";
 
 const Profile = () => {
+  const { id } = useParams();
+
+  const { data } = useGetOrganizerByIdQuery(id);
+
+  console.log(data);
+
   return (
     <section className="w-[80%] mx-auto pt-40">
       <div className="flex justify-center items-center gap-5">

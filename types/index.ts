@@ -1,4 +1,5 @@
 export interface TOrganizer {
+  id: string;
   name: string;
   username: string;
   email: string;
