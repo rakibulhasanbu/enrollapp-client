@@ -2,20 +2,24 @@
 
 import Link from "next/link";
 import AppButton from "../ui/AppButton";
-import { useAppSelector } from "@/redux/hook";
-import { selectCurrentOrganizer } from "@/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import {
+  logOut,
+  selectCurrentOrganizer,
+} from "@/redux/features/auth/authSlice";
 import ProfileDetailsPopUp from "../home/ProfileDetailsPopUp";
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import AvatarComponent from "../home/AvatarComponent";
 
 const Navbar = () => {
   const pathname = usePathname();
   const organizer = useAppSelector(selectCurrentOrganizer);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
-
+  const dispatch = useAppDispatch();
   useEffect(() => {
     console.log(pathname);
     if (pathname === "/") {
@@ -84,7 +88,7 @@ const Navbar = () => {
         </div>
         {organizer?.email ? (
           <div className="hidden md:flex items-center gap-4">
-            <AppButton label="Log Out" variant="outlined" />
+            {/* <AppButton label="Log Out" variant="outlined" /> */}
             <ProfileDetailsPopUp />
           </div>
         ) : (
@@ -95,19 +99,31 @@ const Navbar = () => {
         )}
       </div>
       {isMobileMenuOpen && (
-        <div className="md:hidden flex flex-col items-center bg-[#171717] py-4">
+        <div className="md:hidden flex flex-col text-white bg-[#171717] pl-8 w-full right-0 absolute pb-4">
+          <div className="flex items-center gap-2 border-b border-b-[#EDF2F7] pb-2 pl-2 pt-2">
+            <AvatarComponent organizer={organizer} />
+            <div className="w-full">
+              <h4 className="text-sm md:text-lg font-medium capitalize flex items-center gap-1">
+                {organizer?.name}
+              </h4>
+
+              <p className="textG">{organizer?.email}</p>
+            </div>
+          </div>
           {navItems.map((item) => (
             <Link key={item?.name} href={item?.link}>
               <div className="py-2 text-white">{item.name}</div>
             </Link>
           ))}
           {organizer?.email ? (
-            <div className="flex flex-col items-center gap-4">
-              <AppButton label="Log Out" variant="outlined" />
-              <ProfileDetailsPopUp />
-            </div>
+            <AppButton
+              className="text-red"
+              onClick={() => dispatch(logOut())}
+              label="Log Out"
+              variant="outlined"
+            />
           ) : (
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col gap-4">
               <AppButton
                 label="Signup"
                 variant="noDesign"

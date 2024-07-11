@@ -12,7 +12,7 @@ type TAppButton = {
   variant?: "filled" | "outlined" | "noDesign";
   icon?: ReactNode;
   iconPosition?: "left" | "right";
-  onclick?: () => void;
+  onClick?: () => void;
 };
 
 const AppButton = ({
@@ -24,25 +24,25 @@ const AppButton = ({
   variant = "filled",
   icon,
   iconPosition = "right",
-  onclick
-}:
-  TAppButton) => {
+  onClick,
+}: TAppButton) => {
   const filledClass =
     "border border-primary bg-primary/90 text-white px-4 py-2 rounded-full hover:bg-primary transition-all ";
   const outlineClass =
     "text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:border-primary hover:text-white transition-all";
   const noDesignClass =
     "text-white/80 px-4 py-2 hover:text-white  transition-all";
-  console.log(onclick);
+
   return href ? (
     <Link href={href}>
       <button
-        className={`${icon && "flex items-center gap-2"} ${variant === "filled"
-          ? filledClass
-          : variant === "outlined"
+        className={`${icon && "flex items-center gap-2"} ${
+          variant === "filled"
+            ? filledClass
+            : variant === "outlined"
             ? outlineClass
             : noDesignClass
-          } text-sm md:text-base lg:text-lg xl:text-xl font-semibold ${className} `}
+        } text-sm md:text-base lg:text-lg xl:text-xl font-semibold ${className} `}
         type={type}
       >
         {iconPosition === "left" && icon} {label}{" "}
@@ -51,20 +51,21 @@ const AppButton = ({
     </Link>
   ) : (
     <button
-      className={`${icon && "flex items-center gap-2"} ${variant === "filled"
-        ? filledClass
-        : variant === "outlined"
+      className={`${icon && "flex items-center gap-2"} ${
+        variant === "filled"
+          ? filledClass
+          : variant === "outlined"
           ? outlineClass
           : noDesignClass
-        } text-sm md:text-base xl:text-lg font-semibold ${className}`}
+      } text-sm md:text-base xl:text-lg font-semibold ${className}`}
       type={type}
       onClick={() => {
-        if (onclick) {
-          onclick();
+        if (onClick) {
+          onClick();
         }
       }}
     >
-      {iconPosition === "left" && icon} {label}{" "}{children}
+      {iconPosition === "left" && icon} {label} {children}
       {iconPosition === "right" && icon}
     </button>
   );

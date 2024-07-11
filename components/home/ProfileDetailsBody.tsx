@@ -1,4 +1,7 @@
-import { logOut, selectCurrentOrganizer } from "@/redux/features/auth/authSlice";
+import {
+  logOut,
+  selectCurrentOrganizer,
+} from "@/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import AvatarComponent from "./AvatarComponent";
 import Link from "next/link";
@@ -12,30 +15,30 @@ const ProfileDetailsBody = () => {
   const dispatch = useAppDispatch();
 
   const navItems = [
+    // {
+    //   name: "Home",
+    //   link: "/",
+    //   icon: <IoHomeOutline />
+    // },
+    // {
+    //   name: "Event",
+    //   link: "/event",
+    //   icon: <MdOutlineEventAvailable />
+    // },
+    // {
+    //   name: "About Us",
+    //   link: "/about",
+    //   icon: <BsBodyText />
+    // },
     {
-      name: "Home",
-      link: "/",
-      icon: <IoHomeOutline />
-    },
-    {
-      name: "Event",
-      link: "/event",
-      icon: <MdOutlineEventAvailable />
-    },
-    {
-      name: "About Us",
-      link: "/about",
-      icon: <BsBodyText />
-    },
-    {
-      name: "Contact Us",
+      name: "Profile",
       link: "/contact",
-      icon: <IoCallOutline />
+      icon: <IoCallOutline />,
     },
     {
       name: "Log out",
       link: "/log-out",
-      icon: <IoMdLogOut />
+      icon: <IoMdLogOut />,
     },
   ];
 
@@ -53,30 +56,29 @@ const ProfileDetailsBody = () => {
       </div>
 
       <div className="space-y-2 pt-2 p-2">
-        {
-          navItems.map((nav: any) =>
-            nav?.name === "Log out" ? (
-              <button
-                key={nav?.name}
-                onClick={() => dispatch(logOut())}
-                className="flex items-center gap-2 text-base 2xl:text-lg hover:text-red-500"
-              >
-                {nav?.icon}{nav?.name}
-              </button>
-            ) : (
-
-              <Link
-                href={nav?.link}
-                key={nav?.name}
-                className={`flex items-center gap-2 text-[#4C4646] hover:text-primary text-base 2xl:text-lg`}
-              >
-                {nav?.icon} {nav?.name}
-              </Link>
-            )
-          )}
+        {navItems.map((nav: any) =>
+          nav?.name === "Log out" ? (
+            <button
+              key={nav?.name}
+              onClick={() => dispatch(logOut())}
+              className="flex items-center gap-2 text-base 2xl:text-lg hover:text-red-500"
+            >
+              {nav?.icon}
+              {nav?.name}
+            </button>
+          ) : (
+            <Link
+              href={nav?.link}
+              key={nav?.name}
+              className={`flex items-center gap-2 text-[#4C4646] hover:text-primary text-base 2xl:text-lg`}
+            >
+              {nav?.icon} {nav?.name}
+            </Link>
+          )
+        )}
       </div>
     </>
   );
-}
+};
 
 export default ProfileDetailsBody;
