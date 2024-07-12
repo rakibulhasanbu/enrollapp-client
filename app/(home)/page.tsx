@@ -11,6 +11,7 @@ import { Choose } from "@/components/home/Choose";
 import { Promotion } from "@/components/home/Promotion";
 import { Partner } from "@/components/home/Partner";
 import AppButton from "@/components/ui/AppButton";
+import { PartnerDetails } from "@/components/home/PartnerDetails";
 
 const page = () => {
   return (
@@ -43,7 +44,7 @@ const page = () => {
       <Promotion />
       <Enroll />
       <Partner />
-      {/* <PartnerDetails /> */}
+      <PartnerDetails />
       <Faq />
       <div className=" lg:w-[80%] mx-auto">
         {" "}
