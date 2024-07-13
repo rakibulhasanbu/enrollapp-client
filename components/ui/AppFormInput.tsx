@@ -6,7 +6,14 @@ type TAppFormInputProps = {
   label?: string;
   name: string;
   placeholder: string;
-  type?: "text" | "email" | "file" | "number" | "password" | "textarea" | "date";
+  type?:
+    | "text"
+    | "email"
+    | "file"
+    | "number"
+    | "password"
+    | "textarea"
+    | "date";
   error: any;
   register: UseFormRegister<any>;
   required?: boolean;
@@ -27,19 +34,24 @@ const AppFormInput = ({
     <div className="relative flex flex-col items-start justify-normal gap-2 w-full">
       <label className="text-[20px] text-[#475569]" htmlFor={name}>
         {label}
+        {required ? "*" : ""}
       </label>
       <input
-        className={`outline-none border   p-3 rounded-lg w-full text-[16px] ${error ? "border-red-500" : "border-borderColor"
-          }`}
+        className={`outline-none border   p-3 rounded-lg w-full text-[16px] ${
+          error ? "border-red-500" : "border-borderColor"
+        }`}
         // {...register(name, { ...(required && { required: true }) })}
-        {...register(name, { ...(required && { required: true }), ...(type === "number" && { valueAsNumber: true }) })}
+        {...register(name, {
+          ...(required && { required: true }),
+          ...(type === "number" && { valueAsNumber: true }),
+        })}
         placeholder={placeholder}
         type={
           type !== "password"
             ? type
             : type === "password" && !show
-              ? "password"
-              : "text"
+            ? "password"
+            : "text"
         }
       />
 
@@ -47,12 +59,16 @@ const AppFormInput = ({
         (show ? (
           <IoEyeOffOutline
             onClick={() => setShow(false)}
-            className={`absolute right-4 text-lg 2xl:text-xl cursor-pointer 2xl:right-4  ${error ? "top-[48%]" : "top-[60%]"}`}
+            className={`absolute right-4 text-lg 2xl:text-xl cursor-pointer 2xl:right-4  ${
+              error ? "top-[48%]" : "top-[60%]"
+            }`}
           />
         ) : (
           <IoEyeOutline
             onClick={() => setShow(true)}
-            className={`absolute right-4 text-lg 2xl:text-xl cursor-pointer 2xl:right-4  ${error ? "top-[48%]" : "top-[60%]"}`}
+            className={`absolute right-4 text-lg 2xl:text-xl cursor-pointer 2xl:right-4  ${
+              error ? "top-[48%]" : "top-[60%]"
+            }`}
           />
         ))}
 

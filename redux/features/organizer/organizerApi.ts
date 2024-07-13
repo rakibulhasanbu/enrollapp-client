@@ -9,7 +9,15 @@ const OrganizerApi = baseApi.injectEndpoints({
         method: METHOD.GET,
       }),
     }),
+    upadteOrganizerById: builder.mutation({
+      query: ({ id, organizerData }) => ({
+        url: `/organizer/${id}`,
+        method: METHOD.PUT,
+        body: organizerData,
+      }),
+    }),
   }),
 });
 
-export const { useGetOrganizerByIdQuery } = OrganizerApi;
+export const { useGetOrganizerByIdQuery, useUpadteOrganizerByIdMutation } =
+  OrganizerApi;

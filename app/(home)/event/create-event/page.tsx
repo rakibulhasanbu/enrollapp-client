@@ -1,7 +1,7 @@
 "use client";
 
 import { FaLongArrowAltRight } from "react-icons/fa";
-import EventBanner from "@/components/event/EventBanner";
+import EventBanner from "@/components/shared/EventBanner";
 import AppButton from "@/components/ui/AppButton";
 import AppFormInput from "@/components/ui/AppFormInput";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -69,13 +69,7 @@ const Page = () => {
   return (
     <PrivateLayout>
       <div className="pt-40 container px-4 lg:px-20 2xl:px-40 mx-auto">
-        <EventBanner
-          imgSrc1="/assets/Frame 1618872988.png"
-          imgAlt1="Event Banner"
-          imgSrc2="/assets/image-add-01.png"
-          imgAlt2="Event Banner"
-          label="Add Event Banner"
-        />
+        <EventBanner label="Add Event Banner" isEditable={true} />
 
         <form
           onSubmit={handleSubmit(onSubmit)}

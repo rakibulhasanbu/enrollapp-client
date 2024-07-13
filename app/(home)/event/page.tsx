@@ -6,14 +6,14 @@ import EventsCard from "@/components/home/card/EventsCard";
 import Subscription from "@/components/home/Subscription";
 import { useGetEventsQuery } from "@/redux/features/event/eventApi";
 import { IEvent } from "@/types";
-
+import EventBanner from "@/components/shared/EventBanner";
 
 const Page = () => {
   const { data } = useGetEventsQuery("");
   console.log(data);
   return (
     <div className="pt-40 w-[80%] mx-auto">
-      <div className="h-[350px] bg-[#8F8F8F] rounded-md mb-10"></div>
+      <EventBanner label="Add Banner" />
       <AppSearchInput variant="gray" />
 
       <div className="mt-20 space-x-4 w-full overflow-x-auto">
