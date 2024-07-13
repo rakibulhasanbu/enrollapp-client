@@ -6,14 +6,7 @@ type TAppFormInputProps = {
   label?: string;
   name: string;
   placeholder: string;
-  type?:
-    | "text"
-    | "email"
-    | "file"
-    | "number"
-    | "password"
-    | "textarea"
-    | "date";
+  type?: "text" | "email" | "file" | "number" | "password" | "date";
   error: any;
   register: UseFormRegister<any>;
   required?: boolean;
@@ -37,6 +30,7 @@ const AppFormInput = ({
         {required ? "*" : ""}
       </label>
       <input
+        id={name}
         className={`outline-none border   p-3 rounded-lg w-full text-[16px] ${
           error ? "border-red-500" : "border-borderColor"
         }`}

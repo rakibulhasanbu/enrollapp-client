@@ -4,6 +4,7 @@ import EventBanner from "@/components/shared/EventBanner";
 import AppButton from "@/components/ui/AppButton";
 import AppFormInput from "@/components/ui/AppFormInput";
 import AppFormSelect from "@/components/ui/AppFormSelect";
+import AppFormTextarea from "@/components/ui/AppFormTextarea";
 import { selectCurrentOrganizer } from "@/redux/features/auth/authSlice";
 import { useUpadteOrganizerByIdMutation } from "@/redux/features/organizer/organizerApi";
 import { useAppSelector } from "@/redux/hook";
@@ -22,7 +23,7 @@ type Inputs = {
   username: string;
   email: string;
   orgLogo: any;
-  aboutus: string;
+  about: string;
   eventType: string;
   location: string;
   eventDate: Date;
@@ -38,6 +39,7 @@ const categoryOptions = [
   { label: "Category 2", value: "category2" },
   { label: "Category 3", value: "category3" },
 ];
+
 const Page = () => {
   const organizer = useAppSelector(selectCurrentOrganizer);
   const [updateOrganizer] = useUpadteOrganizerByIdMutation();
@@ -64,7 +66,7 @@ const Page = () => {
           mobileNumber: data.contactPersonMobileNumber,
           roleInOrg: data.roleInOrg,
         },
-        orgLogo: data.orgLogo,
+        orgLogo: organizer?.orgLogo,
       },
     };
     await updateOrganizer(submittedData);
@@ -73,7 +75,13 @@ const Page = () => {
   return (
     <div className="pt-40 w-[80%] mx-auto relative">
       <EventBanner label="Add Banner" isEditable={true} />
-      <div className="h-52 absolute left-16 lg:left-10 top-80 w-52 rounded-full bg-black border"></div>
+      <div className="h-52 absolute left-16 lg:left-10 top-80 w-52 rounded-full border">
+        <img
+          src={organizer?.orgLogo}
+          className="w-full h-full bg-backgroundColor rounded-full"
+          alt=""
+        />
+      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="mt-24 grid grid-cols-1 gap-4"
@@ -87,14 +95,15 @@ const Page = () => {
           error={errors.name}
           required
         />
-        <AppFormInput
+        <AppFormTextarea
           label="About Us"
-          placeholder="Write Something"
-          type="textarea"
-          name="aboutus"
+          placeholder="Write about your organization"
+          name="about"
           register={register}
-          error={errors.aboutus}
+          error={errors.about}
+          required
         />
+
         <AppFormInput
           label="Email Account"
           placeholder="Write Email"
@@ -166,32 +175,35 @@ const Page = () => {
             error={errors.SocialMediaLinks}
           />
         </div>
-        <p className="text-[20px] text-[#475569]">
-          Contact Details Information
-        </p>
-        <div className="grid grid-cols-3 gap-4">
-          <AppFormInput
-            placeholder="Contact Person Name"
-            type="text"
-            name="contactpersonName"
-            register={register}
-            error={errors.contactpersonName}
-          />
-          <AppFormInput
-            placeholder="Contact person Mobile Number"
-            type="number"
-            name="contactPersonMobileNumber"
-            register={register}
-            error={errors.contactPersonMobileNumber}
-          />
-          <AppFormInput
-            placeholder="Role In Org"
-            type="text"
-            name="roleInOrg"
-            register={register}
-            error={errors.roleInOrg}
-          />
-        </div>
+        <section>
+          <p className="text-[20px] text-[#475569]">
+            Contact Details Information
+          </p>
+          <div className="grid grid-cols-3 gap-4">
+            <AppFormInput
+              placeholder="Name"
+              type="text"
+              name="contactpersonName"
+              register={register}
+              error={errors.contactpersonName}
+            />
+            <AppFormInput
+              placeholder="Mobile Number"
+              type="number"
+              name="contactPersonMobileNumber"
+              register={register}
+              error={errors.contactPersonMobileNumber}
+            />
+            <AppFormInput
+              placeholder="Role In organization"
+              type="text"
+              name="roleInOrg"
+              register={register}
+              error={errors.roleInOrg}
+            />
+          </div>
+        </section>
+
         <div className="grid grid-cols-2 gap-4  mt-4">
           <AppButton type="submit" label="Save" variant="filled" />
           <AppButton label="Cancel" variant="outlined" />
