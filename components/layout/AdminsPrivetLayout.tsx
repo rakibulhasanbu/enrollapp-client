@@ -2,16 +2,19 @@ import React, { ReactNode, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { usePathname, useRouter } from "next/navigation";
 import {
+  logOut,
   selectCurrentOrganizer,
   selectCurrentUser,
   useCurrentToken,
 } from "@/redux/features/auth/authSlice";
 
-interface PrivetLayoutProps {
+interface AdminsPrivetLayoutProps {
   children: ReactNode;
 }
 
-const PrivetLayout: React.FC<PrivetLayoutProps> = ({ children }) => {
+const AdminsPrivetLayout: React.FC<AdminsPrivetLayoutProps> = ({
+  children,
+}) => {
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -20,22 +23,17 @@ const PrivetLayout: React.FC<PrivetLayoutProps> = ({ children }) => {
   const user = useAppSelector(selectCurrentUser);
 
   useEffect(() => {
-    if (!accessToken || (!organizer?.email && !user?.email)) {
-      const redirectTo = `/auth/organizer-register?from=${encodeURIComponent(
-        pathname
-      )}`;
-      router.push(redirectTo);
-    } else if (
-      user?.email &&
-      user?.role !== "superAdmin" &&
-      user?.role !== "admin"
-    ) {
+    if (organizer?.email) {
+      router?.push("/");
+    }
+    if (!accessToken || user?.role !== "superAdmin") {
       const redirectTo = `/auth/sign-in?from=${encodeURIComponent(pathname)}`;
       router.push(redirectTo);
+      dispatch(logOut());
     }
   }, [accessToken, dispatch, organizer, pathname, router, user]);
 
   return <>{children}</>;
 };
 
-export default PrivetLayout;
+export default AdminsPrivetLayout;

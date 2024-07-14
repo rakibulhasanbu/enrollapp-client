@@ -1,16 +1,17 @@
-import React from "react";
+import { ImSpinner9 } from "react-icons/im";
 
-const Loading = () => {
+type TLoading = {
+  height?: "full" | "fit";
+};
+
+const Loading = ({ height = "full" }: TLoading) => {
   return (
-    <div className="flex min-h-[80dvh] items-center justify-center">
-      <div
-        className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-        role="status"
-      >
-        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-          Loading...
-        </span>
-      </div>
+    <div
+      className={`flex items-center justify-center ${
+        height === "full" ? "min-h-screen" : "h-fit py-20 lg:py-40 2xl:py-60"
+      }`}
+    >
+      <ImSpinner9 className="animate-spin duration-700 text-7xl lg:text-8xl 2xl:text-9xl text-primary" />
     </div>
   );
 };

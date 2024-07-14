@@ -11,8 +11,8 @@ import { setOrganizer } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { verifyToken } from "@/utils/verifyToken";
 import { useRouter } from "next/navigation";
-import AnimationWrapper from "@/components/ui/AnimationWrapper";
 import AppButton from "@/components/ui/AppButton";
+import AnimationWrapper from "@/components/shared/AnimationWrapper";
 
 type Inputs = {
   name: string;
@@ -35,9 +35,12 @@ const OrganizerLogin = () => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     if (data.password !== data.confirmPassword) {
-      return toast.error("Your new password and confirm password didn't match", {
-        toastId: 1,
-      });
+      return toast.error(
+        "Your new password and confirm password didn't match",
+        {
+          toastId: 1,
+        }
+      );
     }
 
     await registerOrganizer(data)
@@ -47,7 +50,9 @@ const OrganizerLogin = () => {
           toastId: 1,
         });
         const organizer = verifyToken(res?.data?.accessToken);
-        dispatch(setOrganizer({ organizer, accessToken: res?.data?.accessToken }))
+        dispatch(
+          setOrganizer({ organizer, accessToken: res?.data?.accessToken })
+        );
         router.push(`/`);
       })
       .catch((res: any) => {
@@ -130,8 +135,8 @@ const OrganizerLogin = () => {
             </Link>{" "}
           </h3>
           <p className={`mt-3 text-sm text-gray-600`}>
-            By continuing, you agree to Terms of Service and have Read our Privacy
-            Policy.
+            By continuing, you agree to Terms of Service and have Read our
+            Privacy Policy.
           </p>
         </div>
       </div>

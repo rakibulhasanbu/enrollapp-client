@@ -46,7 +46,10 @@ export interface IEvent {
   registrationDeadline: string;
   description: string;
   registrationFee: number;
-  eventBanner: string;
+  eventBanner: {
+    public_id: string;
+    url: string;
+  };
   registrationFormId: string;
 }
 
@@ -65,6 +68,14 @@ export interface TNavItems {
 
 export enum UserRole {
   User = "user",
+  Admin = "admin",
   Organizer = "organizer",
   SuperAdmin = "superAdmin",
+}
+
+export interface TUser {
+  name: string;
+  email: string;
+  avatar: string;
+  role: UserRole;
 }

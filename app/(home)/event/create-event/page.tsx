@@ -9,15 +9,19 @@ import AppFormSelect from "@/components/ui/AppFormSelect";
 import { OrganizationType } from "@/types";
 import { useCreateEventMutation } from "@/redux/features/event/eventApi";
 import { toast } from "react-toastify";
-import PrivateLayout from "@/components/layout/PrivetLayout";
 import { useRouter } from "next/navigation";
+import AppFormTextarea from "@/components/ui/AppFormTextarea";
+import { useState } from "react";
+import AnimationWrapper from "@/components/shared/AnimationWrapper";
+import OrganizerPrivetLayout from "@/components/layout/OrganizerPrivetLayout";
 
 type Inputs = {
   title: string;
   category: string;
   eventType: string;
   location: string;
-  eventDate: Date;
+  eventStartDate: Date;
+  eventEndDate: Date;
   registrationDeadline: Date;
   description: string;
   registrationFee: number;
@@ -25,6 +29,7 @@ type Inputs = {
 };
 
 const Page = () => {
+  const [banner, setBanner] = useState("");
   const router = useRouter();
   const [createEvent] = useCreateEventMutation();
   const {
@@ -32,13 +37,17 @@ const Page = () => {
     handleSubmit,
     control,
     formState: { errors },
+    watch,
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    if (!banner) {
+      return toast.error("please upload banner and try again.");
+    }
     console.log(data);
     const submittedData = {
       ...data,
-      eventBanner: "https",
+      eventBanner: banner,
       registrationFormId: "66850ecb9af8d0e462d0ddd7",
     };
     await createEvent(submittedData)
@@ -55,10 +64,9 @@ const Page = () => {
       });
   };
 
-  const meansOfIdentificationOptions = [
-    { value: "PASSPORT", label: "PASSPORT" },
-    { value: "DRIVER_LICENSE", label: "Driver LICENSE" },
-    { value: "NATIONAL_ID", label: "NATIONAL ID (NIN)" },
+  const eventTypes = [
+    { value: "Online", label: "Online" },
+    { value: "Offline", label: "Offline" },
   ];
 
   const organizationTypeOptions = OrganizationType.map((type) => ({
@@ -67,108 +75,114 @@ const Page = () => {
   }));
 
   return (
-    <PrivateLayout>
-      <div className="pt-40 container px-4 lg:px-20 2xl:px-40 mx-auto">
-        <EventBanner label="Add Event Banner" isEditable={true} />
+    <OrganizerPrivetLayout>
+      <AnimationWrapper keyValue="event create page">
+        <div className="pt-40 container px-4 lg:px-20 2xl:px-40 mx-auto">
+          <EventBanner onlyView={false} banner={banner} setBanner={setBanner} />
 
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="mt-10 flex flex-col gap-2 "
-        >
-          <AppFormInput
-            label="Add Event Title"
-            placeholder="Event Name"
-            type="text"
-            name="title"
-            register={register}
-            error={errors.title}
-            required
-          />
-          <p className="text-[#475569] text-[20px]">Add Types</p>
-          <div className="grid grid-cols-2 gap-4">
-            <AppFormSelect
-              placeholder="Category"
-              name="category"
-              required
-              control={control}
-              options={meansOfIdentificationOptions}
-            />
-            <AppFormSelect
-              placeholder="Type"
-              name="eventType"
-              required
-              control={control}
-              options={organizationTypeOptions}
-            />
-          </div>
-          <div className="flex justify-between items-start gap-4 ">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="mt-10 flex flex-col gap-2 "
+          >
             <AppFormInput
-              label="Location"
-              placeholder="Enter event location"
+              label="Add Event Title"
+              placeholder="Event Name"
               type="text"
-              name="location"
+              name="title"
               register={register}
-              error={errors.location}
-            />
-
-            <AppFormInput
-              label="Event Date"
-              placeholder="Event Date"
-              type="date"
-              name="eventDate"
-              register={register}
+              error={errors.title}
               required
-              error={errors.eventDate}
             />
-            {/* <AppFormInput
-            label=""
-            placeholder="End Date & Time"
-            type="text"
-            name="EndtDateTime"
-            register={register}
-            error={errors.EndtDateTime}
-          /> */}
-          </div>
-          <AppFormInput
-            label="Registration Deadline"
-            placeholder="Registration Deadline"
-            type="date"
-            name="registrationDeadline"
-            register={register}
-            error={errors.registrationDeadline}
-            required
-          />
-          <AppFormInput
-            label="Fees"
-            placeholder="Registration Fee"
-            type="number"
-            name="registrationFee"
-            register={register}
-            error={errors.registrationFee}
-            required
-          />
-          <AppFormInput
-            label="Add Description"
-            placeholder="Write Whatever You Want"
-            type="textarea"
-            name="description"
-            register={register}
-            error={errors.description}
-            required
-          />
 
-          <div className="pt-4 w-full text-center">
+            <div
+              className={`grid gap-4 ${
+                watch("eventType") === "Offline" ? "grid-cols-2" : "grid-cols-1"
+              }`}
+            >
+              {/* <AppFormSelect
+                placeholder="Category"
+                name="category"
+                required
+                control={control}
+                options={meansOfIdentificationOptions}
+              /> */}
+              <AppFormSelect
+                label="Event Type"
+                placeholder="Type"
+                name="eventType"
+                required
+                control={control}
+                options={eventTypes}
+              />
+              {watch("eventType") === "Offline" && (
+                <AppFormInput
+                  label="Location"
+                  placeholder="Enter event location"
+                  type="text"
+                  name="location"
+                  register={register}
+                  error={errors.location}
+                />
+              )}
+            </div>
+
+            <div className="flex justify-between items-start gap-4 ">
+              <AppFormInput
+                label="Event Start Date"
+                placeholder="Event Date"
+                type="date"
+                name="eventStartDate"
+                register={register}
+                required
+                error={errors.eventStartDate}
+              />
+              <AppFormInput
+                label="Event End Date"
+                placeholder="Event End Date"
+                type="date"
+                name="eventEndDate"
+                register={register}
+                error={errors.eventEndDate}
+              />
+            </div>
+            <AppFormInput
+              label="Registration Deadline"
+              placeholder="Registration Deadline"
+              type="date"
+              name="registrationDeadline"
+              register={register}
+              error={errors.registrationDeadline}
+              required
+            />
+            <AppFormInput
+              label="Fees"
+              placeholder="Registration Fee"
+              type="number"
+              name="registrationFee"
+              register={register}
+              error={errors.registrationFee}
+              required
+            />
+            <AppFormTextarea
+              label="Add Description"
+              placeholder="Write Whatever You Want"
+              name="description"
+              register={register}
+              error={errors.description}
+              required
+            />
+
             <AppButton
               type="submit"
               label="Next"
-              className="w-full"
+              className="mt-4 w-fit"
               icon={<FaLongArrowAltRight />}
               iconPosition="right"
             />
-          </div>
-        </form>
-      </div>
-    </PrivateLayout>
+          </form>
+        </div>
+      </AnimationWrapper>
+    </OrganizerPrivetLayout>
   );
 };
 

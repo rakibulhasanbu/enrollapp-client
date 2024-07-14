@@ -10,7 +10,13 @@ const authApi = baseApi.injectEndpoints({
         body: userInfo,
       }),
     }),
-
+    googleAuthRegister: builder.mutation({
+      query: (userInfo) => ({
+        url: "/auth/google-auth",
+        method: "POST",
+        body: userInfo,
+      }),
+    }),
     organizerLogin: builder.mutation({
       query: (userInfo) => ({
         url: "/auth/organizer-login",
@@ -21,5 +27,8 @@ const authApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useOrganizerLoginMutation, useOrganizerRegisterMutation } =
-  authApi;
+export const {
+  useOrganizerLoginMutation,
+  useOrganizerRegisterMutation,
+  useGoogleAuthRegisterMutation,
+} = authApi;

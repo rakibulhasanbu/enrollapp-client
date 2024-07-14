@@ -1,6 +1,7 @@
 import {
   logOut,
   selectCurrentOrganizer,
+  selectCurrentUser,
 } from "@/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import AvatarComponent from "./AvatarComponent";
@@ -13,8 +14,9 @@ import { FaRegUser } from "react-icons/fa6";
 
 const ProfileDetailsBody = () => {
   const organizer = useAppSelector(selectCurrentOrganizer);
+  const user = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
-  console.log(organizer);
+
   const navItems = [
     // {
     //   name: "Home",
@@ -46,13 +48,13 @@ const ProfileDetailsBody = () => {
   return (
     <>
       <div className="flex items-center gap-2 border-b border-b-[#EDF2F7] pb-2 pl-2 pt-2">
-        <AvatarComponent organizer={organizer} />
+        <AvatarComponent organizer={organizer} user={user} />
         <div className="w-full">
           <h4 className="text-sm md:text-lg font-medium capitalize flex items-center gap-1">
-            {organizer?.name}
+            {organizer?.name || user?.name}
           </h4>
 
-          <p className="textG">{organizer?.email}</p>
+          <p className="textG">{organizer?.email || user?.email}</p>
         </div>
       </div>
 
@@ -68,13 +70,15 @@ const ProfileDetailsBody = () => {
               {nav?.name}
             </button>
           ) : (
-            <Link
-              href={nav?.link}
-              key={nav?.name}
-              className={`flex items-center gap-2 text-[#4C4646] hover:text-primary text-base 2xl:text-lg`}
-            >
-              {nav?.icon} {nav?.name}
-            </Link>
+            !user?.email && (
+              <Link
+                href={nav?.link}
+                key={nav?.name}
+                className={`flex items-center gap-2 text-[#4C4646] hover:text-primary text-base 2xl:text-lg`}
+              >
+                {nav?.icon} {nav?.name}
+              </Link>
+            )
           )
         )}
       </div>

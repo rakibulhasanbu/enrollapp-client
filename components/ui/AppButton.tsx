@@ -34,7 +34,7 @@ const AppButton = ({
     "text-white/80 px-4 py-2 hover:text-white  transition-all";
 
   return href ? (
-    <Link href={href}>
+    <Link href={href} className="block min-w-fit">
       <button
         className={`${icon && "flex items-center gap-2"} ${
           variant === "filled"
@@ -42,7 +42,7 @@ const AppButton = ({
             : variant === "outlined"
             ? outlineClass
             : noDesignClass
-        } text-sm md:text-base lg:text-lg xl:text-xl font-semibold ${className} `}
+        } text-sm md:text-base lg:text-lg xl:text-xl font-semibold min-w-fit ${className} `}
         type={type}
       >
         {iconPosition === "left" && icon} {label}{" "}
@@ -57,7 +57,7 @@ const AppButton = ({
           : variant === "outlined"
           ? outlineClass
           : noDesignClass
-      } text-sm md:text-base xl:text-lg font-semibold ${className}`}
+      } text-sm md:text-base xl:text-lg font-semibold min-w-fit ${className}`}
       type={type}
       onClick={() => {
         if (onClick) {

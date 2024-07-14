@@ -2,12 +2,16 @@ import { IoSearch } from "react-icons/io5";
 
 type TAppSearchInput = {
   variant?: "white" | "gray";
+  placeholder?: string;
 };
 
-const AppSearchInput = ({ variant = "white" }: TAppSearchInput) => {
+const AppSearchInput = ({
+  variant = "white",
+  placeholder,
+}: TAppSearchInput) => {
   return (
     <div
-      className={`w-[30%] mx-auto flex justify-between items-center py-2 border  rounded-full px-5 mt-5 ${
+      className={`w-[30%] mx-auto flex justify-between items-center  border  rounded-full px-5 ${
         variant === "white"
           ? "text-white border-gray-200"
           : "text-gray-800 border-gray-600"
@@ -15,10 +19,10 @@ const AppSearchInput = ({ variant = "white" }: TAppSearchInput) => {
     >
       <input
         type="text"
-        placeholder="Search event"
+        placeholder={placeholder || "Search..."}
         name=""
         id=""
-        className="bg-transparent outline-none "
+        className="bg-transparent outline-none w-full py-2"
       />
       <IoSearch
         className={`text-xl cursor-pointer ${

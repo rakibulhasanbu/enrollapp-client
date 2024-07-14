@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
   logOut,
   selectCurrentOrganizer,
+  selectCurrentUser,
 } from "@/redux/features/auth/authSlice";
 import ProfileDetailsPopUp from "../home/ProfileDetailsPopUp";
 import { useEffect, useState } from "react";
@@ -17,17 +18,19 @@ import AvatarComponent from "../home/AvatarComponent";
 const Navbar = () => {
   const pathname = usePathname();
   const organizer = useAppSelector(selectCurrentOrganizer);
+  const user = useAppSelector(selectCurrentUser);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const dispatch = useAppDispatch();
-
+  // console.log(user);
   useEffect(() => {
     const handleScroll = () => {
-      window.scrollY > 500 ? setSticky(true) : setSticky(false);
+      setSticky(window.scrollY > 500);
     };
 
     if (pathname === "/") {
       window.addEventListener("scroll", handleScroll);
+      handleScroll();
       return () => {
         window.removeEventListener("scroll", handleScroll);
       };
@@ -54,6 +57,17 @@ const Navbar = () => {
       link: "/contact",
     },
   ];
+
+  if (
+    user?.role === "admin" ||
+    user?.role === "superAdmin" ||
+    organizer?.email
+  ) {
+    navItems.push({
+      name: "Dashboard",
+      link: "/dashboard",
+    });
+  }
 
   return (
     <div className="lg:fixed w-full z-50">
@@ -91,7 +105,7 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        {organizer?.email ? (
+        {organizer?.email || user?.email ? (
           <div className="hidden md:flex items-center gap-4">
             <ProfileDetailsPopUp />
           </div>

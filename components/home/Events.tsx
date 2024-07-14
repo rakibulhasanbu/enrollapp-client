@@ -6,6 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 import EventsCard from "./card/EventsCard";
 import { useGetEventsQuery } from "@/redux/features/event/eventApi";
 import { IEvent } from "@/types";
+import { AppTitle } from "../ui/AppTitle";
+import AppButton from "../ui/AppButton";
+import { FaArrowRight } from "react-icons/fa6";
 
 export const Events = () => {
   const { data } = useGetEventsQuery("");
@@ -53,7 +56,19 @@ export const Events = () => {
   };
 
   return (
-    <div className="w-full p-4 lg:w-[80%] mx-auto">
+    <div className="w-full p-4 lg:container mx-auto">
+      <div className="text-center lg:text-left flex flex-col lg:flex-row justify-between items-center lg:container lg:mx-auto">
+        <AppTitle
+          head="Upcoming Events"
+          paragraph="A Platform Where You Can Find Events  According to Your Passion"
+        />
+        <AppButton
+          href="/event"
+          label="View All Event"
+          variant="outlined"
+          icon={<FaArrowRight />}
+        />
+      </div>
       <Slider {...settings}>
         {data?.data?.events?.map((event: IEvent) => (
           <div key={event?._id} className="px-2">

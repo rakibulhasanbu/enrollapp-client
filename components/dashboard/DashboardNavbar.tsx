@@ -1,5 +1,7 @@
 import { selectCurrentOrganizer } from "@/redux/features/auth/authSlice";
 import { useAppSelector } from "@/redux/hook";
+import Image from "next/image";
+import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 
 interface TDashboardNavbar {
@@ -16,7 +18,15 @@ const DashboardNavbar = ({ sidebarOpen, setSidebarOpen }: TDashboardNavbar) => {
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className="md:hidden text-xl"
       />
-      <h1>Logo</h1>
+      <Link className="block" href={"/"}>
+        <Image
+          className="object-cover w-full h-full"
+          src={"/assets/d-logo.png"}
+          width={80}
+          height={40}
+          alt="logo"
+        />
+      </Link>
       <div className="flex items-center gap-2 md:gap-4">
         <div className="hidden md:block">
           <h2 className="text-sm md:text-base 2xl:text-lg font-medium">

@@ -1,6 +1,6 @@
-import { FcGoogle } from "react-icons/fc";
-import AnimationWrapper from "@/components/ui/AnimationWrapper";
 import AppButton from "@/components/ui/AppButton";
+import AnimationWrapper from "@/components/shared/AnimationWrapper";
+import GoogleAuth from "@/components/auth/GoogleAuth";
 
 const page = () => {
   return (
@@ -11,14 +11,8 @@ const page = () => {
             <h1 className="font-bold text-[32px]">Explore New Opportunities</h1>
             <p className="text-sm font-medium">Log in or sign up in seconds</p>
           </div>
-          <div className="flex items-center justify-center">
-            <AppButton
-              label="Continue With Google"
-              variant="outlined"
-              icon={<FcGoogle className="text-xl" />}
-              iconPosition="left"
-            />
-          </div>
+          <GoogleAuth />
+
           <p className="text-[#64748B]/50">Or</p>
           <div>
             <p>Do you want to</p>
@@ -29,15 +23,15 @@ const page = () => {
           </div>
           <div className="px-12 w-full">
             <AppButton
-              href="/auth/organizer-login"
+              href="/auth/organizer-register"
               label="Join as a Organiser"
               className="w-full text-lg"
             />
           </div>
 
           <p className={`mt-3 text-sm text-gray-600`}>
-            By continuing, you agree to Terms of Service and have Read our Privacy
-            Policy.
+            By continuing, you agree to Terms of Service and have Read our
+            Privacy Policy.
           </p>
         </div>
       </div>

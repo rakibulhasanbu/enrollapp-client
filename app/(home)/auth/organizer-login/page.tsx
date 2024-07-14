@@ -8,9 +8,9 @@ import { toast } from "react-toastify";
 import { verifyToken } from "@/utils/verifyToken";
 import { setOrganizer } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hook";
-import { useRouter } from "next/navigation";
-import AnimationWrapper from "@/components/ui/AnimationWrapper";
+import { useRouter, useSearchParams } from "next/navigation";
 import AppButton from "@/components/ui/AppButton";
+import AnimationWrapper from "@/components/shared/AnimationWrapper";
 
 type Inputs = {
   name: string;
@@ -24,6 +24,8 @@ const OrganizerLogin = () => {
   const [organizerLogin] = useOrganizerLoginMutation();
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const from = searchParams.get("from");
   const {
     register,
     handleSubmit,
@@ -39,8 +41,14 @@ const OrganizerLogin = () => {
           toastId: 1,
         });
         const organizer = verifyToken(res?.data?.accessToken);
-        dispatch(setOrganizer({ organizer, accessToken: res?.data?.accessToken }))
-        router.push(`/`);
+        dispatch(
+          setOrganizer({ organizer, accessToken: res?.data?.accessToken })
+        );
+        if (from) {
+          router.push(from);
+        } else {
+          router.push("/");
+        }
       })
       .catch((res: any) => {
         console.log(res);
@@ -48,7 +56,6 @@ const OrganizerLogin = () => {
           toastId: 1,
         });
       });
-
   };
   return (
     <AnimationWrapper keyValue={"organizer-login"}>
@@ -85,13 +92,14 @@ const OrganizerLogin = () => {
           </form>
           {/* form end */}
           <h3>
-            Don&apos;t have an Account? <Link href={"/auth/organizer-register"} className="font-medium">
+            Don&apos;t have an Account?{" "}
+            <Link href={"/auth/organizer-register"} className="font-medium">
               Register here
             </Link>{" "}
           </h3>
           <p className={`mt-3 text-sm text-gray-600`}>
-            By continuing, you agree to Terms of Service and have Read our Privacy
-            Policy.
+            By continuing, you agree to Terms of Service and have Read our
+            Privacy Policy.
           </p>
         </div>
       </div>

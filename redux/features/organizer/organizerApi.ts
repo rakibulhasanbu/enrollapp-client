@@ -1,5 +1,5 @@
 import { baseApi } from "../../api/baseApi";
-import { METHOD } from "../../api/tagTypesList";
+import { METHOD, tagTypes } from "../../api/tagTypesList";
 
 const OrganizerApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -8,6 +8,14 @@ const OrganizerApi = baseApi.injectEndpoints({
         url: `/organizer/${id}`,
         method: METHOD.GET,
       }),
+      providesTags: [tagTypes.organizer],
+    }),
+    getOrganizerEventsById: builder.query({
+      query: (id) => ({
+        url: `/events/${id}`,
+        method: METHOD.GET,
+      }),
+      providesTags: [tagTypes.organizer, tagTypes.event],
     }),
     upadteOrganizerById: builder.mutation({
       query: ({ id, organizerData }) => ({
@@ -15,9 +23,13 @@ const OrganizerApi = baseApi.injectEndpoints({
         method: METHOD.PUT,
         body: organizerData,
       }),
+      invalidatesTags: [tagTypes.organizer],
     }),
   }),
 });
 
-export const { useGetOrganizerByIdQuery, useUpadteOrganizerByIdMutation } =
-  OrganizerApi;
+export const {
+  useGetOrganizerByIdQuery,
+  useGetOrganizerEventsByIdQuery,
+  useUpadteOrganizerByIdMutation,
+} = OrganizerApi;

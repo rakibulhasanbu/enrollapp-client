@@ -1,37 +1,107 @@
-"useclient";
-
 import Image from "next/image";
-import { BiImageAdd } from "react-icons/bi";
+import { useState } from "react";
 
 type AppEventBanner = {
   label?: string;
-  isEditable?: Boolean;
+  imgSrc?: string;
+  onlyView?: Boolean;
+  banner?: string;
+  setBanner?: (banner: string) => void;
 };
 
-const EventBanner = ({ isEditable, label }: AppEventBanner) => {
-  return (
-    <div className="w-full cursor-pointer h-72 bg-gradient-to-r from-sky-400 to-blue-500 rounded-lg relative">
-      <div>
-        {isEditable && (
-          <div className="right-5 top-5 absolute cursor-pointer">
-            <img
-              src="/assets/Frame 1618872988.png"
-              alt="Event Banner"
-              className="w-8"
-            />
-          </div>
-        )}
-        <div className="w-full h-[250px] flex justify-center items-center flex-col ">
-          {/* <Image
-            src="/assets/calendar-plus-01.png"
+const EventBanner = ({
+  onlyView = true,
+  label,
+  imgSrc,
+  banner,
+  setBanner,
+}: AppEventBanner) => {
+  const [dragging, setDragging] = useState(false);
+
+  const handleFileChange = (e: any) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.readyState === 2 && setBanner) {
+          setBanner(reader?.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleDragOver = (e: any) => {
+    e.preventDefault();
+    setDragging(true);
+  };
+
+  const handleDragLeave = (e: any) => {
+    e.preventDefault();
+    setDragging(false);
+  };
+
+  const handleDrop = (e: any) => {
+    e.preventDefault();
+    setDragging(false);
+
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      if (setBanner) {
+        reader.onload = () => {
+          setBanner(reader?.result as string);
+        };
+      }
+      reader.readAsDataURL(file);
+    }
+  };
+
+  return onlyView ? (
+    <div className="w-full flex flex-col items-center justify-center h-72 2xl:h-96 bg-gradient-to-r from-sky-400 to-blue-500 rounded-md relative">
+      {imgSrc && (
+        <Image
+          src={imgSrc}
+          alt="Event Banner"
+          className="w-full h-full rounded-md object-cover"
+          width={1200}
+          height={300}
+        />
+      )}
+    </div>
+  ) : (
+    <div>
+      <input
+        type="file"
+        name="file"
+        id="file"
+        className="hidden"
+        accept="image/*"
+        onChange={handleFileChange}
+      />
+      <label
+        htmlFor="file"
+        className={`w-full cursor-pointer h-72 2xl:h-96 bg-gradient-to-r from-sky-400 to-blue-500 rounded-md flex items-center justify-center text-2xl text-zinc-200 ${
+          dragging ? "from-sky-500 to-blue-600 border-2 border-dashed" : ""
+        }`}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
+        {banner ? (
+          <Image
+            src={banner}
             alt="Event Banner"
-            width={40}
-            height={40}
-          /> */}
-          <BiImageAdd className="text-gray-300 text-4xl" />
-          <p className="text-gray-300 text-2xl mt-1">{label}</p>
-        </div>
-      </div>
+            className="w-full h-full rounded-md object-cover"
+            width={1200}
+            height={300}
+          />
+        ) : (
+          <span>
+            {label || "Drag and drop your Banner here or Click to browse"}
+          </span>
+        )}
+      </label>
     </div>
   );
 };
