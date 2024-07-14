@@ -1,6 +1,8 @@
 import AppButton from "@/components/ui/AppButton";
 import AnimationWrapper from "@/components/shared/AnimationWrapper";
 import GoogleAuth from "@/components/auth/GoogleAuth";
+import { Suspense } from "react";
+import Loading from "@/components/ui/Loading";
 
 const page = () => {
   return (
@@ -11,7 +13,9 @@ const page = () => {
             <h1 className="font-bold text-[32px]">Explore New Opportunities</h1>
             <p className="text-sm font-medium">Log in or sign up in seconds</p>
           </div>
-          <GoogleAuth />
+          <Suspense fallback={<Loading />}>
+            <GoogleAuth />
+          </Suspense>
 
           <p className="text-[#64748B]/50">Or</p>
           <div>

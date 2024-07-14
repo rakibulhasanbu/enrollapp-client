@@ -2,7 +2,10 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import { useAppSelector } from "@/redux/hook";
 import { dashboardSidebarItem } from "./dashboardSidebarItem";
-import { selectCurrentOrganizer } from "@/redux/features/auth/authSlice";
+import {
+  selectCurrentOrganizer,
+  selectCurrentUser,
+} from "@/redux/features/auth/authSlice";
 import { TNavItems, UserRole } from "@/types";
 import { usePathname } from "next/navigation";
 
@@ -15,14 +18,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
   // const organizer = useAppSelector(selectCurrentOrganizer);
   const organizer = {
-    role: UserRole.SuperAdmin
-  }
-
+    role: UserRole.SuperAdmin,
+  };
+  const user = useAppSelector(selectCurrentUser);
 
   let items: TNavItems[] = [];
 
-  switch (organizer?.role) {
-
+  switch (user?.role) {
     case UserRole.SuperAdmin:
       items = dashboardSidebarItem.supperItems;
       break;
@@ -34,12 +36,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     default:
       items = [];
       break;
-  };
+  }
   console.log(items);
   return (
     <aside
-      className={`absolute left-0 top-0 z-[1000] bg-white flex h-screen md:h-custom-dvh-md 2xl:h-custom-dvh flex-col overflow-y-auto duration-300 ease-linear lg:static lg:translate-x-0 py-5 md:py-2 pl-5 2xl:pl-7 w-[280px] 2xl:w-[300px] border-r ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+      className={`absolute left-0 top-0 z-[1000] bg-white flex h-screen md:h-custom-dvh-md 2xl:h-custom-dvh flex-col overflow-y-auto duration-300 ease-linear lg:static lg:translate-x-0 py-5 md:py-2 pl-5 2xl:pl-7 w-[280px] 2xl:w-[300px] border-r ${
+        sidebarOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
     >
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -67,31 +70,31 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           <div key={nav.label}>
             <Link
               href={nav.path}
-              className={`relative flex items-center gap-2 2xl:gap-3 pl-2 lg:pl-4 hover:bg-primary hover:rounded-lg  hover:text-white hover:font-semibold group py-1.5 2xl:py-2 ${pathname === nav.path
-                ? "text-white font-semibold bg-primary rounded-lg"
-                : "text-gray-500"
-                }`}
+              className={`relative flex items-center gap-2 2xl:gap-3 pl-2 lg:pl-4 hover:bg-primary hover:rounded-lg  hover:text-white hover:font-semibold group py-1.5 2xl:py-2 ${
+                pathname === nav.path
+                  ? "text-white font-semibold bg-primary rounded-lg"
+                  : "text-gray-500"
+              }`}
             >
               <div
-                className={`w-7 h-7 flex items-center justify-center rounded-full group-hover:bg-white group-hover:text-gray-800 p-1 ${pathname === nav.path
-                  ? "bg-white text-gray-800"
-                  : "bg-[#F5F5F6]"
-                  }`}
+                className={`w-7 h-7 flex items-center justify-center rounded-full group-hover:bg-white group-hover:text-gray-800 p-1 ${
+                  pathname === nav.path
+                    ? "bg-white text-gray-800"
+                    : "bg-[#F5F5F6]"
+                }`}
               >
                 <nav.Icon />
               </div>
               <p className="">{nav.label}</p>
               <div
-                className={`group-hover:bg-white absolute h-4 w-1 right-0 top-[35%] rounded-l ${pathname === nav.path
-                  ? "bg-white"
-                  : ""
-                  }`}
+                className={`group-hover:bg-white absolute h-4 w-1 right-0 top-[35%] rounded-l ${
+                  pathname === nav.path ? "bg-white" : ""
+                }`}
               ></div>
             </Link>
           </div>
         ))}
       </div>
-
     </aside>
   );
 };

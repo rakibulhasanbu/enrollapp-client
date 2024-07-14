@@ -1,33 +1,22 @@
 import { TNavItems } from "@/types";
-import { BiMoneyWithdraw } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
-import { FaCartShopping, FaTicket } from "react-icons/fa6";
 import { IoHome, IoPersonAddSharp, IoSettingsSharp } from "react-icons/io5";
-import {
-  MdAddToPhotos,
-  MdAdminPanelSettings,
-  MdSwitchAccount,
-  MdVerified,
-  MdWorkspacePremium,
-} from "react-icons/md";
+import { MdAdminPanelSettings, MdSwitchAccount } from "react-icons/md";
 import { RiRefund2Fill } from "react-icons/ri";
-import { RxDashboard } from "react-icons/rx";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
+import { SiAwsorganizations } from "react-icons/si";
+import { MdOutlineEventAvailable } from "react-icons/md";
 
 const common: any[] = [
   {
     label: "Overview",
     path: "/dashboard",
-    Icon: RxDashboard,
+    Icon: TbLayoutDashboardFilled,
   },
   {
     label: "profile settings",
     path: "/dashboard/profileSetting",
     Icon: IoSettingsSharp,
-  },
-  {
-    label: "Withdraw Fund",
-    path: "/dashboard/withdrawFund",
-    Icon: BiMoneyWithdraw,
   },
   {
     label: "Home",
@@ -37,59 +26,27 @@ const common: any[] = [
 ];
 
 export const supperItems: TNavItems[] = [
+  common[0],
+  common[2],
+  {
+    label: "Manage Events",
+    path: "/dashboard/manage-event",
+    Icon: MdOutlineEventAvailable,
+  },
   {
     label: "Manage Organizer",
     path: "/dashboard/manage-organizer",
+    Icon: SiAwsorganizations,
+  },
+  {
+    label: "Manage User",
+    path: "/dashboard/manage-user",
     Icon: FaUsers,
   },
   {
-    label: "Add Accounts",
-    path: "/dashboard/addService",
-    Icon: MdAddToPhotos,
-  },
-  {
-    label: "Manage Account",
-    path: "/dashboard/allService",
-    Icon: MdSwitchAccount,
-  },
-
-  {
-    label: "Topup User",
-    path: "/dashboard/topUpToUser",
-    Icon: FaTicket,
-  },
-  {
     label: "Manage Admin",
-    path: "/dashboard/manageAdmin",
+    path: "/dashboard/manage-admin",
     Icon: MdAdminPanelSettings,
-  },
-  {
-    label: "Make Admin",
-    path: "/dashboard/addAdmin",
-    Icon: IoPersonAddSharp,
-  },
-
-  {
-    label: "Manage Fund",
-    path: "/dashboard/manageFund",
-    Icon: RiRefund2Fill,
-  },
-  common[2],
-
-  {
-    label: "Manage KYC",
-    path: "/dashboard/manage-kyc",
-    Icon: MdVerified,
-  },
-  {
-    label: "Manage Order",
-    path: "/dashboard/manage-order",
-    Icon: FaCartShopping,
-  },
-  {
-    label: "Manage Plans",
-    path: "/dashboard/manage-plans",
-    Icon: MdWorkspacePremium,
   },
   common[1],
 ];
