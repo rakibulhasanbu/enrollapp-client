@@ -56,8 +56,8 @@ export const Events = () => {
   };
 
   return (
-    <div className="w-full p-4 lg:container mx-auto">
-      <div className="text-center lg:text-left flex flex-col lg:flex-row justify-between items-center lg:container lg:mx-auto">
+    <div className="w-full  p-4 lg:container mx-auto">
+      <div className="text-center lg:text-left flex flex-col mb-2 lg:mb-0 lg:flex-row justify-between items-center lg:container lg:mx-auto">
         <AppTitle
           head="Upcoming Events"
           paragraph="A Platform Where You Can Find Events  According to Your Passion"

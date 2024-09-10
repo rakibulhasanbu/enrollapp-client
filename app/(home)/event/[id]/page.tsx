@@ -48,7 +48,7 @@ const Page = () => {
           <div className="flex items-center gap-2">
             <PiCashRegisterLight className="text-3xl text-primary" />
             <p>
-              registration Deadline :
+              Registration Deadline :
               {new Date(event?.registrationDeadline).toLocaleDateString()}
             </p>
           </div>
@@ -58,12 +58,12 @@ const Page = () => {
           </div>
         </div>
 
-        <div className="text-[#64748b]">
+        <div className="text-[#64748b] my-4">
           <h2 className="text-3xl mb-4">Details</h2>
           <p className="mb-2">{event?.description}</p>
         </div>
         <div className="mt-5">
-          <h3>Organized by</h3>
+          <h3 className="mb-1">Organized by</h3>
           <div className="flex items-center gap-2">
             {event?.organizer?.orgLogo ? (
               <Image
