@@ -16,17 +16,19 @@ const page = () => {
     <>
       <Banner />
       <Frame />
-      <div className="text-center my-5">
+      <div className="text-center">
         <AppTitle head="Explore Opportunities" paragraph="" />
       </div>
       <Opportunities />
 
       <Events />
       <div className="text-center">
-        <AppTitle
-          head="Why Choose Us ?"
-          paragraph="A Platform Where You Can Find Events According to Your Passion"
-        />
+        <div className="mt-20 lg:mt-0">
+          <AppTitle
+            head="Why Choose Us ?"
+            paragraph="A Platform Where You Can Find Events According to Your Passion"
+          />
+        </div>
       </div>
       <Choose />
       <Promotion />
