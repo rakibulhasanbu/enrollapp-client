@@ -10,6 +10,13 @@ const OrganizerApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.organizer],
     }),
+    getOrganizers: builder.query({
+      query: (filterOptions) => ({
+        url: `/organizers${filterOptions ? `?${filterOptions}` : ""}`,
+        method: METHOD.GET,
+      }),
+      providesTags: [tagTypes.organizer],
+    }),
     getOrganizerEventsById: builder.query({
       query: (id) => ({
         url: `/events/${id}`,
@@ -32,4 +39,5 @@ export const {
   useGetOrganizerByIdQuery,
   useGetOrganizerEventsByIdQuery,
   useUpadteOrganizerByIdMutation,
+  useGetOrganizersQuery,
 } = OrganizerApi;

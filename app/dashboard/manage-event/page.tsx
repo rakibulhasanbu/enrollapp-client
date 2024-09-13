@@ -3,13 +3,33 @@
 import AppModal from "@/components/ui/AppModal";
 import AppTable from "@/components/ui/AppTable";
 import TableLoading from "@/components/ui/TableLoading";
-import { useState } from "react";
+import { useGetEventsQuery } from "@/redux/features/event/eventApi";
+import { useMemo, useState } from "react";
 import { MdBlock } from "react-icons/md";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 const Page = () => {
   const [search, setSearch] = useState<string>("");
   const [page, setPage] = useState<number>(1);
+
+  const queryString = useMemo(() => {
+    const info = {
+      // role: "admin",
+      limit: 10,
+      page,
+      searchTerm: search.length ? search : "",
+    };
+    const queryString = Object.keys(info).reduce((pre, key: string) => {
+      const value = info[key as keyof typeof info];
+      if (value) {
+        return pre + `${Boolean(pre.length) ? "&" : ""}${key}=${value}`;
+      }
+      return pre;
+    }, "");
+    return queryString;
+  }, [page, search]);
+
+  const queryInfo = useGetEventsQuery(queryString);
 
   const columns = [
     {
@@ -125,10 +145,10 @@ const Page = () => {
     },
   ];
 
-  const queryInfo = {};
   return (
     <div className="">
-      <div className="h-[65dvh] overflow-auto">
+      <h2 className="text-3xl font-medium text-primary pb-4">Manage Events</h2>
+      <div className="h-[70dvh] overflow-auto">
         <AppTable
           infoQuery={queryInfo}
           columns={columns}
