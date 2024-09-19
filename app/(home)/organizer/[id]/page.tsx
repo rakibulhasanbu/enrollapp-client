@@ -16,6 +16,7 @@ import AnimationWrapper from "@/components/shared/AnimationWrapper";
 import { IEvent, TOrganizer } from "@/types";
 import EventsCard from "@/components/home/card/EventsCard";
 import OrganizerPrivetLayout from "@/components/layout/OrganizerPrivetLayout";
+import Image from "next/image";
 
 const Profile = () => {
   const { id } = useParams();
@@ -40,7 +41,9 @@ const Profile = () => {
             <div className="w-[80%] bg-white rounded-xl shadow-xl relative">
               <div className="h-[250px] bg-[#8ABFEE] rounded-xl relative">
                 <div className="right-5 absolute top-5 ">
-                  <img
+                  <Image
+                    width={50}
+                    height={50}
                     src="/assets/Frame 1618872988.png"
                     alt=""
                     className="w-10"
@@ -51,7 +54,12 @@ const Profile = () => {
               <div className="flex items-center  p-10 absolute top-[23%] ">
                 <div className="flex gap-20  mt-5  items-center">
                   <div className="flex gap-4 justify-center items-center">
-                    <img className="size-40 " src={organizer?.orgLogo} alt="" />
+                    <Image
+                      width={160}
+                      className="size-40 "
+                      src={organizer?.orgLogo}
+                      alt=""
+                    />
                     <div className="mt-12">
                       <h2 className="text-[#1E293B] text-[24px] ">
                         Enroll Opportunities

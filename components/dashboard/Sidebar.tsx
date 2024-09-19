@@ -16,28 +16,17 @@ interface SidebarProps {
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
-  // const organizer = useAppSelector(selectCurrentOrganizer);
-  const organizer = {
-    role: UserRole.SuperAdmin,
-  };
+  const organizer = useAppSelector(selectCurrentOrganizer);
   const user = useAppSelector(selectCurrentUser);
 
   let items: TNavItems[] = [];
 
-  switch (user?.role) {
-    case UserRole.SuperAdmin:
-      items = dashboardSidebarItem.supperItems;
-      break;
-
-    case UserRole.Organizer:
-      items = dashboardSidebarItem.organizerItems;
-      break;
-
-    default:
-      items = [];
-      break;
+  if (user?.role === UserRole.SuperAdmin) {
+    items = dashboardSidebarItem.supperItems;
+  } else if (organizer?.email) {
+    items = dashboardSidebarItem.organizerItems;
   }
-  console.log(items);
+
   return (
     <aside
       className={`absolute left-0 top-0 z-[1000] bg-white flex h-screen md:h-custom-dvh-md 2xl:h-custom-dvh flex-col overflow-y-auto duration-300 ease-linear lg:static lg:translate-x-0 py-5 md:py-2 pl-5 2xl:pl-7 w-[280px] 2xl:w-[300px] border-r ${

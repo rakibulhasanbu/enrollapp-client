@@ -45,7 +45,11 @@ const AppModal = ({
 
   return (
     <div className="">
-      {button && <div onClick={() => handleOpen(true)}>{button}</div>}
+      {button && (
+        <div className="cursor-pointer" onClick={() => handleOpen(true)}>
+          {button}
+        </div>
+      )}
       <Modal
         closeIcon={closeable}
         maskClosable={closeable}
@@ -75,7 +79,7 @@ const AppModal = ({
                       cancelButtonAction();
                     }
                   }}
-                  className="roundedBtn text-textGrey bg-[#E8E8E8] hover:bg-[#e6dada] text-sm"
+                  className="px-4 py-1 rounded-md text-textGrey bg-[#E8E8E8] hover:bg-[#e6dada] text-sm"
                 >
                   {cancelButtonTitle}
                 </button>
@@ -89,7 +93,7 @@ const AppModal = ({
                       primaryButtonAction();
                     }
                   }}
-                  className="roundedBtn bg-red/80 hover:bg-red text-sm"
+                  className="px-4 py-1 rounded-md text-white bg-red-500/80 hover:bg-red-500 text-sm"
                 >
                   {primaryButtonTitle}
                 </button>

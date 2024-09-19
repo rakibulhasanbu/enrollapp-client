@@ -10,6 +10,20 @@ const EventApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.event],
     }),
+    getAdminEvents: builder.query({
+      query: (filterOptions) => ({
+        url: `/admin-events${filterOptions ? `?${filterOptions}` : ""}`,
+        method: METHOD.GET,
+      }),
+      providesTags: [tagTypes.event],
+    }),
+    getMyEvents: builder.query({
+      query: (filterOptions) => ({
+        url: `/my-events${filterOptions ? `?${filterOptions}` : ""}`,
+        method: METHOD.GET,
+      }),
+      providesTags: [tagTypes.event],
+    }),
 
     getEventById: builder.query({
       query: (id) => ({
@@ -52,4 +66,6 @@ export const {
   useGetEventByIdQuery,
   useUpdatedEventMutation,
   useDeleteEventMutation,
+  useGetMyEventsQuery,
+  useGetAdminEventsQuery,
 } = EventApi;

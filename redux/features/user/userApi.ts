@@ -15,7 +15,17 @@ const userApi = baseApi.injectEndpoints({
         method: METHOD.GET,
       }),
     }),
+    getOrganizerOverView: builder.query({
+      query: () => ({
+        url: `/auth/organizer-overview`,
+        method: METHOD.GET,
+      }),
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetOverViewQuery } = userApi;
+export const {
+  useGetUsersQuery,
+  useGetOverViewQuery,
+  useGetOrganizerOverViewQuery,
+} = userApi;

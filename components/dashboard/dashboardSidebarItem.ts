@@ -57,10 +57,9 @@ const organizerItems: TNavItems[] = [
     path: "/dashboard/allService",
     Icon: MdSwitchAccount,
   },
-
   {
-    label: "Manage Fund",
-    path: "/dashboard/manageFund",
+    label: "Manage Events",
+    path: "/dashboard/manage-my-event",
     Icon: RiRefund2Fill,
   },
   common[2],

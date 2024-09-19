@@ -7,12 +7,17 @@ import {
   selectCurrentOrganizer,
   selectCurrentUser,
 } from "@/redux/features/auth/authSlice";
-import { useGetEventsQuery } from "@/redux/features/event/eventApi";
+import {
+  useDeleteEventMutation,
+  useGetEventsQuery,
+  useGetMyEventsQuery,
+} from "@/redux/features/event/eventApi";
 import { useAppSelector } from "@/redux/hook";
+import { formatDateOnly } from "@/utils/formateDate";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { MdBlock } from "react-icons/md";
-import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { RiDeleteBinLine, RiVerifiedBadgeFill } from "react-icons/ri";
 
 const Page = () => {
   const [search, setSearch] = useState<string>("");
@@ -35,69 +40,66 @@ const Page = () => {
     return queryString;
   }, [page, search]);
 
-  const queryInfo = useGetEventsQuery(queryString);
+  const queryInfo = useGetMyEventsQuery(queryString);
+  const [deleteEvent] = useDeleteEventMutation();
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "Organized By",
+      dataIndex: "organizer",
       className: "min-w-[150px]",
-      render: (name: string, record: any) => {
+      render: (organizer: any, record: any) => {
         return (
           <div className="flex items-center gap-1">
             <Image
               width={40}
               height={40}
-              src={record?.profileImg as string}
+              src={organizer?.orgLogo as string}
               alt=""
               className="rounded-full w-10 h-10"
             />
-            <p className="cursor-pointer">{name}</p>
+            <p className="cursor-pointer">{organizer?.name}</p>
           </div>
         );
       },
     },
     {
       title: "Email",
-      dataIndex: "email",
+      dataIndex: "organizer",
       className: "min-w-[150px]",
-    },
-    {
-      title: "Money",
-      dataIndex: "Currency",
-      className: "min-w-[150px]",
-      render: (Currency: any) => {
-        return <p className="font-medium">${Currency?.amount.toFixed(2)}</p>;
+      render: (organizer: any) => {
+        return <div>{organizer?.email}</div>;
       },
     },
     {
-      title: "Phone Number",
-      dataIndex: "phoneNumber",
+      title: "Title",
+      dataIndex: "title",
+      className: "min-w-[100px]",
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      className: "min-w-[100px]",
+    },
+    {
+      title: "Event Type",
+      dataIndex: "eventType",
       className: "min-w-[145px]",
     },
     {
-      title: "Role",
-      dataIndex: "role",
+      title: "Start Date",
+      dataIndex: "eventStartDate",
       className: "min-w-[145px]",
-      render: (role: any) => {
-        return <p className="text-base font-medium uppercase">{role}</p>;
+      render: (eventStartDate: string) => {
+        return <div>{formatDateOnly(eventStartDate)}</div>;
       },
     },
     {
-      title: "User Status",
-      dataIndex: "isBlocked",
-      className: "min-w-[115px]",
-      render: (isBlocked: boolean) => {
-        return (
-          <div
-            className={`flex items-center gap-1 text-sm ${
-              isBlocked ? "text-textDark" : "text-success"
-            }`}
-          >
-            {isBlocked ? <MdBlock /> : <RiVerifiedBadgeFill />}
-            {isBlocked ? "Blocked" : "Active"}
-          </div>
-        );
+      title: "End Date",
+      dataIndex: "eventEndDate",
+      className: "min-w-[145px]",
+      render: (eventEndDate: string) => {
+        return <div>{formatDateOnly(eventEndDate)}</div>;
       },
     },
 
@@ -108,7 +110,7 @@ const Page = () => {
       render: (text: string, record: any) => {
         return (
           <div className="flex items-center justify-evenly gap-1">
-            <AppModal
+            {/* <AppModal
               button={
                 <button className="appOutlineBtnSmDelete">
                   {record?.isBlocked ? "UnBlock" : "Block"}
@@ -129,21 +131,23 @@ const Page = () => {
                   from the users list?
                 </p>
               </div>
-            </AppModal>
+            </AppModal> */}
 
             <AppModal
-              button={<button className="appBtnSm">Delete</button>}
+              button={
+                <RiDeleteBinLine className="text-lg hover:text-red-500" />
+              }
               cancelButtonTitle="No, Don’t"
               primaryButtonTitle="Yes. Remove"
-              // primaryButtonAction={() => deleteUser(record?.id)}
+              primaryButtonAction={() => deleteEvent(record?._id)}
             >
               <div className="max-w-80">
                 <p className="text-center text-[#828282] pt-4 text-lg">
                   Are you sure Remove{" "}
                   <span className="text-textDark font-medium">
-                    {record?.name}
+                    {record?.title}
                   </span>{" "}
-                  from the user list?
+                  from the event list?
                 </p>
               </div>
             </AppModal>

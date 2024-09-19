@@ -70,7 +70,7 @@ export const Events = () => {
         />
       </div>
       <Slider {...settings}>
-        {data?.data?.events?.map((event: IEvent) => (
+        {data?.data?.map((event: IEvent) => (
           <div key={event?._id} className="px-2">
             <EventsCard event={event} />
           </div>

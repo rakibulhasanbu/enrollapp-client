@@ -32,9 +32,7 @@ const DashboardNavbar = ({ sidebarOpen, setSidebarOpen }: TDashboardNavbar) => {
           <h2 className="text-sm md:text-base 2xl:text-lg font-medium">
             {user?.name}
           </h2>
-          <h2 className="font-medium uppercase text-textGrey text-xs">
-            {user?.email}
-          </h2>
+          <h2 className="font-medium text-textGrey text-xs">{user?.email}</h2>
         </div>
         {/* <ProfileDetailsPopUp /> */}
       </div>

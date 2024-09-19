@@ -18,7 +18,10 @@ const OrganizerLogin = () => {
           </Suspense>
           <h3>
             Don&apos;t have an Account?{" "}
-            <Link href={"/auth/organizer-register"} className="font-medium">
+            <Link
+              href={"/auth/organizer-register"}
+              className="font-medium text-primary"
+            >
               Register here
             </Link>{" "}
           </h3>

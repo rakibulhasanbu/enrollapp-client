@@ -10,6 +10,7 @@ import EventBanner from "@/components/shared/EventBanner";
 import { useState } from "react";
 import Loading from "@/components/ui/Loading";
 import AnimationWrapper from "@/components/shared/AnimationWrapper";
+import eventBanner from "@/assets/event.png";
 
 const Page = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +21,7 @@ const Page = () => {
   return (
     <AnimationWrapper keyValue="event page">
       <div className="pt-32 2xl:pt-40 space-y-12 w-[80%] mx-auto">
-        <EventBanner imgSrc="/assets/banner-2.jpg" label="Add Banner" />
+        <EventBanner imgSrc={eventBanner} label="Add Banner" />
         <AppSearchInput variant="gray" placeholder="Search Event by name" />
 
         <div className="w-full flex flex-row items-center justify-between gap-4 overflow-x-auto">
@@ -61,7 +62,7 @@ const Page = () => {
           <Loading height="fit" />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
-            {data?.data?.events?.map((event: IEvent) => (
+            {data?.data?.map((event: IEvent) => (
               <EventsCard event={event} key={event?._id} />
             ))}
           </div>

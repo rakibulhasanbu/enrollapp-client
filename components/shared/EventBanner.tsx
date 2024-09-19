@@ -1,9 +1,10 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import { useState } from "react";
 
 type AppEventBanner = {
   label?: string;
-  imgSrc?: string;
+  imgSrc?: StaticImport | string;
   onlyView?: Boolean;
   banner?: string;
   setBanner?: (banner: string) => void;
@@ -64,8 +65,8 @@ const EventBanner = ({
           src={imgSrc}
           alt="Event Banner"
           className="w-full h-full rounded-md object-cover"
-          width={1200}
-          height={300}
+          width={1500}
+          height={400}
         />
       )}
     </div>

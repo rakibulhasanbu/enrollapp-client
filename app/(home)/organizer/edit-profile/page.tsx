@@ -10,6 +10,7 @@ import AppFormTextarea from "@/components/ui/AppFormTextarea";
 import { selectCurrentOrganizer } from "@/redux/features/auth/authSlice";
 import { useUpadteOrganizerByIdMutation } from "@/redux/features/organizer/organizerApi";
 import { useAppSelector } from "@/redux/hook";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
@@ -121,8 +122,10 @@ const Page = () => {
         <div className="pt-40 w-[80%] mx-auto relative">
           <EventBanner />
           <div className="h-52 absolute left-16 lg:left-10 top-96 w-52 rounded-full border">
-            <img
-              src={organizer?.orgLogo}
+            <Image
+              height={208}
+              width={208}
+              src={organizer?.orgLogo as string}
               className="w-full h-full bg-backgroundColor rounded-full"
               alt=""
             />

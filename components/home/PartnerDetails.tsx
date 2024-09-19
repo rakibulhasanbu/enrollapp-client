@@ -4,22 +4,30 @@ import React from "react";
 export const PartnerDetails = () => {
   return (
     <div className="relative w-full p-4 my-80 lg:my-0">
-      <img
+      <Image
+        width={55}
+        height={55}
         className="w-[55px] lg:left-10 absolute top-40 lg:top-0  hidden "
         src="/assets/Ellipse 266.png"
         alt=""
       />
-      <img
+      <Image
+        width={55}
+        height={55}
         className="w-[94px] absolute lg:top-40 left-52 pb-5 lg:pb-0 "
         src="/assets/Ellipse 263.png"
         alt=""
       />
-      <img
+      <Image
+        width={55}
+        height={55}
         className="absolute lg:right-20 lg:top-60 w-[67px] right-5 lg:right-0"
         src="/assets/Ellipse 264.png"
         alt=""
       />
-      <img
+      <Image
+        width={55}
+        height={55}
         className="w-[84px] lg:right-10 lg:top-96 absolute "
         src="/assets/Ellipse 265.png"
         alt=""

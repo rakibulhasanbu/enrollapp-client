@@ -130,7 +130,10 @@ const OrganizerLogin = () => {
           {/* form end */}
           <h3>
             Already have an Account?{" "}
-            <Link href={"/auth/organizer-login"} className="font-medium">
+            <Link
+              href={"/auth/organizer-login"}
+              className="font-medium text-primary"
+            >
               Login here
             </Link>{" "}
           </h3>

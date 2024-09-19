@@ -4,6 +4,7 @@ import AppModal from "@/components/ui/AppModal";
 import AppTable from "@/components/ui/AppTable";
 import TableLoading from "@/components/ui/TableLoading";
 import { useGetUsersQuery } from "@/redux/features/user/userApi";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { MdBlock } from "react-icons/md";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
@@ -39,7 +40,9 @@ const Page = () => {
       render: (name: string, record: any) => {
         return (
           <div className="flex items-center gap-1">
-            <img
+            <Image
+              width={40}
+              height={40}
               src={record?.profileImg as string}
               alt=""
               className="rounded-full w-10 h-10"

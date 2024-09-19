@@ -14,7 +14,7 @@ const ProfileCard = () => {
   return (
     <div className="bg-white w-auto rounded-xl shadow-xl p-5 h-[300px] ">
       <div className="flex items-center justify-center gap-2 mb-4">
-        <img src="/assets/elements.png" alt="" />
+        <Image width={40} height={40} src="/assets/elements.png" alt="" />
         <p className="text-[12px] w-full">Contact Details</p>
       </div>
       {profileIcon.map((items) => (
