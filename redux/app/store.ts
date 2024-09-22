@@ -13,6 +13,7 @@ import {
 } from "redux-persist";
 import authSlice from "../features/auth/authSlice";
 import { baseApi } from "../api/baseApi";
+import eventSlice from "../features/event/eventSlice";
 
 const persistConfig = {
   key: "auth",
@@ -25,6 +26,7 @@ export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthSlice,
+    event: eventSlice,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddlewares) =>

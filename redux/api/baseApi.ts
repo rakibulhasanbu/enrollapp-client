@@ -3,7 +3,7 @@ import { tagTypesList } from "./tagTypesList";
 import { RootState } from "../app/store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
+  baseUrl: process.env.NEXT_PUBLIC_SERVER_URL,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.accessToken;

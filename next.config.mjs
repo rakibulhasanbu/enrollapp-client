@@ -5,6 +5,7 @@ const nextConfig = {
       "static.vecteezy.com",
       "res.cloudinary.com",
       "lh3.googleusercontent.com",
+      "plus.unsplash.com",
     ],
   },
 };

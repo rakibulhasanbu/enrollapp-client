@@ -41,11 +41,20 @@ const EventApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.event],
     }),
 
+    createForm: builder.mutation({
+      query: (eventData) => ({
+        url: "/form",
+        method: METHOD.POST,
+        body: eventData,
+      }),
+      invalidatesTags: [tagTypes.event],
+    }),
+
     updatedEvent: builder.mutation({
       query: (updatedData) => ({
         url: `/event/${updatedData.id}`,
-        method: METHOD.PUT,
-        body: updatedData.EventData,
+        method: METHOD.PATCH,
+        body: updatedData.eventData,
       }),
       invalidatesTags: [tagTypes.event],
     }),
@@ -68,4 +77,5 @@ export const {
   useDeleteEventMutation,
   useGetMyEventsQuery,
   useGetAdminEventsQuery,
+  useCreateFormMutation,
 } = EventApi;

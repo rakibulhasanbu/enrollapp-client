@@ -1,9 +1,14 @@
 import Image from "next/image";
 import footer from "@/assets/footer.png";
+import Link from "next/link";
 
 const Subscription = () => {
   return (
-    <div className="mt-20">
+    <Link
+      href={"https://whatsapp.com/channel/0029VaoTDCQGE56bhsAb7C2j"}
+      target="_blank"
+      className="block mt-20"
+    >
       <Image
         src={footer}
         className="w-full rounded-lg"
@@ -24,7 +29,7 @@ const Subscription = () => {
         <img src="/assets/7 1.png" alt="" />
       </div>
     </div> */}
-    </div>
+    </Link>
   );
 };
 

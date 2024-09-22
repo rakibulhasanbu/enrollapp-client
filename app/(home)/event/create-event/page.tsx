@@ -14,6 +14,8 @@ import AppFormTextarea from "@/components/ui/AppFormTextarea";
 import { useState } from "react";
 import AnimationWrapper from "@/components/shared/AnimationWrapper";
 import OrganizerPrivetLayout from "@/components/layout/OrganizerPrivetLayout";
+import { useAppDispatch } from "@/redux/hook";
+import { setEventId } from "@/redux/features/event/eventSlice";
 
 type Inputs = {
   title: string;
@@ -29,8 +31,11 @@ type Inputs = {
 };
 
 const Page = () => {
-  const [banner, setBanner] = useState("");
+  const [banner, setBanner] = useState(
+    "https://plus.unsplash.com/premium_photo-1701590725747-ac131d4dcffd?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  );
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const [createEvent] = useCreateEventMutation();
   const {
     register,
@@ -48,13 +53,15 @@ const Page = () => {
     const submittedData = {
       ...data,
       eventBanner: banner,
-      registrationFormId: "66850ecb9af8d0e462d0ddd7",
     };
+
     await createEvent(submittedData)
       .unwrap()
       .then((res: any) => {
-        toast.success("Event Create successful!", { toastId: 1 });
-        router.push("/event");
+        console.log("event id", res?.data?._id);
+        // toast.success("Event Create successful!", { toastId: 1 });
+        dispatch(setEventId(res?.data?._id));
+        router.push("/event/event-form");
       })
       .catch((res: any) => {
         console.log(res);
@@ -85,7 +92,7 @@ const Page = () => {
             className="mt-10 flex flex-col gap-2 "
           >
             <AppFormInput
-              label="Add Event Title"
+              label="Event Title"
               placeholder="Event Name"
               type="text"
               name="title"

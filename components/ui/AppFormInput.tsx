@@ -11,6 +11,7 @@ type TAppFormInputProps = {
   register: UseFormRegister<any>;
   required?: boolean;
   readOnly?: boolean;
+  className?: string;
 };
 
 const AppFormInput = ({
@@ -22,6 +23,7 @@ const AppFormInput = ({
   register,
   required,
   readOnly,
+  className,
 }: TAppFormInputProps) => {
   const [show, setShow] = useState(false);
 
@@ -34,9 +36,9 @@ const AppFormInput = ({
       <input
         id={name}
         disabled={readOnly}
-        className={`outline-none border   p-3 rounded-lg w-full text-[16px] ${
+        className={`outline-none border p-3 rounded-lg w-full text-[16px] ${
           error ? "border-red-500" : "border-borderColor"
-        }`}
+        } ${className}`}
         // {...register(name, { ...(required && { required: true }) })}
         {...register(name, {
           ...(required && { required: true }),

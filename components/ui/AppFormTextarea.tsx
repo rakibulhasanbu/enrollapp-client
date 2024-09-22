@@ -9,6 +9,7 @@ type TAppFormTextareaProps = {
   error?: any;
   defaultValue?: string | number;
   readOnly?: boolean;
+  className?: string;
 };
 
 const AppFormTextarea = ({
@@ -20,6 +21,7 @@ const AppFormTextarea = ({
   required,
   name,
   register,
+  className,
 }: TAppFormTextareaProps) => {
   return (
     <>
@@ -41,7 +43,7 @@ const AppFormTextarea = ({
               // className="peer min-h-[140px] 2xl:min-h-[160px] resize-none overflow-auto w-full rounded border border-[#D0D2D5] border-t-transparent bg-transparent px-3 2xl:px-4 py-2.5 font-sans text-base 2xl:text-lg font-normal text-textBlack outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-[#D0D2D5] placeholder-shown:border-t-[#D0D2D5] focus:border-2 focus:border-primary focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50 placeholder:opacity-0 focus:placeholder:opacity-100 caret-primary"
               className={`outline-none border   p-3 rounded-lg w-full text-[16px] ${
                 error ? "border-red-500" : "border-borderColor"
-              }`}
+              } ${className}`}
               placeholder={placeholder}
             />
             {error && (
