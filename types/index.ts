@@ -46,11 +46,14 @@ export interface IEvent {
   registrationDeadline: string;
   description: string;
   registrationFee: number;
-  eventBanner: {
-    public_id: string;
-    url: string;
-  };
-  registrationFormId: string;
+  eventBanner: string;
+  formId: string;
+
+  isPublished: boolean;
+  isPublic: boolean;
+  isLimitOneResponse: boolean;
+  formLink: string;
+  submissionMessage: string;
 }
 
 export interface INavItems {

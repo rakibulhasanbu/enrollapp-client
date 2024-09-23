@@ -18,7 +18,7 @@ const EventsCard = ({ event }: TEventsCard) => {
           Seats available
         </p>
         <Image
-          src={event?.eventBanner?.url}
+          src={event?.eventBanner}
           alt="Event"
           className="bg-cover h-[280px] w-full"
           width={400}
@@ -58,7 +58,11 @@ const EventsCard = ({ event }: TEventsCard) => {
           </p>
         </div>
         <div className="flex justify-between items-center">
-          <AppButton label="Enroll Now" variant="filled" />
+          <AppButton
+            href={`/form/${event?.formId}`}
+            label="Enroll Now"
+            variant="filled"
+          />
           <AppButton
             href={`/event/${event?._id}`}
             label="More details"

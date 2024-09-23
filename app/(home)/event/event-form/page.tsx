@@ -56,7 +56,9 @@ const Page = () => {
   const [confirmationMessage, setConfirmationMessage] = useState(
     "Your response has been recorded"
   );
-  const [link, setLink] = useState(`${process.env.NEXT_PUBLIC_BASE_URL}`);
+  const [link, setLink] = useState(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/form/${formId}`
+  );
   const [linkCopied, setLinkCopied] = useState(false);
 
   const handleCopy = () => {

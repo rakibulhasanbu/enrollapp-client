@@ -108,7 +108,7 @@ const Page = () => {
       render: (text: string, record: any) => {
         return (
           <div className="flex items-center justify-evenly gap-1">
-            <AppModal
+            {/* <AppModal
               button={
                 <button className="appOutlineBtnSmDelete">
                   {record?.isBlocked ? "UnBlock" : "Block"}
@@ -129,7 +129,7 @@ const Page = () => {
                   from the users list?
                 </p>
               </div>
-            </AppModal>
+            </AppModal> */}
 
             <AppModal
               button={<button className="appBtnSm">Delete</button>}
