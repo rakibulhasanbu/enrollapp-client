@@ -29,7 +29,7 @@ const Page = () => {
   return (
     <AnimationWrapper keyValue="event details page">
       <div className="w-[80%] mx-auto mt-40">
-        <EventBanner imgSrc={event?.eventBanner?.url} />
+        <EventBanner imgSrc={event?.eventBanner} />
         <h1 className="mt-5 text-4xl">{event?.title}</h1>
 
         <div className="mt-10 space-y-3 text-gray-400">
