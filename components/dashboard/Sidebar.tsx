@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import Link from "next/link";
-import { useAppSelector } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { dashboardSidebarItem } from "./dashboardSidebarItem";
 import {
+  logOut,
   selectCurrentOrganizer,
   selectCurrentUser,
 } from "@/redux/features/auth/authSlice";
@@ -16,6 +17,7 @@ interface SidebarProps {
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
+  const dispatch = useAppDispatch();
   const organizer = useAppSelector(selectCurrentOrganizer);
   const user = useAppSelector(selectCurrentUser);
 
@@ -55,34 +57,58 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       </button>
 
       <div className="space-y-0.5 2xl:space-y-0.5">
-        {items?.map((nav: TNavItems) => (
-          <div key={nav.label}>
-            <Link
-              href={nav.path}
-              className={`relative flex items-center gap-2 2xl:gap-3 pl-2 lg:pl-4 hover:bg-primary hover:rounded-lg  hover:text-white hover:font-semibold group py-1.5 2xl:py-2 ${
-                pathname === nav.path
-                  ? "text-white font-semibold bg-primary rounded-lg"
-                  : "text-gray-500"
-              }`}
-            >
-              <div
-                className={`w-7 h-7 flex items-center justify-center rounded-full group-hover:bg-white group-hover:text-gray-800 p-1 ${
+        {items?.map((nav: TNavItems) =>
+          nav.label == "Logout" ? (
+            <div onClick={() => dispatch(logOut())} key={nav.label}>
+              <button
+                className={`relative w-full text-gray-500 flex items-center gap-2 2xl:gap-3 pl-2 lg:pl-4 hover:bg-red-400 hover:rounded-lg  hover:text-white hover:font-semibold group py-1.5 2xl:py-2`}
+              >
+                <div
+                  className={`w-7 h-7 flex items-center justify-center rounded-full group-hover:bg-white group-hover:text-gray-800 p-1 ${
+                    pathname === nav.path
+                      ? "bg-white text-gray-800"
+                      : "bg-[#F5F5F6]"
+                  }`}
+                >
+                  <nav.Icon />
+                </div>
+                <p className="">{nav.label}</p>
+                <div
+                  className={`group-hover:bg-white absolute h-4 w-1 right-0 top-[35%] rounded-l ${
+                    pathname === nav.path ? "bg-white" : ""
+                  }`}
+                ></div>
+              </button>
+            </div>
+          ) : (
+            <div key={nav.label}>
+              <Link
+                href={nav.path}
+                className={`relative flex items-center gap-2 2xl:gap-3 pl-2 lg:pl-4 hover:bg-primary hover:rounded-lg  hover:text-white hover:font-semibold group py-1.5 2xl:py-2 ${
                   pathname === nav.path
-                    ? "bg-white text-gray-800"
-                    : "bg-[#F5F5F6]"
+                    ? "text-white font-semibold bg-primary rounded-lg"
+                    : "text-gray-500"
                 }`}
               >
-                <nav.Icon />
-              </div>
-              <p className="">{nav.label}</p>
-              <div
-                className={`group-hover:bg-white absolute h-4 w-1 right-0 top-[35%] rounded-l ${
-                  pathname === nav.path ? "bg-white" : ""
-                }`}
-              ></div>
-            </Link>
-          </div>
-        ))}
+                <div
+                  className={`w-7 h-7 flex items-center justify-center rounded-full group-hover:bg-white group-hover:text-gray-800 p-1 ${
+                    pathname === nav.path
+                      ? "bg-white text-gray-800"
+                      : "bg-[#F5F5F6]"
+                  }`}
+                >
+                  <nav.Icon />
+                </div>
+                <p className="">{nav.label}</p>
+                <div
+                  className={`group-hover:bg-white absolute h-4 w-1 right-0 top-[35%] rounded-l ${
+                    pathname === nav.path ? "bg-white" : ""
+                  }`}
+                ></div>
+              </Link>
+            </div>
+          )
+        )}
       </div>
     </aside>
   );

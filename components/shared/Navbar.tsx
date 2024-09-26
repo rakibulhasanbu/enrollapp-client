@@ -48,24 +48,30 @@ const Navbar = () => {
       name: "Event",
       link: "/event",
     },
-    {
-      name: "About Us",
-      link: "/about",
-    },
-    {
-      name: "Contact Us",
-      link: "/contact",
-    },
+    // {
+    //   name: "About Us",
+    //   link: "/about",
+    // },
+    // {
+    //   name: "Contact Us",
+    //   link: "/contact",
+    // },
   ];
 
-  if (
-    user?.role === "admin" ||
-    user?.role === "superAdmin" ||
-    organizer?.email
-  ) {
+  if (user?.role === "admin" || user?.role === "superAdmin") {
     navItems.push({
       name: "Dashboard",
       link: "/dashboard",
+    });
+  }
+  if (organizer?.email) {
+    navItems.push({
+      name: "Profile",
+      link: `/organizer/${organizer?._id}`,
+    });
+    navItems.push({
+      name: "Dashboard",
+      link: "/dashboard/manage-my-event",
     });
   }
 

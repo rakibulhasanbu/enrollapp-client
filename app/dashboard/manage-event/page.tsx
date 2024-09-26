@@ -7,7 +7,10 @@ import {
   selectCurrentOrganizer,
   selectCurrentUser,
 } from "@/redux/features/auth/authSlice";
-import { useGetEventsQuery } from "@/redux/features/event/eventApi";
+import {
+  useDeleteEventMutation,
+  useGetEventsQuery,
+} from "@/redux/features/event/eventApi";
 import { useAppSelector } from "@/redux/hook";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -17,7 +20,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 const Page = () => {
   const [search, setSearch] = useState<string>("");
   const [page, setPage] = useState<number>(1);
-
+  const [deleteEvent] = useDeleteEventMutation();
   const queryString = useMemo(() => {
     const info = {
       // role: "admin",
@@ -135,7 +138,7 @@ const Page = () => {
               button={<button className="appBtnSm">Delete</button>}
               cancelButtonTitle="No, Don’t"
               primaryButtonTitle="Yes. Remove"
-              // primaryButtonAction={() => deleteUser(record?.id)}
+              primaryButtonAction={() => deleteEvent(record?._id)}
             >
               <div className="max-w-80">
                 <p className="text-center text-[#828282] pt-4 text-lg">

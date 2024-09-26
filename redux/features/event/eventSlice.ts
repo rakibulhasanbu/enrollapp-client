@@ -1,3 +1,4 @@
+import { IEvent } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 export enum FieldType {
@@ -5,7 +6,6 @@ export enum FieldType {
   Textarea = "textarea",
   Radio = "radio",
   Checkbox = "checkbox",
-  Select = "select",
   Date = "date",
   Email = "email",
   File = "file",
@@ -26,6 +26,7 @@ export type IForm = {
 };
 
 type TIState = {
+  selectedEvent: IEvent | null;
   eventId: string;
   formId: string;
   title: string; // Form title
@@ -34,6 +35,7 @@ type TIState = {
 };
 
 const initialState: TIState = {
+  selectedEvent: null,
   eventId: "",
   formId: "",
   title: "Untitled From Title",
@@ -51,6 +53,9 @@ const eventSlice = createSlice({
     setEventId: (state, action) => {
       state.eventId = action.payload;
     },
+    setSelectedEvent: (state, action) => {
+      state.selectedEvent = action.payload;
+    },
     setFormId: (state, action) => {
       state.formId = action.payload;
     },
@@ -64,7 +69,11 @@ const eventSlice = createSlice({
       }
     },
     updateField: (state, action) => {
-      const { index, direction } = action.payload; // "increase" or "decrease" and index
+      const { index, field } = action.payload;
+      state.fields[index] = field;
+    },
+    updateFieldDirection: (state, action) => {
+      const { index, direction } = action.payload;
       if (direction === "inc" && index < state.fields.length - 1) {
         // Swap with the next field
         const temp = state.fields[index];
@@ -102,6 +111,8 @@ export const {
   updateLabel,
   setEventId,
   setFormId,
+  setSelectedEvent,
+  updateFieldDirection,
 } = eventSlice.actions;
 
 export default eventSlice.reducer;

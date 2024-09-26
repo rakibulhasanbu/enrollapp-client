@@ -12,14 +12,18 @@ import {
   useGetEventsQuery,
   useGetMyEventsQuery,
 } from "@/redux/features/event/eventApi";
-import { useAppSelector } from "@/redux/hook";
+import { setSelectedEvent } from "@/redux/features/event/eventSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { formatDateOnly } from "@/utils/formateDate";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { MdBlock } from "react-icons/md";
 import { RiDeleteBinLine, RiVerifiedBadgeFill } from "react-icons/ri";
 
 const Page = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const [search, setSearch] = useState<string>("");
   const [page, setPage] = useState<number>(1);
 
@@ -132,6 +136,16 @@ const Page = () => {
                 </p>
               </div>
             </AppModal> */}
+
+            <button
+              onClick={() => {
+                dispatch(setSelectedEvent(record));
+                router.push("/dashboard/manage-response");
+              }}
+              className="border border-primary rounded-full px-4 py-1 text-xs font-semibold text-primary hover:bg-primary hover:text-white"
+            >
+              Manage Event
+            </button>
 
             <AppModal
               button={

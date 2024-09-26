@@ -29,33 +29,37 @@ const Page = () => {
   return (
     <AnimationWrapper keyValue="event details page">
       <div className="w-[80%] mx-auto mt-40">
-        <EventBanner imgSrc={event?.eventBanner} />
-        <h1 className="mt-5 text-4xl">{event?.title}</h1>
+        <div className="pb-8 space-y-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-5xl">{event?.title}</h1>
+            <span className="text-lg text-borderColor">{event?.category}</span>
+          </div>
+          <div className="flex items-center gap-20">
+            <div className="flex items-center gap-2">
+              <MdDateRange className="text-2xl text-primary" />
+              <span className="text-lg font-medium">Event Date:</span>
+              <span>
+                {new Date(event?.eventStartDate).toLocaleDateString()}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <GrMapLocation className="text-2xl text-primary" />
+              <span className="text-lg font-medium">Event Location:</span>
+              <span>{event?.location}</span>
+            </div>
+          </div>
+        </div>
 
-        <div className="mt-10 space-y-3 text-gray-400">
-          <div className="flex items-center gap-1">
-            <TbCategory className="text-3xl text-primary" />
-            <p>Category :{event?.category}</p>
-          </div>
-          <div className="flex items-center gap-1">
-            <GrMapLocation className="text-3xl text-primary" />
-            <p>Event Location :{event?.location}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <MdDateRange className="text-3xl text-primary" />
-            <p>Event Date :{new Date(event?.eventDate).toLocaleDateString()}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <PiCashRegisterLight className="text-3xl text-primary" />
-            <p>
-              Registration Deadline :
-              {new Date(event?.registrationDeadline).toLocaleDateString()}
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <AiOutlineDollar className="text-3xl text-primary" />
-            <p>{event?.registrationFee}</p>
-          </div>
+        <EventBanner imgSrc={event?.eventBanner} />
+
+        <div className="grid gap-16 grid-cols-2 my-8">
+          <h2 className="border-2 border-borderColor rounded-md text-4xl p-6 text-center font-medium">
+            Time Left:{" "}
+            {new Date(event?.registrationDeadline).toLocaleDateString()}
+          </h2>
+          <h2 className="border-2 border-borderColor rounded-md text-4xl p-6 text-center font-medium">
+            Registration Fee: {event?.registrationFee}
+          </h2>
         </div>
 
         <div className="text-[#64748b] my-4">

@@ -31,7 +31,7 @@ const AppFormInput = ({
     <div className="relative flex flex-col items-start justify-normal gap-2 w-full">
       <label className="text-[20px] text-[#475569]" htmlFor={name}>
         {label}
-        {required ? "*" : ""}
+        {/* {required ? "*" : ""} */}
       </label>
       <input
         id={name}

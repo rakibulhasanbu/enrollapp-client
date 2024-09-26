@@ -19,9 +19,9 @@ const DashboardLayout = ({
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
         />
-        <div className="flex h-custom-dvh-sm md:h-custom-dvh-md 2xl:h-custom-dvh">
+        <div className="grid grid-cols-[300px_1fr]">
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          <div className="container px-4 py-4 md:px-4 md:py-4 lg:py-8 2xl:py-10 lg:max-w-[83%] 2xl:max-w-[80%]">
+          <div className="w-full px-4 lg:px-8 2xl:px-20 py-4  md:py-4 lg:py-8 2xl:py-10 h-[calc(100dvh-66px)] overflow-y-auto">
             {children}
           </div>
         </div>

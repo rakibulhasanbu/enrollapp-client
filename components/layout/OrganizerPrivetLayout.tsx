@@ -18,7 +18,9 @@ const OrganizerPrivetLayout: React.FC<OrganizerPrivetLayoutProps> = ({
   const router = useRouter();
   const dispatch = useAppDispatch();
   const accessToken = useAppSelector(useCurrentToken);
-  const organizer = useAppSelector(selectCurrentOrganizer);
+  const organizer = useAppSelector((state) => state.auth.organizer);
+  console.log("🚀 ~ organizer:", organizer);
+
   useEffect(() => {
     if (!accessToken || !organizer?.email) {
       const redirectTo = `/auth/organizer-register?from=${encodeURIComponent(

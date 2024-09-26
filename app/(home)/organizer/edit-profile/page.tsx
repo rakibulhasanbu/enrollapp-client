@@ -20,13 +20,13 @@ import { toast } from "react-toastify";
 
 type Inputs = {
   title: string;
-  contactNumber: number;
+  contactNumber: string;
   contactPersonName: string;
   socialMediaLinks: {
     name: string;
     url: string;
   }[];
-  contactPersonMobileNumber: number;
+  contactPersonMobileNumber: string;
   website: string;
   officeAddress: string;
   serviceArea: string;
@@ -71,7 +71,7 @@ const Page = () => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log(data);
     const submittedData = {
-      id: organizer?.id,
+      id: organizer?._id,
       organizerData: {
         name: data.name,
         email: data.email,
@@ -96,7 +96,7 @@ const Page = () => {
         toast.success("Organizer profile updated successful!", {
           toastId: 1,
         });
-        router.push(`/organizer/${organizer?.id}`);
+        router.push(`/organizer/${res?.data?._id}`);
       })
       .catch((res: any) => {
         toast.error(res?.data?.message || "Something went wrong", {
@@ -109,6 +109,18 @@ const Page = () => {
     setValue("name", organizer?.name as string);
     setValue("email", organizer?.email as string);
     setValue("orgType", organizer?.orgType as string);
+    setValue("contactNumber", organizer?.contactNumber as string);
+    setValue("about", organizer?.about as string);
+    setValue("officeAddress", organizer?.officeAddress as string);
+    setValue("serviceArea", organizer?.serviceArea as string);
+    setValue("website", organizer?.website as string);
+    setValue("contactPersonName", organizer?.contactPerson?.name as string);
+    setValue(
+      "contactPersonMobileNumber",
+      organizer?.contactPerson?.phoneNumber as string
+    );
+    setValue("roleInOrg", organizer?.contactPerson?.roleInOrg as string);
+    setValue("socialMediaLinks", organizer?.socialMediaLinks as any[]);
   }, [organizer, setValue]);
 
   const { fields, append, remove } = useFieldArray({
@@ -199,6 +211,7 @@ const Page = () => {
               placeholder="Write Service Area"
               type="text"
               name="serviceArea"
+              required
               register={register}
               error={errors.serviceArea}
             />
@@ -208,6 +221,7 @@ const Page = () => {
               placeholder="Past your website Url"
               type="text"
               name="website"
+              required
               register={register}
               error={errors.website}
             />
@@ -222,6 +236,7 @@ const Page = () => {
                   type="text"
                   name="contactPersonName"
                   register={register}
+                  required
                   error={errors.contactPersonName}
                 />
                 <AppFormInput
@@ -229,6 +244,7 @@ const Page = () => {
                   type="number"
                   name="contactPersonMobileNumber"
                   register={register}
+                  required
                   error={errors.contactPersonMobileNumber}
                 />
                 <AppFormInput
@@ -236,6 +252,7 @@ const Page = () => {
                   type="text"
                   name="roleInOrg"
                   register={register}
+                  required
                   error={errors.roleInOrg}
                 />
               </div>

@@ -39,6 +39,7 @@ const OrganizerLoginForm = () => {
           toastId: 1,
         });
         const organizer = verifyToken(res?.data?.accessToken);
+
         dispatch(
           setOrganizer({ organizer, accessToken: res?.data?.accessToken })
         );

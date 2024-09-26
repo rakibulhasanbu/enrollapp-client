@@ -37,6 +37,7 @@ import { toast } from "react-toastify";
 
 type Inputs = {
   description: string;
+  title: string;
 };
 
 const Page = () => {
@@ -44,7 +45,8 @@ const Page = () => {
   const router = useRouter();
   const title = useAppSelector((state) => state.event.title);
   const fields = useAppSelector((state) => state.event.fields);
-  const eventId = useAppSelector((state) => state.event.eventId);
+  // const eventId = useAppSelector((state) => state.event.eventId);
+  const eventId = "66f2e5b8403e662562f5d483";
   const formId = useAppSelector((state) => state.event.formId);
 
   const [openQuestion, setOpenQuestion] = useState(false);
@@ -231,12 +233,12 @@ const Page = () => {
       });
   };
 
-  useEffect(() => {
-    if (eventId === "") {
-      router.push("/event/create-event");
-      return;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (eventId === "") {
+  //     router.push("/event/create-event");
+  //     return;
+  //   }
+  // }, []);
 
   return (
     <>
@@ -256,9 +258,10 @@ const Page = () => {
         <div className=" w-full lg:w-[80%] mx-auto">
           <div className=" bg-white h-40 rounded-md py-5 px-10 mt-28">
             <input
-              defaultValue={title}
+              defaultValue={"Untitled Form"}
               className="text-4xl font-medium text-[#1E293B] w-full focus:outline-none pb-2"
-              onChange={(e) => dispatch(setTitle(e.target.value))}
+              {...register("title")}
+              // onChange={(e) => dispatch(setTitle(e.target.value))}
             />
             <hr className="mb-8" />
             <input

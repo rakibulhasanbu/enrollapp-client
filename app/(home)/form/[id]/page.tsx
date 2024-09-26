@@ -39,13 +39,16 @@ const Page = ({ params }: FormPageProps) => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log("data :>> ", data);
-    const resultArray = Object.entries(data).map(([key, value]) => ({
-      label: key,
-      answer: value,
-    }));
+
+    // const resultArray = Object.entries(data).map(([key, value]) => ({
+    //   label: key,
+    //   answer: value,
+    // }));
+
     const submittedData = {
       formId: params.id,
-      responses: resultArray,
+      // responses: resultArray,
+      ...data,
     };
 
     await submitForm(submittedData)
@@ -68,9 +71,9 @@ const Page = ({ params }: FormPageProps) => {
     <AnimationWrapper keyValue="event page">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-8 w-full lg:w-[60%] mx-auto"
+        className="w-full lg:w-[60%] mx-auto"
       >
-        <div className=" bg-white rounded-md py-5 px-10 mt-28">
+        <div className=" bg-white rounded-md py-5 px-5 mt-28">
           <h2 className="text-4xl font-medium text-[#1E293B] w-full focus:outline-none pb-2">
             {data?.data?.title}
           </h2>
@@ -79,15 +82,15 @@ const Page = ({ params }: FormPageProps) => {
           </p>
         </div>
 
-        <div className="bg-white p-4 rounded-md space-y-4">
+        <div className="space-y-2">
           {data?.data?.fields.map((field: FormField, i: number) => (
             <AnimationWrapper
               key={field.label + i}
               transition={{ delay: i * 0.08 }}
-              className="flex flex-col gap-1"
+              // className="flex flex-col gap-1"
             >
-              {/* <AppQuestion  index={i} field={field} /> */}
-              <label className="text-lg font-medium" htmlFor={field.label}>
+              <AppQuestion isEditing={false} index={i} field={field} />
+              {/* <label className="text-lg font-medium" htmlFor={field.label}>
                 {field.label}
               </label>
               <input
@@ -95,7 +98,7 @@ const Page = ({ params }: FormPageProps) => {
                 className="w-full border px-4 py-2 rounded-md"
                 placeholder={`Enter ${field.label}`}
                 {...register(field.label)}
-              />
+              /> */}
             </AnimationWrapper>
           ))}
         </div>

@@ -80,6 +80,13 @@ const EventApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.event],
     }),
+    getSubmittedResponses: builder.query({
+      query: (filterOptions) => ({
+        url: `/submitted-responses${filterOptions ? `?${filterOptions}` : ""}`,
+        method: METHOD.GET,
+      }),
+      providesTags: [tagTypes.event],
+    }),
   }),
 });
 
@@ -94,4 +101,5 @@ export const {
   useCreateFormMutation,
   useGetFormByIdQuery,
   useSubmitFormMutation,
+  useGetSubmittedResponsesQuery,
 } = EventApi;

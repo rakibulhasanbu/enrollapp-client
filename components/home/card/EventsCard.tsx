@@ -1,16 +1,22 @@
 "use client";
 
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import imgUrl1 from "../../../components/home/card/cardAssets/Rectangle 10.png";
 import AppButton from "@/components/ui/AppButton";
 import { IEvent } from "@/types";
 import { formatDate } from "@/utils/formateDate";
 import Image, { StaticImageData } from "next/image";
+import { selectCurrentOrganizer } from "@/redux/features/auth/authSlice";
+import { setSelectedEvent } from "@/redux/features/event/eventSlice";
 
 type TEventsCard = {
   event: IEvent;
 };
 
 const EventsCard = ({ event }: TEventsCard) => {
+  const organizer = useAppSelector(selectCurrentOrganizer);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="shadow-md rounded-md flex flex-col gap-6 bg-[#F1F5F9] w-full">
       <div className="relative">
@@ -20,14 +26,14 @@ const EventsCard = ({ event }: TEventsCard) => {
         <Image
           src={event?.eventBanner}
           alt="Event"
-          className="bg-cover h-[280px] w-full"
+          className="bg-cover h-[280px] w-full rounded-t-md"
           width={400}
           height={300}
         />
       </div>
       <div className="p-4">
         <p className="text-primary font-medium flex items-center gap-2 mb-2">
-          <span>{formatDate(event?.eventDate)}</span>{" "}
+          <span>{formatDate(event?.eventStartDate)}</span>{" "}
           <span className="border-l-2 pl-2">{event?.location}</span>
         </p>
         <h2 className="text-[#334155] font-bold text-[24px] mb-4">
@@ -58,11 +64,20 @@ const EventsCard = ({ event }: TEventsCard) => {
           </p>
         </div>
         <div className="flex justify-between items-center">
-          <AppButton
-            href={`/form/${event?.formId}`}
-            label="Enroll Now"
-            variant="filled"
-          />
+          {event?.organizer?._id === organizer?._id ? (
+            <AppButton
+              href={`/dashboard/manage-my-event`}
+              label="Manage Event"
+              onClick={() => dispatch(setSelectedEvent(event))}
+              variant="filled"
+            />
+          ) : (
+            <AppButton
+              href={`/form/${event?.formId}`}
+              label="Enroll Now"
+              variant="filled"
+            />
+          )}
           <AppButton
             href={`/event/${event?._id}`}
             label="More details"

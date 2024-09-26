@@ -1,11 +1,24 @@
 import { TNavItems } from "@/types";
 import { FaUsers } from "react-icons/fa";
-import { IoHome, IoPersonAddSharp, IoSettingsSharp } from "react-icons/io5";
-import { MdAdminPanelSettings, MdSwitchAccount } from "react-icons/md";
+import {
+  IoHome,
+  IoHomeOutline,
+  IoPersonAddSharp,
+  IoSettingsOutline,
+  IoSettingsSharp,
+} from "react-icons/io5";
+import {
+  MdAdminPanelSettings,
+  MdOutlineEventNote,
+  MdSwitchAccount,
+} from "react-icons/md";
 import { RiRefund2Fill } from "react-icons/ri";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { SiAwsorganizations } from "react-icons/si";
 import { MdOutlineEventAvailable } from "react-icons/md";
+import { FiLogOut } from "react-icons/fi";
+import { FaWpforms } from "react-icons/fa6";
+import { HiOutlineClipboardList } from "react-icons/hi";
 
 const common: any[] = [
   {
@@ -21,7 +34,12 @@ const common: any[] = [
   {
     label: "Home",
     path: "/",
-    Icon: IoHome,
+    Icon: IoHomeOutline,
+  },
+  {
+    label: "Logout",
+    path: "",
+    Icon: FiLogOut,
   },
 ];
 
@@ -52,20 +70,42 @@ export const supperItems: TNavItems[] = [
 ];
 
 const organizerItems: TNavItems[] = [
-  {
-    label: "All Account",
-    path: "/dashboard/allService",
-    Icon: MdSwitchAccount,
-  },
+  // common[0],
+  // {
+  //   label: "All Account",
+  //   path: "/dashboard/allService",
+  //   Icon: MdSwitchAccount,
+  // },
+  common[2],
   {
     label: "Manage Events",
     path: "/dashboard/manage-my-event",
-    Icon: RiRefund2Fill,
+    Icon: MdOutlineEventNote,
   },
-  common[2],
+  {
+    label: "Manage Response",
+    path: "/dashboard/manage-response",
+    Icon: FaWpforms,
+  },
+  {
+    label: "Event Details",
+    path: "/dashboard/edit-event",
+    Icon: MdOutlineEventAvailable,
+  },
+  {
+    label: "Edit Form",
+    path: "/dashboard/edit-form",
+    Icon: HiOutlineClipboardList,
+  },
+  {
+    label: "Event Setting",
+    path: "/dashboard/event-setting",
+    Icon: IoSettingsOutline,
+  },
+  common[3],
 ];
 
 export const dashboardSidebarItem = {
-  organizerItems: [common[0], ...organizerItems, common[1]],
+  organizerItems,
   supperItems,
 };

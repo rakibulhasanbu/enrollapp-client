@@ -35,7 +35,7 @@ const ProfileDetailsBody = () => {
     // },
     {
       name: "Profile",
-      link: `/organizer/${organizer?.id}`,
+      link: `/organizer/${organizer?._id}`,
       icon: <FaRegUser />,
     },
     {
