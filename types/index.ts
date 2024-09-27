@@ -78,6 +78,7 @@ export enum UserRole {
 }
 
 export interface TUser {
+  _id: string;
   name: string;
   email: string;
   avatar: string;

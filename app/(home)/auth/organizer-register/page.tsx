@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useOrganizerRegisterMutation } from "@/redux/features/auth/authApi";
 import AppFormSelect from "@/components/ui/AppFormSelect";
 import { OrganizationType } from "@/types";
-import { setOrganizer } from "@/redux/features/auth/authSlice";
+import { setAccessToken, setOrganizer } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { verifyToken } from "@/utils/verifyToken";
 import { useRouter } from "next/navigation";
@@ -50,9 +50,8 @@ const OrganizerLogin = () => {
           toastId: 1,
         });
         const organizer = verifyToken(res?.data?.accessToken);
-        dispatch(
-          setOrganizer({ organizer, accessToken: res?.data?.accessToken })
-        );
+        dispatch(setAccessToken(res?.data?.accessToken));
+        dispatch(setOrganizer(organizer));
         router.push(`/`);
       })
       .catch((res: any) => {

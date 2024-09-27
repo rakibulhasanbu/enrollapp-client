@@ -6,39 +6,42 @@ type TIState = {
   user: TUser | null;
   organizer: TOrganizer | null;
   accessToken: string | null;
+  isLoading: boolean;
 };
 
 const initialState: TIState = {
   user: null,
   organizer: null,
   accessToken: null,
+  isLoading: true,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    setAccessToken: (state, action) => {
+      state.accessToken = action.payload;
+      state.isLoading = false;
+      localStorage.setItem("accessToken", action.payload);
+    },
     setUser: (state, action) => {
-      const { user, accessToken } = action.payload;
-
-      state.user = user;
-      state.accessToken = accessToken;
+      state.user = action.payload;
     },
     setOrganizer: (state, action) => {
-      const { organizer, accessToken } = action.payload;
-
-      state.organizer = organizer;
-      state.accessToken = accessToken;
+      state.organizer = action.payload;
     },
     logOut: (state) => {
       state.accessToken = null;
       state.organizer = null;
       state.user = null;
+      localStorage.removeItem("accessToken");
     },
   },
 });
 
-export const { setOrganizer, logOut, setUser } = authSlice.actions;
+export const { setOrganizer, logOut, setUser, setAccessToken } =
+  authSlice.actions;
 export default authSlice.reducer;
 
 export const useCurrentToken = (state: RootState) => state.auth.accessToken;

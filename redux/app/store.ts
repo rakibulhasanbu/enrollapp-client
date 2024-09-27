@@ -16,7 +16,7 @@ import { baseApi } from "../api/baseApi";
 import eventSlice from "../features/event/eventSlice";
 
 const persistConfig = {
-  key: "auth",
+  key: "accessToken",
   storage,
 };
 
@@ -25,7 +25,7 @@ const persistedAuthSlice = persistReducer(persistConfig, authSlice);
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
-    auth: persistedAuthSlice,
+    auth: authSlice,
     event: eventSlice,
   },
   devTools: process.env.NODE_ENV !== "production",

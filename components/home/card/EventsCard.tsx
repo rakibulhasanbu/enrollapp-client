@@ -15,6 +15,7 @@ type TEventsCard = {
 
 const EventsCard = ({ event }: TEventsCard) => {
   const organizer = useAppSelector(selectCurrentOrganizer);
+
   const dispatch = useAppDispatch();
 
   return (

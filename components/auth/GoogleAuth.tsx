@@ -7,7 +7,7 @@ import { authWithGoogle } from "../shared/firebase";
 import { toast } from "react-toastify";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAppDispatch } from "@/redux/hook";
-import { setUser } from "@/redux/features/auth/authSlice";
+import { setAccessToken, setUser } from "@/redux/features/auth/authSlice";
 
 const GoogleAuth = () => {
   const searchParams = useSearchParams();
@@ -24,12 +24,9 @@ const GoogleAuth = () => {
           .unwrap()
           .then((res: any) => {
             toast.success(res?.message || "Successfully registered.");
-            dispatch(
-              setUser({
-                user: res?.data?.user,
-                accessToken: res?.data?.accessToken,
-              })
-            );
+            dispatch(setAccessToken(res?.data?.accessToken));
+            dispatch(setUser(res?.data?.user));
+
             if (from) {
               router.push(from);
             } else {

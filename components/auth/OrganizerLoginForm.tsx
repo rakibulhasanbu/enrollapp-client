@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { verifyToken } from "@/utils/verifyToken";
-import { setOrganizer } from "@/redux/features/auth/authSlice";
+import { setAccessToken, setOrganizer } from "@/redux/features/auth/authSlice";
 import AppButton from "../ui/AppButton";
 
 type Inputs = {
@@ -40,9 +40,8 @@ const OrganizerLoginForm = () => {
         });
         const organizer = verifyToken(res?.data?.accessToken);
 
-        dispatch(
-          setOrganizer({ organizer, accessToken: res?.data?.accessToken })
-        );
+        dispatch(setAccessToken(res?.data?.accessToken));
+        dispatch(setOrganizer(organizer));
         if (from) {
           router.push(from);
         } else {

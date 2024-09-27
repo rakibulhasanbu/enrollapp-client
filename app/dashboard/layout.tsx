@@ -2,7 +2,7 @@
 
 import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
 import Sidebar from "@/components/dashboard/Sidebar";
-import PrivetLayout from "@/components/layout/PrivetLayout";
+import PrivateLayout from "@/components/shared/PrivateLayout";
 import { useState } from "react";
 
 const DashboardLayout = ({
@@ -13,7 +13,7 @@ const DashboardLayout = ({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <PrivetLayout>
+    <PrivateLayout>
       <div className="h-screen bg-white overflow-hidden w-full">
         <DashboardNavbar
           sidebarOpen={sidebarOpen}
@@ -26,7 +26,7 @@ const DashboardLayout = ({
           </div>
         </div>
       </div>
-    </PrivetLayout>
+    </PrivateLayout>
   );
 };
 

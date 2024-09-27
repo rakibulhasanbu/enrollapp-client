@@ -6,22 +6,28 @@ const authApi = baseApi.injectEndpoints({
     organizerRegister: builder.mutation({
       query: (userInfo) => ({
         url: "/organizer-register",
-        method: "POST",
+        method: METHOD.POST,
         body: userInfo,
       }),
     }),
     googleAuthRegister: builder.mutation({
       query: (userInfo) => ({
         url: "/auth/google-auth",
-        method: "POST",
+        method: METHOD.POST,
         body: userInfo,
       }),
     }),
     organizerLogin: builder.mutation({
       query: (userInfo) => ({
         url: "/auth/organizer-login",
-        method: "POST",
+        method: METHOD.POST,
         body: userInfo,
+      }),
+    }),
+    getProfile: builder.query({
+      query: () => ({
+        url: `/profile`,
+        method: METHOD.GET,
       }),
     }),
   }),
@@ -31,4 +37,5 @@ export const {
   useOrganizerLoginMutation,
   useOrganizerRegisterMutation,
   useGoogleAuthRegisterMutation,
+  useGetProfileQuery,
 } = authApi;
