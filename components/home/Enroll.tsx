@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 export const Enroll = () => {
   return (
     <div className=" p-4 flex flex-col lg:flex-row gap-20 justify-between items-center w-full lg:w-[80%] mx-auto">
-      <div className="lg:w-full w-80">
+      <div className="lg:w-[50%] w-80">
         <Image
           src="/assets/Frame 1618872957.png"
           alt="#"
@@ -17,14 +17,12 @@ export const Enroll = () => {
       </div>
       <div className="my-5">
         <h2 className="text-[32px] text-[#1E293B] text-bold  ">
-          Enroll gives you more
-          <span className="text-primary"> Personalize</span> event Host
+          Contribute to
+          <span className="text-primary"> youth</span> empowerment
         </h2>
         <p className="text-[16px] my-5 ">
-          Elementum delivered the site with inthe timeline as they requested.
-          Inthe end, the client found a 50% increase in traffic with in days
-          since its launch. They also had an impressive ability to use
-          technologies that
+          Create events and share youth development opportunities to empower
+          Bangladeshi youth. Manage your event with the Enroll Toolbox.
         </p>
         <div className="">
           <AppButton
