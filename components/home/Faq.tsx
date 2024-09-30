@@ -42,14 +42,16 @@ export const Faq = () => {
   ];
 
   return (
-    <div className="w-full p-4 lg:w-[80%] mx-auto flex gap-[50px]">
+    <div className="w-full p-4 lg:w-[80%] mx-auto md:flex gap-[50px]">
       {/* Static Frequently Asked Questions Section */}
       <div className=" text-center lg:text-left flex flex-col gap-6 lg:w-[800px]">
         <div>
-          <h1 className="text-[48px] font-bold">Frequently asked Questions</h1>
+          <h1 className="text-[40px] md:font-bold font-bold ">
+            Frequently asked Questions
+          </h1>
         </div>
         <div>
-          <p className="text-[16px] text-[#64748B]">
+          <p className=" text-[#64748B]">
             Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras
             pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia
             massa non porttitor.
@@ -69,7 +71,7 @@ export const Faq = () => {
         {faqData.map((faq, index) => (
           <div key={index}>
             <hr />
-            <div className="text-[24px] py-5 flex items-center justify-between">
+            <div className="md:text-[24px] py-5 flex items-center justify-between">
               <p>{faq.question}</p>
               <div
                 className="w-5 cursor-pointer"
@@ -86,7 +88,7 @@ export const Faq = () => {
               style={{ transitionProperty: "max-height, opacity" }}
             >
               <div
-                className={`text-[#64748B] text-[16px] transition-opacity duration-500 ease-in-out ${
+                className={`text-[#64748B] text-[14px] text-justify transition-opacity duration-500 ease-in-out ${
                   openQuestionIndex === index ? "opacity-100" : "opacity-0"
                 }`}
               >

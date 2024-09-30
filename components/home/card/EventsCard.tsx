@@ -19,7 +19,7 @@ const EventsCard = ({ event }: TEventsCard) => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="shadow-md rounded-md flex flex-col gap-6 bg-[#F1F5F9] w-full">
+    <div className="shadow-md rounded-md flex flex-col gap-6 bg-[#F1F5F9] w-auto h-auto">
       <div className="relative">
         <p className="bg-[#D0F5E1] text-[12px] rounded-full text-[#27BE69] w-25 absolute right-4 top-4 py-1 px-2">
           Seats available
