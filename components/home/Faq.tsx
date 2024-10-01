@@ -7,12 +7,12 @@ import { LuPlus, LuMinus } from "react-icons/lu";
 
 export const Faq = () => {
   // State to track which questions are open
-  const [openQuestionIndex, setOpenQuestionIndex] = useState(null);
+  const [openQuestionIndex, setOpenQuestionIndex] = useState(0);
 
   // Toggle function to open or close questions
-  const toggleQuestion = (index) => {
+  const toggleQuestion = (index: number) => {
     if (openQuestionIndex === index) {
-      setOpenQuestionIndex(null);
+      setOpenQuestionIndex(0);
     } else {
       setOpenQuestionIndex(index);
     }
