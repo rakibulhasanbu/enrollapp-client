@@ -1,9 +1,13 @@
+import Image from "next/image";
+
 const Footer = () => {
   return (
     <footer className=" w-full px-4 lg:px-0 lg:w-[80%] mx-auto flex flex-col mt-20">
       <div className=" lg:flex justify-between items-center mb-3 lg:my-10">
         <div className="flex items-center justify-between">
-          <h1 className="text-[32px] font-bold">Logo</h1>
+          <h1 className="">
+            <Image src="/assets/logo.png" width={80} height={80} alt="#" />
+          </h1>
           <div className="flex lg:hidden justify-center items-center gap-6">
             <img src="/assets/logo-twitter 2.png" alt="" />
 

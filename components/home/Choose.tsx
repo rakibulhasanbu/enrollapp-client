@@ -3,7 +3,7 @@ import Image from "next/image";
 export const Choose = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center gap-20 w-full p-4 lg:w-[80%] mx-auto mt-10">
-      <div>
+      <div className="md:w-[50%]">
         <Image
           src="/assets/3 1.png"
           alt="#"
@@ -14,19 +14,15 @@ export const Choose = () => {
         />
       </div>
       <div className="">
-        <h1 className="text-[36px]">
-          Collaborate <span className="text-primary">Thousand</span> of
-          Organizations
+        <h1 className="text-4xl">
+          Intuitive interface for easy
+          <span className="text-primary">event discovery </span> and seamless
+          registration
         </h1>
         <p className="text-[16px] my-3">
-          Elementum delivered the site with inthe timeline as they requested.
-          Inthe end, the client found a 50% increase in traffic with in days
-          since its launch. They also had an impressive ability to use
-          technologies that
-        </p>
-        <p className="text-[16px]">
-          the company hasn`t used, which have also proved to be easy to use and
-          reliable
+          Our user-friendly platform simplifies the search for relevant events,
+          allowing users to effortlessly discover and register for opportunities
+          that match their career goals.
         </p>
       </div>
     </div>
