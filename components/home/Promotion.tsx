@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Promotion = () => {
   return (
-    <div className="flex flex-col-reverse lg:flex-row justify-between my-20 items-center w-[80%] mx-auto">
+    <div className="flex flex-col-reverse lg:flex-row justify-between my-20 items-center w-full p-4 md:w-[80%] mx-auto">
       <div className="md:w-[50%]">
         <h2 className="text-[36px]  ">
           <span className="text-primary ">Free event management </span> tool for

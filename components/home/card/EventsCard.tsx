@@ -19,7 +19,7 @@ const EventsCard = ({ event }: TEventsCard) => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="shadow-md rounded-md flex flex-col gap-6 bg-[#F1F5F9] w-auto h-auto">
+    <div className="shadow-md rounded-md flex flex-col gap-6 bg-[#F1F5F9]  ">
       <div className="relative">
         <p className="bg-[#D0F5E1] text-[12px] rounded-full text-[#27BE69] w-25 absolute right-4 top-4 py-1 px-2">
           Seats available
@@ -27,7 +27,7 @@ const EventsCard = ({ event }: TEventsCard) => {
         <Image
           src={event?.eventBanner}
           alt="Event"
-          className="bg-cover h-[280px] w-full rounded-t-md"
+          className="bg-cover h-[250px] w-full rounded-t-md"
           width={400}
           height={300}
         />
@@ -64,7 +64,7 @@ const EventsCard = ({ event }: TEventsCard) => {
             TK {event?.registrationFee}
           </p>
         </div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-center gap-10 items-center">
           {event?.organizer?._id === organizer?._id ? (
             <AppButton
               href={`/dashboard/manage-my-event`}
