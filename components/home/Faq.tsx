@@ -6,15 +6,17 @@ import { FaArrowRight } from "react-icons/fa";
 import { LuPlus, LuMinus } from "react-icons/lu";
 
 export const Faq = () => {
-  // State to track which questions are open
-  const [openQuestionIndex, setOpenQuestionIndex] = useState(0);
+  // Set the default state to null so no questions are open initially
+  const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
+    null
+  );
 
   // Toggle function to open or close questions
   const toggleQuestion = (index: number) => {
     if (openQuestionIndex === index) {
-      setOpenQuestionIndex(0);
+      setOpenQuestionIndex(null); // Close if it's the same question
     } else {
-      setOpenQuestionIndex(index);
+      setOpenQuestionIndex(index); // Open the clicked question
     }
   };
 
@@ -44,14 +46,14 @@ export const Faq = () => {
   return (
     <div className="w-full p-4 lg:w-[80%] mx-auto md:flex gap-[50px]">
       {/* Static Frequently Asked Questions Section */}
-      <div className=" text-center lg:text-left flex flex-col gap-6 lg:w-[800px]">
+      <div className="text-center lg:text-left flex flex-col gap-6 lg:w-[800px]">
         <div>
-          <h1 className="text-[40px] md:font-bold font-bold ">
+          <h1 className="text-[40px] md:font-bold font-bold">
             Frequently asked Questions
           </h1>
         </div>
         <div>
-          <p className=" text-[#64748B]">
+          <p className="text-[#64748B]">
             Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras
             pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia
             massa non porttitor.
@@ -71,12 +73,12 @@ export const Faq = () => {
         {faqData.map((faq, index) => (
           <div key={index}>
             <hr />
-            <div className="md:text-[24px] py-5 flex items-center justify-between">
+            <div
+              className="lg:text-[20px] xl:text-[24px] py-5 flex items-center justify-between cursor-pointer"
+              onClick={() => toggleQuestion(index)}
+            >
               <p>{faq.question}</p>
-              <div
-                className="w-5 cursor-pointer"
-                onClick={() => toggleQuestion(index)}
-              >
+              <div className="w-5">
                 {openQuestionIndex === index ? <LuMinus /> : <LuPlus />}
               </div>
             </div>
