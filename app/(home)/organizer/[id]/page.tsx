@@ -59,7 +59,7 @@ const Profile = () => {
 
               {/* Organizer Info Section */}
               <div className="lg:flex lg:items-center lg:justify-between p-4 lg:p-10 -mt-14 lg:-mt-28 w-full">
-                <div className="flex z-50 relative gap-2 items-center lg:justify-center">
+                <div className="flex z-30 relative gap-2 items-center lg:justify-center">
                   <Image
                     width={160}
                     height={160}
