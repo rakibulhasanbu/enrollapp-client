@@ -2,13 +2,13 @@ import Image from "next/image";
 
 export const Promotion = () => {
   return (
-    <div className="flex flex-col-reverse lg:flex-row justify-between my-20 items-center w-full p-4 md:w-[80%] mx-auto">
+    <div className="flex flex-col-reverse lg:flex-row justify-between  items-center w-full p-4 md:w-[80%] mx-auto">
       <div className="md:w-[50%]">
-        <h2 className="text-[36px]  ">
+        <h2 className="text-[36px] lg:font-medium ">
           <span className="text-primary ">Free event management </span> tool for
           organisations and clubs
         </h2>
-        <p className="text-16px mt-3">
+        <p className=" mt-3 lg:font-medium">
           Organisations and clubs can manage their events with Enroll Toolbox to
           simplify the process of online registration, and communication from a
           single, integrated dashboard and promote their events.

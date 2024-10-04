@@ -8,6 +8,14 @@
   display: block !important;
 }
 
+.space-all-components {
+  @apply my-20;
+}
+
+.space-all-title {
+  @apply my-6;
+}
+
 .ant-select-selection {
   border-radius: 8px !important;
   outline: none !important;

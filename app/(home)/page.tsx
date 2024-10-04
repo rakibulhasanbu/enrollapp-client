@@ -16,9 +16,7 @@ const page = () => {
     <>
       <Banner />
       {/* <Frame /> */}
-      <div className="text-center">
-        <AppTitle head="Explore Opportunities" paragraph="" />
-      </div>
+
       <Opportunities />
 
       <Events />
@@ -33,7 +31,6 @@ const page = () => {
       <Choose />
       <Promotion />
       <Enroll />
-      <Partner />
       <PartnerDetails />
       <Faq />
       <div className=" lg:w-[80%] mx-auto">

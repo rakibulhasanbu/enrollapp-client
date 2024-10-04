@@ -46,14 +46,14 @@ export const Faq = () => {
   return (
     <div className="w-full p-4 lg:w-[80%] mx-auto md:flex gap-[50px]">
       {/* Static Frequently Asked Questions Section */}
-      <div className="text-center lg:text-left flex flex-col gap-6 lg:w-[800px]">
+      <div className="text-center lg:text-left flex flex-col gap-10 lg:w-[800px]">
         <div>
           <h1 className="text-[40px] md:font-bold font-bold">
             Frequently asked Questions
           </h1>
         </div>
         <div>
-          <p className="text-[#64748B]">
+          <p className="text-[#64748B] lg:text-2xl lg:font-medium">
             Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras
             pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia
             massa non porttitor.
@@ -94,7 +94,7 @@ export const Faq = () => {
                   openQuestionIndex === index ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <p>{faq.answer}</p>
+                <p className="lg:text-xl lg:font-medium">{faq.answer}</p>
               </div>
             </div>
           </div>

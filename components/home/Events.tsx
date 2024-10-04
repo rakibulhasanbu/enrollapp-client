@@ -41,7 +41,7 @@ export const Events = () => {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -52,11 +52,18 @@ export const Events = () => {
           slidesToScroll: 1,
         },
       },
+      {
+        breakpoint: 2100,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
     ],
   };
 
   return (
-    <div className="w-full  p-4 lg:container mx-auto">
+    <div className="w-full p-4 lg:container mx-auto">
       <div className="text-center lg:text-left flex flex-col mb-2 lg:mb-0 lg:flex-row justify-between items-center lg:container lg:mx-auto">
         <AppTitle
           head="Upcoming Events"
@@ -69,7 +76,7 @@ export const Events = () => {
           icon={<FaArrowRight />}
         />
       </div>
-      <Slider {...settings}>
+      <Slider {...settings} className="space-all-components">
         {data?.data?.map((event: IEvent) => (
           <div key={event?._id} className="px-2">
             <EventsCard event={event} />

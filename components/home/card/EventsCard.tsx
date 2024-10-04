@@ -64,7 +64,7 @@ const EventsCard = ({ event }: TEventsCard) => {
             TK {event?.registrationFee}
           </p>
         </div>
-        <div className="flex justify-center gap-10 items-center">
+        <div className="flex justify-between   items-center">
           {event?.organizer?._id === organizer?._id ? (
             <AppButton
               href={`/dashboard/manage-my-event`}

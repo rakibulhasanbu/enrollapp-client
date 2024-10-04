@@ -7,7 +7,7 @@ const Subscription = () => {
     <Link
       href={"https://whatsapp.com/channel/0029VaoTDCQGE56bhsAb7C2j"}
       target="_blank"
-      className="block mt-20"
+      className="block space-all-components"
     >
       <Image
         src={footer}

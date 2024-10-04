@@ -9,7 +9,7 @@ type AppCard = {
 
 export const OpportunitiesCard = ({ id, img, h3, p }: AppCard) => {
   return (
-    <div className="flex flex-1 items-center flex-col text-center ">
+    <div className="flex flex-1 p-6 items-center flex-col text-center text-[#64748B] ">
       <Image
         src={img}
         width={100}
