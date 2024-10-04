@@ -23,6 +23,8 @@ export interface TOrganizer {
   orgLogo: string;
 }
 
+
+
 export const OrganizationType = [
   "Non-Profit Organization",
   "Youth Organization",

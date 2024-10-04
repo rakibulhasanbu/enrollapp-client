@@ -15,7 +15,7 @@ const page = () => {
   return (
     <>
       <Banner />
-      <Frame />
+      {/* <Frame /> */}
       <div className="text-center">
         <AppTitle head="Explore Opportunities" paragraph="" />
       </div>

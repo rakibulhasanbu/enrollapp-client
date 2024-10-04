@@ -10,8 +10,8 @@ const Banner = () => {
       }}
     >
       <h1 className="text-white  lg:text-[56px]  lg:max-w-[70%] text-center font-bold ">
-        <span className="text-[#0074D9]"> Present</span> your Passion in a
-        unique outstanding <span className="text-[#0074D9]">Mind</span>
+        Your <span className="text-[#0074D9]"> Launchpad </span> for Future
+        Ready <span className="text-[#0074D9]">Skills & Connections</span>
       </h1>
       <p className="lg:text-[16px] text-center text-[#F1F5F9] lg:my-3">
         A Platform Where You Can Find Events According to Your Passion
