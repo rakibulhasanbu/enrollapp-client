@@ -13,7 +13,10 @@ export interface TOrganizer {
   serviceArea: string;
   isVerified: boolean;
   website: string;
-  socialMediaLinks: string[];
+  socialMediaLinks: {
+    name: string;
+    url: string;
+  }[];
   contactPerson: {
     imageUrl: string;
     name: string;
@@ -22,8 +25,6 @@ export interface TOrganizer {
   };
   orgLogo: string;
 }
-
-
 
 export const OrganizationType = [
   "Non-Profit Organization",

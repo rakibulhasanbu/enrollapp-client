@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from "react";
 import AppTableSkeleton from "./AppTableSkeleton";
 import AppRenderReduxData from "./AppRenderReduxData";
 import useDebounce from "@/hooks/useDebounce";
+import { TableRowSelection } from "antd/es/table/interface";
 
 type TTableProps = {
   headerText?: string;
@@ -17,6 +18,7 @@ type TTableProps = {
   onInputChange?: (text: string) => void;
   setPage?: (value: number) => void;
   tabs?: ReactNode;
+  rowSelection?: TableRowSelection<any>;
 };
 
 const AppTable = ({
@@ -30,6 +32,7 @@ const AppTable = ({
   loadingComponent,
   setPage,
   tabs,
+  rowSelection,
 }: TTableProps) => {
   const [input, setInput] = useState("");
   const debounceInput = useDebounce(input, 500);
@@ -83,17 +86,20 @@ const AppTable = ({
             loadingComponent={loadingComponent || <AppTableSkeleton />}
             queryData={infoQuery}
             showData={(data) => {
-              console.log(data.data);
+              // console.log(data.data);
               return (
                 <Table
                   showHeader={header}
                   columns={columns}
+                  rowSelection={rowSelection}
                   dataSource={
                     Array.isArray(data?.data.data)
                       ? data?.data?.data
                       : [data?.data?.data]
                   }
-                  rowKey="id"
+                  rowKey={(record) => {
+                    return record.id || record._id;
+                  }}
                   pagination={
                     setPage
                       ? {

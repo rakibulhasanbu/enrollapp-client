@@ -25,7 +25,7 @@ const persistedAuthSlice = persistReducer(persistConfig, authSlice);
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
-    auth: authSlice,
+    auth: persistedAuthSlice,
     event: eventSlice,
   },
   devTools: process.env.NODE_ENV !== "production",

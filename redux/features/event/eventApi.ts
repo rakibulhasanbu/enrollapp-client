@@ -87,6 +87,29 @@ const EventApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.event],
     }),
+    exportResponsesToExcel: builder.query<Blob, string>({
+      query: (formId) => ({
+        url: `/export-to-excel/${formId}`,
+        method: METHOD.GET,
+        responseHandler: (response) => response.blob(),
+      }),
+    }),
+    sendEmailToUsers: builder.mutation({
+      query: (data) => ({
+        url: `/send-email/${data.eventId}`,
+        method: METHOD.POST,
+        body: data.data,
+      }),
+    }),
+    uploadImage: builder.mutation({
+      query: (info) => {
+        return {
+          url: `https://image-upload-rakibul.vercel.app/api/upload`,
+          method: "POST",
+          body: info,
+        };
+      },
+    }),
   }),
 });
 
@@ -102,4 +125,7 @@ export const {
   useGetFormByIdQuery,
   useSubmitFormMutation,
   useGetSubmittedResponsesQuery,
+  useLazyExportResponsesToExcelQuery,
+  useSendEmailToUsersMutation,
+  useUploadImageMutation,
 } = EventApi;

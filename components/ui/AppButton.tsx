@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -36,13 +37,16 @@ const AppButton = ({
   return href ? (
     <Link href={href} className="block min-w-fit">
       <button
-        className={`${icon && "flex items-center gap-2"} ${
+        className={cn(
+          icon && "flex items-center gap-2",
           variant === "filled"
             ? filledClass
             : variant === "outlined"
             ? outlineClass
-            : noDesignClass
-        } text-sm md:text-base lg:text-lg xl:text-xl font-semibold min-w-fit ${className} `}
+            : noDesignClass,
+          "text-sm md:text-base lg:text-lg xl:text-xl font-semibold min-w-fit",
+          className
+        )}
         type={type}
       >
         {iconPosition === "left" && icon} {label}{" "}

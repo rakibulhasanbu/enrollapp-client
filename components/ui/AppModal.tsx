@@ -16,6 +16,7 @@ type TAppModalProps = {
   ) => void;
   modalOpen?: boolean;
   closeable?: boolean;
+  className?: string;
   setModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -32,6 +33,7 @@ const AppModal = ({
   modalOpen,
   setModalOpen,
   closeable,
+  className,
 }: TAppModalProps) => {
   const [open, setOpen] = useState(false);
 
@@ -63,6 +65,7 @@ const AppModal = ({
             )}
           </>
         }
+        className={className}
         centered
         width="auto"
         open={modalOpen === undefined ? open : modalOpen}

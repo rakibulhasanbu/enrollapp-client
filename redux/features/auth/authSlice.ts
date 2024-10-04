@@ -6,14 +6,12 @@ type TIState = {
   user: TUser | null;
   organizer: TOrganizer | null;
   accessToken: string | null;
-  isLoading: boolean;
 };
 
 const initialState: TIState = {
   user: null,
   organizer: null,
   accessToken: null,
-  isLoading: true,
 };
 
 const authSlice = createSlice({
@@ -22,8 +20,7 @@ const authSlice = createSlice({
   reducers: {
     setAccessToken: (state, action) => {
       state.accessToken = action.payload;
-      state.isLoading = false;
-      localStorage.setItem("accessToken", action.payload);
+      // localStorage.setItem("accessToken", action.payload);
     },
     setUser: (state, action) => {
       state.user = action.payload;

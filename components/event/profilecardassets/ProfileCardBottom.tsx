@@ -3,13 +3,11 @@ import Link from "next/link";
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa"; // Add any icons you want
 import { IoLogoInstagram } from "react-icons/io5";
 
-interface SocialMediaLink {
-  name: string;
-  url: string;
-}
-
 interface ProfileCardBottomProps {
-  socialMediaLinks: SocialMediaLink[];
+  socialMediaLinks: {
+    name: string;
+    url: string;
+  }[];
 }
 
 const ProfileCardBottom = ({ socialMediaLinks }: ProfileCardBottomProps) => {
@@ -26,18 +24,15 @@ const ProfileCardBottom = ({ socialMediaLinks }: ProfileCardBottomProps) => {
         <p className="font-semibold">Social Media</p>
       </div>
 
-    
       <div className="flex flex-col gap-2 mt-4">
         {socialMediaLinks?.map((link, index) => (
           <div key={index} className="flex gap-4 items-center cursor-pointer">
-          
             {link.name === "Facebook" && <FaFacebook />}
             {link.name === "Instagram" && <IoLogoInstagram />}
             {link.name === "Twitter" && <FaTwitter />}
             {link.name === "LinkedIn" && <FaLinkedin />}
             {link.name === "GitHub" && <FaGithub />}
 
-        
             <Link href={link.url} target="_blank">
               <p>{link.name}</p>
             </Link>

@@ -1,6 +1,7 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 type AppEventBanner = {
   label?: string;
@@ -8,6 +9,7 @@ type AppEventBanner = {
   onlyView?: Boolean;
   banner?: string;
   setBanner?: (banner: string) => void;
+  setRawFile?: (banner: File | null) => void;
 };
 
 const EventBanner = ({
@@ -16,11 +18,28 @@ const EventBanner = ({
   imgSrc,
   banner,
   setBanner,
+  setRawFile,
 }: AppEventBanner) => {
   const [dragging, setDragging] = useState(false);
 
   const handleFileChange = (e: any) => {
+    const maxSizeInBytes = 2 * 1024 * 1024;
     const file = e.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    if (file.size > maxSizeInBytes) {
+      return toast.error("Your file exceeds the 2 MB size limit!", {
+        toastId: 1,
+      });
+    }
+
+    if (setRawFile) {
+      setRawFile(file);
+    }
+
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
@@ -46,7 +65,19 @@ const EventBanner = ({
     e.preventDefault();
     setDragging(false);
 
+    const maxSizeInBytes = 2 * 1024 * 1024;
     const file = e.dataTransfer.files?.[0];
+
+    if (file?.size > maxSizeInBytes) {
+      return toast.error("Your file exceeds the 2 MB size limit!", {
+        toastId: 1,
+      });
+    }
+
+    if (setRawFile) {
+      setRawFile(file);
+    }
+
     if (file) {
       const reader = new FileReader();
       if (setBanner) {

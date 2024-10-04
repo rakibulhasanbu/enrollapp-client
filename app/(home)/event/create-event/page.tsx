@@ -7,7 +7,10 @@ import AppFormInput from "@/components/ui/AppFormInput";
 import { useForm, SubmitHandler } from "react-hook-form";
 import AppFormSelect from "@/components/ui/AppFormSelect";
 import { OrganizationType } from "@/types";
-import { useCreateEventMutation } from "@/redux/features/event/eventApi";
+import {
+  useCreateEventMutation,
+  useUploadImageMutation,
+} from "@/redux/features/event/eventApi";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import AppFormTextarea from "@/components/ui/AppFormTextarea";
@@ -20,6 +23,7 @@ import { setEventId } from "@/redux/features/event/eventSlice";
 type Inputs = {
   title: string;
   category: string;
+  eventMode: string;
   eventType: string;
   location: string;
   eventStartDate: Date;
@@ -31,12 +35,13 @@ type Inputs = {
 };
 
 const CreateEventPage = () => {
-  const [banner, setBanner] = useState(
-    "https://plus.unsplash.com/premium_photo-1701590725747-ac131d4dcffd?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  );
+  const [rawFile, setRawFile] = useState<File | null>(null);
+  const [banner, setBanner] = useState("");
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [createEvent] = useCreateEventMutation();
+  const [uploadImage] = useUploadImageMutation();
+
   const {
     register,
     handleSubmit,
@@ -46,13 +51,19 @@ const CreateEventPage = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    if (!banner) {
-      return toast.error("please upload banner and try again.");
+    if (!rawFile) {
+      return toast.error("please upload banner and try again.", { toastId: 1 });
     }
-    console.log(data);
+    setBanner("");
+    router.push("/event/event-form");
+
+    const formData = new FormData();
+    formData.append("file", rawFile);
+
+    const response = await uploadImage(formData).unwrap();
     const submittedData = {
       ...data,
-      eventBanner: banner,
+      eventBanner: response?.data[0]?.url,
     };
 
     await createEvent(submittedData)
@@ -61,7 +72,6 @@ const CreateEventPage = () => {
         console.log("event id", res?.data?._id);
         // toast.success("Event Create successful!", { toastId: 1 });
         dispatch(setEventId(res?.data?._id));
-        router.push("/event/event-form");
       })
       .catch((res: any) => {
         console.log(res);
@@ -71,21 +81,65 @@ const CreateEventPage = () => {
       });
   };
 
-  const eventTypes = [
+  const eventModes = [
     { value: "Online", label: "Online" },
     { value: "Offline", label: "Offline" },
   ];
 
-  const organizationTypeOptions = OrganizationType.map((type) => ({
-    value: type,
-    label: type,
-  }));
+  const eventTypes = [
+    { value: "Paid", label: "Paid" },
+    { value: "Free", label: "Free" },
+  ];
+
+  const organizationTypeOptions = [
+    {
+      label: "Competitions",
+      value: "Competitions",
+    },
+    {
+      label: "Seminars or Webinars",
+      value: "Seminars or Webinars",
+    },
+    {
+      label: "Fellowships",
+      value: "Fellowships",
+    },
+    {
+      label: "Scholarship",
+      value: "Scholarship",
+    },
+    {
+      label: "Workshop",
+      value: "Workshop",
+    },
+    {
+      label: "Skill Development Training",
+      value: "Skill Development Training",
+    },
+    {
+      label: "Campaign or Field Activities",
+      value: "Campaign or Field Activities",
+    },
+    {
+      label: "Campus Ambassador Program",
+      value: "Campus Ambassador Program",
+    },
+    {
+      label: "Miscellaneous",
+      value: "Miscellaneous",
+    },
+  ];
 
   return (
     <OrganizerPrivetLayout>
       <AnimationWrapper keyValue="event create page">
         <div className="pt-40 container px-4 lg:px-20 2xl:px-40 mx-auto">
-          <EventBanner onlyView={false} banner={banner} setBanner={setBanner} />
+          <EventBanner
+            setRawFile={setRawFile}
+            onlyView={false}
+            banner={banner}
+            setBanner={setBanner}
+          />
 
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -100,28 +154,79 @@ const CreateEventPage = () => {
               error={errors.title}
               required
             />
-
-            <div
-              className={`grid gap-4 ${
-                watch("eventType") === "Offline" ? "grid-cols-2" : "grid-cols-1"
-              }`}
-            >
-              {/* <AppFormSelect
+            <div className="flex justify-between items-start gap-4 ">
+              <AppFormSelect
+                label={"Event Category"}
                 placeholder="Category"
                 name="category"
                 required
                 control={control}
-                options={meansOfIdentificationOptions}
-              /> */}
+                options={organizationTypeOptions}
+              />
+              <AppFormInput
+                label="Event Start Date"
+                placeholder="Event Date"
+                type="date"
+                name="eventStartDate"
+                validation={{
+                  validate: () => {
+                    new Date(watch("eventStartDate")) >= new Date() ||
+                      "Start date cannot be in the past";
+                  },
+                }}
+                register={register}
+                required
+                error={errors.eventStartDate}
+              />
+            </div>
+
+            <div className="flex justify-between items-start gap-4 ">
+              <AppFormInput
+                label="Event End Date"
+                placeholder="Event End Date"
+                type="date"
+                name="eventEndDate"
+                register={register}
+                validation={{
+                  validate: () =>
+                    new Date(watch("eventEndDate")) >=
+                      new Date(watch("eventStartDate")) ||
+                    "End date cannot be before the start date",
+                }}
+                error={errors.eventEndDate}
+              />
+
+              <AppFormInput
+                label="Registration Deadline"
+                placeholder="Registration Deadline"
+                type="date"
+                name="registrationDeadline"
+                register={register}
+                validation={{
+                  validate: () => {
+                    new Date(watch("registrationDeadline")) >= new Date() ||
+                      "Registration Deadline cannot be in the past";
+                  },
+                }}
+                error={errors.registrationDeadline}
+                required
+              />
+            </div>
+
+            <div
+              className={`grid gap-4 ${
+                watch("eventMode") === "Offline" ? "grid-cols-2" : "grid-cols-1"
+              }`}
+            >
               <AppFormSelect
-                label="Event Type"
+                label="Event Mode"
                 placeholder="Type"
-                name="eventType"
+                name="eventMode"
                 required
                 control={control}
-                options={eventTypes}
+                options={eventModes}
               />
-              {watch("eventType") === "Offline" && (
+              {watch("eventMode") === "Offline" && (
                 <AppFormInput
                   label="Location"
                   placeholder="Enter event location"
@@ -133,43 +238,32 @@ const CreateEventPage = () => {
               )}
             </div>
 
-            <div className="flex justify-between items-start gap-4 ">
-              <AppFormInput
-                label="Event Start Date"
-                placeholder="Event Date"
-                type="date"
-                name="eventStartDate"
-                register={register}
+            <div
+              className={`grid gap-4 ${
+                watch("eventType") === "Paid" ? "grid-cols-2" : "grid-cols-1"
+              }`}
+            >
+              <AppFormSelect
+                label="Event Type"
+                placeholder="Type"
+                name="eventType"
                 required
-                error={errors.eventStartDate}
+                control={control}
+                options={eventTypes}
               />
-              <AppFormInput
-                label="Event End Date"
-                placeholder="Event End Date"
-                type="date"
-                name="eventEndDate"
-                register={register}
-                error={errors.eventEndDate}
-              />
+              {watch("eventType") === "Paid" && (
+                <AppFormInput
+                  label="Fees"
+                  placeholder="Registration Fee"
+                  type="number"
+                  name="registrationFee"
+                  register={register}
+                  error={errors.registrationFee}
+                  required
+                />
+              )}
             </div>
-            <AppFormInput
-              label="Registration Deadline"
-              placeholder="Registration Deadline"
-              type="date"
-              name="registrationDeadline"
-              register={register}
-              error={errors.registrationDeadline}
-              required
-            />
-            <AppFormInput
-              label="Fees"
-              placeholder="Registration Fee"
-              type="number"
-              name="registrationFee"
-              register={register}
-              error={errors.registrationFee}
-              required
-            />
+
             <AppFormTextarea
               label="Add Description"
               placeholder="Write Whatever You Want"

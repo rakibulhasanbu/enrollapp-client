@@ -12,6 +12,7 @@ type TAppFormInputProps = {
   required?: boolean;
   readOnly?: boolean;
   className?: string;
+  validation?: any;
 };
 
 const AppFormInput = ({
@@ -24,6 +25,7 @@ const AppFormInput = ({
   required,
   readOnly,
   className,
+  validation,
 }: TAppFormInputProps) => {
   const [show, setShow] = useState(false);
 
@@ -31,7 +33,7 @@ const AppFormInput = ({
     <div className="relative flex flex-col items-start justify-normal gap-2 w-full">
       <label className="text-[20px] text-[#475569]" htmlFor={name}>
         {label}
-        {/* {required ? "*" : ""} */}
+        {label && required ? "*" : ""}
       </label>
       <input
         id={name}
@@ -39,10 +41,10 @@ const AppFormInput = ({
         className={`outline-none border p-3 rounded-lg w-full text-[16px] ${
           error ? "border-red-500" : "border-borderColor"
         } ${className}`}
-        // {...register(name, { ...(required && { required: true }) })}
         {...register(name, {
           ...(required && { required: true }),
           ...(type === "number" && { valueAsNumber: true }),
+          ...validation,
         })}
         placeholder={placeholder}
         type={
@@ -73,7 +75,7 @@ const AppFormInput = ({
 
       {error && (
         <p className="text-sm text-red-500 text-left">
-          {label || name} is required
+          {error.message || `${label || name} is required`}
         </p>
       )}
     </div>

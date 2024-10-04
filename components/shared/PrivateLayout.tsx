@@ -21,9 +21,9 @@ const PrivateLayout = ({
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useAppDispatch();
+
   const user = useAppSelector(selectCurrentUser);
   const organizer = useAppSelector(selectCurrentOrganizer);
-  const isLoading = useAppSelector((state) => state.auth.isLoading);
   const accessToken = useAppSelector(useCurrentToken);
 
   useEffect(() => {
@@ -39,20 +39,11 @@ const PrivateLayout = ({
       )}`;
       router.push(redirectTo);
     }
-  }, [
-    user,
-    roles,
-    accessToken,
-    pathname,
-    router,
-    dispatch,
-    isLoading,
-    organizer,
-  ]);
+  }, [user, roles, accessToken, pathname, router, dispatch, organizer]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
 
   if ((user && roles && !roles.includes(user?.role)) || !accessToken) {
     return null;

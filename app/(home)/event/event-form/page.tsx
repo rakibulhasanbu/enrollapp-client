@@ -45,8 +45,8 @@ const Page = () => {
   const router = useRouter();
   const title = useAppSelector((state) => state.event.title);
   const fields = useAppSelector((state) => state.event.fields);
-  // const eventId = useAppSelector((state) => state.event.eventId);
-  const eventId = "66f2e5b8403e662562f5d483";
+  const eventId = useAppSelector((state) => state.event.eventId);
+
   const formId = useAppSelector((state) => state.event.formId);
 
   const [openQuestion, setOpenQuestion] = useState(false);
@@ -86,9 +86,9 @@ const Page = () => {
   const [createForm] = useCreateFormMutation();
   const [updateEvent] = useUpdatedEventMutation();
 
-  // useEffect(() => {
-  //   setValue("title", "Untitled From Title");
-  // }, []);
+  useEffect(() => {
+    setLink(`${process.env.NEXT_PUBLIC_BASE_URL}/form/${formId}`);
+  }, [formId]);
 
   const questionType = [
     {
