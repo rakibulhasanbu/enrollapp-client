@@ -1,11 +1,21 @@
 import Image from "next/image";
-import { FaFacebook } from "react-icons/fa";
+import Link from "next/link";
+import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa"; // Add any icons you want
 import { IoLogoInstagram } from "react-icons/io5";
 
-const ProfileCardBottom = () => {
+interface SocialMediaLink {
+  name: string;
+  url: string;
+}
+
+interface ProfileCardBottomProps {
+  socialMediaLinks: SocialMediaLink[];
+}
+
+const ProfileCardBottom = ({ socialMediaLinks }: ProfileCardBottomProps) => {
   return (
-    <div className="bg-white rounded-xl shadow-lg h-[200px] flex flex-col gap-2 pt-3">
-      <div className="flex items-center justify-center gap-4 ">
+    <div className="bg-white rounded-xl shadow-lg h-auto flex flex-col gap-2 p-4">
+      <div className="flex gap-4 items-center">
         <Image
           width={20}
           height={20}
@@ -13,15 +23,26 @@ const ProfileCardBottom = () => {
           alt=""
           className="w-5"
         />
-        <p>Social Media</p>
+        <p className="font-semibold">Social Media</p>
       </div>
-      <div className="flex items-center justify-center gap-4">
-        <FaFacebook />
-        <p>Facebook</p>
-      </div>
-      <div className="flex items-center justify-center gap-4">
-        <IoLogoInstagram />
-        <p>Instagram</p>
+
+    
+      <div className="flex flex-col gap-2 mt-4">
+        {socialMediaLinks?.map((link, index) => (
+          <div key={index} className="flex gap-4 items-center cursor-pointer">
+          
+            {link.name === "Facebook" && <FaFacebook />}
+            {link.name === "Instagram" && <IoLogoInstagram />}
+            {link.name === "Twitter" && <FaTwitter />}
+            {link.name === "LinkedIn" && <FaLinkedin />}
+            {link.name === "GitHub" && <FaGithub />}
+
+        
+            <Link href={link.url} target="_blank">
+              <p>{link.name}</p>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );
