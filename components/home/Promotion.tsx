@@ -14,14 +14,14 @@ export const Promotion = () => {
           single, integrated dashboard and promote their events.
         </p>
       </div>
-      <div className="lg:w-[500px] w-80 mb-20 md:mb-0">
+      <div className="xl:w-[500px] lg:w-[200px] w-80 mb-20 md:mb-0">
         <Image
           src="/assets/4 1.png"
           alt="#"
           layout="responsive"
-          width={500}
-          height={500}
-          className="w-full"
+          width={50}
+          height={50}
+          className="lg:w-[400px]"
         />
       </div>
     </div>

@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 export const Enroll = () => {
   return (
     <div className=" p-4 flex flex-col lg:flex-row gap-32 justify-between items-center w-full lg:w-[80%] mx-auto">
-      <div className="lg:w-[35%] w-80">
+      <div className="xl:w-[35%] w-80">
         <Image
           src="/assets/Frame 1618872957.png"
           alt="#"

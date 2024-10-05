@@ -17,6 +17,7 @@ export const Events = () => {
   const settings = {
     dots: false,
     infinite: true,
+
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -76,9 +77,9 @@ export const Events = () => {
           icon={<FaArrowRight />}
         />
       </div>
-      <Slider {...settings} className="space-all-components">
+      <Slider {...settings} className="space-all-components ">
         {data?.data?.map((event: IEvent) => (
-          <div key={event?._id} className="px-2">
+          <div key={event?._id} className="px-4">
             <EventsCard event={event} />
           </div>
         ))}

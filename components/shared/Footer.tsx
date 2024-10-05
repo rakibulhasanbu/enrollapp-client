@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaFacebookF, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -9,13 +10,13 @@ const Footer = () => {
             <Image src="/assets/logo.png" width={80} height={80} alt="#" />
           </h1>
           <div className="flex lg:hidden justify-center items-center gap-6">
-            <img src="/assets/logo-twitter 2.png" alt="" />
+            <FaInstagram />
 
-            <img src="/assets/2.png" alt="" />
+            <FaFacebookF />
 
-            <img src="/assets/3.png" alt="" />
+            <FaTwitter />
 
-            <img src="/assets/4.png" alt="" />
+            <FaGithub />
           </div>
         </div>
 
@@ -25,14 +26,14 @@ const Footer = () => {
           <p>Contact Us</p>
           <p>Support</p>
         </div> */}
-        <div className="hidden lg:flex justify-center items-center gap-6">
-          <img src="/assets/logo-twitter 2.png" alt="" />
+        <div className="hidden text-xl lg:flex justify-center items-center gap-6">
+          <FaInstagram />
 
-          <img src="/assets/2.png" alt="" />
+          <FaFacebookF />
 
-          <img src="/assets/3.png" alt="" />
+          <FaTwitter />
 
-          <img src="/assets/4.png" alt="" />
+          <FaGithub />
         </div>
       </div>
       <div className="flex flex-col-reverse lg:flex-row lg:justify-between items-center lg:items-center-none mb-4 mt-1 lg:mt-0">
