@@ -4,7 +4,7 @@ type appAppTitle = {
 };
 export const AppTitle = ({ head, paragraph }: appAppTitle) => {
   return (
-    <div className="my-10 container mx-auto">
+    <div className=" space-all-title  container mx-auto">
       <div className="text-black text-[40px] font-semibold md:font-bold ">
         {head}
       </div>
