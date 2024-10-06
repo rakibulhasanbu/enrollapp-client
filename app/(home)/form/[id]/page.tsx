@@ -89,7 +89,12 @@ const Page = ({ params }: FormPageProps) => {
               transition={{ delay: i * 0.08 }}
               // className="flex flex-col gap-1"
             >
-              <AppQuestion isEditing={false} index={i} field={field} />
+              <AppQuestion
+                register={register}
+                isEditing={false}
+                index={i}
+                field={field}
+              />
               {/* <label className="text-lg font-medium" htmlFor={field.label}>
                 {field.label}
               </label>

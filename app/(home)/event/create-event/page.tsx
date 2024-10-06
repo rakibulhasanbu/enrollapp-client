@@ -25,6 +25,7 @@ type Inputs = {
   category: string;
   eventMode: string;
   eventType: string;
+  totalSeat: number;
   location: string;
   eventStartDate: Date;
   eventEndDate: Date;
@@ -263,6 +264,18 @@ const CreateEventPage = () => {
                 />
               )}
             </div>
+
+            {watch("eventType") === "Paid" && (
+              <AppFormInput
+                label="Total Seat"
+                placeholder="Enter seat number"
+                type="number"
+                name="totalSeat"
+                register={register}
+                error={errors.totalSeat}
+                required
+              />
+            )}
 
             <AppFormTextarea
               label="Add Description"
