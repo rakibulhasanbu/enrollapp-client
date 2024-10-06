@@ -80,11 +80,11 @@ const Page = () => {
       dataIndex: "title",
       className: "min-w-[100px]",
     },
-    {
-      title: "Description",
-      dataIndex: "description",
-      className: "min-w-[100px]",
-    },
+    // {
+    //   title: "Description",
+    //   dataIndex: "description",
+    //   className: "min-w-[100px]",
+    // },
     {
       title: "Event Type",
       dataIndex: "eventType",

@@ -20,6 +20,7 @@ import {
 } from "antd";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { UseFormRegister } from "react-hook-form";
 import { FaArrowDown, FaArrowUp, FaPlus, FaTrash } from "react-icons/fa6";
 import { LuCopy } from "react-icons/lu";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -28,10 +29,15 @@ type TAppQuestion = {
   index: number;
   field: FormField;
   isEditing?: boolean;
+  register: UseFormRegister<any>;
 };
 
-const AppQuestion = ({ index, field, isEditing = true }: TAppQuestion) => {
-  console.log("field?.fieldType :>> ", field);
+const AppQuestion = ({
+  index,
+  field,
+  isEditing = true,
+  register,
+}: TAppQuestion) => {
   const dispatch = useAppDispatch();
   const fields = useAppSelector((state) => state.event.fields);
   const [focused, setFocused] = useState(false);
@@ -208,14 +214,16 @@ const AppQuestion = ({ index, field, isEditing = true }: TAppQuestion) => {
         {field.fieldType === FieldType.Text && (
           <input
             type="text"
-            disabled
+            {...register(field.label)}
+            disabled={isEditing}
             placeholder="Enter your Answer"
             className="outline-none px-2 w-full py-1"
           />
         )}
         {field.fieldType === FieldType.Textarea && (
           <textarea
-            disabled
+            {...register(field.label)}
+            disabled={isEditing}
             placeholder="Enter your Answer"
             className="outline-none px-2 w-full py-1 resize-none min-h-20"
           />
@@ -223,7 +231,8 @@ const AppQuestion = ({ index, field, isEditing = true }: TAppQuestion) => {
         {field.fieldType === FieldType.Date && (
           <input
             type="date"
-            disabled
+            {...register(field.label)}
+            disabled={isEditing}
             placeholder="Enter your Answer"
             className="outline-none px-2 w-full py-1 resize-none"
           />
@@ -231,7 +240,8 @@ const AppQuestion = ({ index, field, isEditing = true }: TAppQuestion) => {
         {field.fieldType === FieldType.File && (
           <input
             type="file"
-            disabled
+            {...register(field.label)}
+            disabled={isEditing}
             placeholder="Enter your Answer"
             className="outline-none px-2 w-full py-1 resize-none"
           />
