@@ -277,7 +277,7 @@ const Page = () => {
               key={field.label + i}
               transition={{ delay: i * 0.08 }}
             >
-              <AppQuestion index={i} field={field} />
+              <AppQuestion register={register} index={i} field={field} />
             </AnimationWrapper>
           ))}
 
