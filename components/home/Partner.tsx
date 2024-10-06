@@ -4,7 +4,7 @@ export const Partner = () => {
   return (
     <div className=" lg:w-[500px] mx-auto space-all-title w-full p-4 ">
       <div className="relative">
-        <div className="lg:w-[200px] w-40 absolute left-20 lg:left-0 lg:top-0 top-4 ">
+        <div className="lg:w-[170px]  w-24 absolute lg:-top-8 -top-2 -left-2  lg:-left-4 ">
           <Image
             src="/assets/Rectangle 657.png"
             alt="#"
@@ -13,13 +13,13 @@ export const Partner = () => {
             height={30}
           />
         </div>
-        <div className="absolute top-5 lg:left-12 left-4">
-          <h1 className="text-[40px] text-center lg:text-left font-semibold lg:font-bold w-full">
-            <span className="text-white"> What </span> our Partner says About Us
+        <div className="absolute   text-center">
+          <h1 className="text-2xl  text-center lg:text-[40px] font-semibold lg:font-bold w-full text-gray-800">
+            <span className="text-white">What</span> Our Partner Says About Us
           </h1>
         </div>
 
-        <div className="lg:w-[371px] absolute right-4 lg:top-40 top-60 w-80">
+        <div className="lg:w-[371px] absolute right-6 lg:top-20 top-10 w-80">
           <Image
             src="/assets/Vector 5 (1).png"
             alt="#"

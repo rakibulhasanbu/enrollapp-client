@@ -9,11 +9,11 @@ const Banner = () => {
         backgroundImage: "url('/assets/banner.png')",
       }}
     >
-      <h1 className="text-white  lg:text-[56px]  lg:max-w-[70%] text-center font-bold ">
+      <h1 className="text-white text-[18px] lg:text-[56px]  lg:max-w-[70%] text-center font-bold ">
         Your <span className="text-[#0074D9]"> Launchpad </span> for Future
         Ready <span className="text-[#0074D9]">Skills & Connections</span>
       </h1>
-      <p className="lg:text-[16px] text-center text-[#F1F5F9] lg:my-3">
+      <p className="lg:text-[16px] text-[14px] text-center text-[#F1F5F9] lg:my-3 mb-2">
         A Platform Where You Can Find Events According to Your Passion
       </p>
       <AppSearchbtn variant="white" />
