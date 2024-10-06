@@ -168,3 +168,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+//todo nav bar thik korbo ar details ar link ta thik korbo

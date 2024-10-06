@@ -7,10 +7,12 @@ import Loading from "@/components/ui/Loading";
 import { useGetEventByIdQuery } from "@/redux/features/event/eventApi";
 import { IEvent } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { FaRegUserCircle } from "react-icons/fa";
 import { GrMapLocation } from "react-icons/gr";
 import { MdDateRange } from "react-icons/md";
+import CountdownTimer from "./../../../../components/ui/AppCounter";
 
 const Page = () => {
   const { id } = useParams();
@@ -55,36 +57,41 @@ const Page = () => {
         </div>
 
         <div className="grid gap-10 md:gap-16 md:grid-cols-2 grid-cols-1 my-8">
-          <h2 className="border-2 font-medium border-borderColor rounded-md md:text-4xl p-4 md:p-6 text-center md:font-medium">
+          {/* <h2 className="border-2 font-medium border-borderColor rounded-md md:text-3xl p-4 md:p-6 text-center md:font-medium">
             Time Left:{" "}
             {new Date(event?.registrationDeadline).toLocaleDateString()}
-          </h2>
-          <h2 className="border-2  border-borderColor p-4 rounded-md md:text-4xl md:p-6 text-center font-medium">
+       
+          </h2> */}
+          <CountdownTimer registrationDeadline="2024-10-10T23:59:59" />
+
+          <h2 className="border-2  border-borderColor p-4 rounded-md md:text-3xl md:p-6 text-center font-medium">
             Registration Fee: {event?.registrationFee}
           </h2>
         </div>
 
         <div className="mt-16 flex gap-3 items-center justify-center  ">
           <h3 className="mb-1 font-medium  md:text-3xl">Organized by</h3>
-          <div className="flex items-center gap-2">
-            {event?.organizer?.orgLogo ? (
-              <Image
-                src={event?.organizer?.orgLogo}
-                className="size-12 2xl:size-20 rounded-full"
-                width={50}
-                height={50}
-                alt="logo"
-              />
-            ) : (
-              <FaRegUserCircle className="text-7xl text-gray text-primary" />
-            )}
-            <div>
-              <h2 className="md:text-4xl font-semibold">
-                {event?.organizer?.name}
-              </h2>
-              <p className="md:text-3xl">{event?.eventType}</p>
+          <Link href={"/"} className=" cursor-pointer">
+            <div className="flex items-center gap-2">
+              {event?.organizer?.orgLogo ? (
+                <Image
+                  src={event?.organizer?.orgLogo}
+                  className="size-12 2xl:size-20 rounded-full"
+                  width={50}
+                  height={50}
+                  alt="logo"
+                />
+              ) : (
+                <FaRegUserCircle className="text-7xl text-gray text-primary" />
+              )}
+              <div>
+                <h2 className="md:text-4xl font-semibold text-primary hover:text-primary opacity-100 ">
+                  {event?.organizer?.name}
+                </h2>
+                <p className="md:text-3xl">{event?.eventType}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
 
         <div className="flex text-2xl gap-4 items-center justify-center mt-10">
