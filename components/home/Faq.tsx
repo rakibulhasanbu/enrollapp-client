@@ -44,22 +44,22 @@ export const Faq = () => {
   ];
 
   return (
-    <div className="w-full p-4 lg:w-[80%] mx-auto md:flex gap-[50px]">
+    <div className="w-full p-4 lg:w-[80%] mx-auto md:flex gap-[50px] space-y-8 md:space-y-0">
       {/* Static Frequently Asked Questions Section */}
-      <div className="text-center lg:text-left flex flex-col gap-10 lg:w-[800px]">
+      <div className="text-center lg:text-left flex flex-col gap-4 lg:w-[800px]">
         <div>
-          <h1 className="text-[40px] md:font-bold font-bold">
-            Frequently asked Questions
+          <h1 className="text-[32px] md:text-[40px] font-bold text-gray-900">
+            Frequently Asked Questions
           </h1>
         </div>
         <div>
-          <p className="text-[#64748B] lg:text-2xl lg:font-medium">
+          <p className="text-[#64748B] lg:text-xl lg:font-medium text-justify leading-relaxed">
             Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras
             pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia
             massa non porttitor.
           </p>
         </div>
-        <div>
+        <div className="mt-2">
           <AppButton
             label="Join Us"
             variant="outlined"
@@ -72,9 +72,9 @@ export const Faq = () => {
       <div className="w-full relative">
         {faqData.map((faq, index) => (
           <div key={index}>
-            <hr />
+            <hr className="border-gray-300" />
             <div
-              className="lg:text-[20px] xl:text-[24px] py-5 flex items-center justify-between cursor-pointer"
+              className="lg:text-[20px] xl:text-[24px] py-5 flex items-center justify-between cursor-pointer hover:text-primary transition-colors duration-300"
               onClick={() => toggleQuestion(index)}
             >
               <p>{faq.question}</p>
@@ -85,21 +85,19 @@ export const Faq = () => {
             {/* FAQ Answer with smooth transition */}
             <div
               className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                openQuestionIndex === index ? "max-h-[200px]" : "max-h-0"
+                openQuestionIndex === index
+                  ? "max-h-[200px] opacity-100"
+                  : "max-h-0 opacity-0"
               }`}
               style={{ transitionProperty: "max-height, opacity" }}
             >
-              <div
-                className={`text-[#64748B] text-[14px] text-justify transition-opacity duration-500 ease-in-out ${
-                  openQuestionIndex === index ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <p className="lg:text-xl lg:font-medium">{faq.answer}</p>
+              <div className="text-[#64748B] text-[14px] lg:text-lg lg:font-medium text-justify">
+                <p>{faq.answer}</p>
               </div>
             </div>
           </div>
         ))}
-        <hr />
+        <hr className="border-gray-300" />
       </div>
     </div>
   );

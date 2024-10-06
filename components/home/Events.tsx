@@ -70,20 +70,33 @@ export const Events = () => {
           head="Upcoming Events"
           paragraph="A Platform Where You Can Find Events  According to Your Passion"
         />
-        <AppButton
-          href="/event"
-          label="View All Event"
-          variant="outlined"
-          icon={<FaArrowRight />}
-        />
+        <div className="hidden lg:block  w-[20%]">
+          <AppButton
+            href="/event"
+            label="View All Event"
+            variant="outlined"
+            icon={<FaArrowRight />}
+          />
+        </div>
       </div>
-      <Slider {...settings} className="space-all-components ">
-        {data?.data?.map((event: IEvent) => (
-          <div key={event?._id} className="px-4">
-            <EventsCard event={event} />
-          </div>
-        ))}
-      </Slider>
+      <div className="lg:mb-20 mt-6">
+        <Slider {...settings}>
+          {data?.data?.map((event: IEvent) => (
+            <div key={event?._id} className="px-4">
+              <EventsCard event={event} />
+            </div>
+          ))}
+        </Slider>
+
+        <div className="lg:hidden flex justify-center items-center mt-10">
+          <AppButton
+            href="/event"
+            label="View All Event"
+            variant="outlined"
+            icon={<FaArrowRight />}
+          />
+        </div>
+      </div>
     </div>
   );
 };

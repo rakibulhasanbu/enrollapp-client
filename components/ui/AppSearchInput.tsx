@@ -11,7 +11,7 @@ const AppSearchInput = ({
 }: TAppSearchInput) => {
   return (
     <div
-      className={`w-[30%] mx-auto flex justify-between items-center  border  rounded-full px-5 ${
+      className={`lg:w-[30%] w-[80%] mx-auto flex justify-between items-center  border  rounded-full px-5 ${
         variant === "white"
           ? "text-white border-gray-200"
           : "text-gray-800 border-gray-600"

@@ -2,24 +2,24 @@ import Image from "next/image";
 
 export const Choose = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-20 w-full p-4 lg:w-[80%] mx-auto ">
-      <div className="md:w-[50%]">
+    <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-20 w-full p-4 lg:w-[80%] mx-auto ">
+      <div className="md:w-[35%]">
         <Image
           src="/assets/3 1.png"
           alt="#"
           layout="responsive"
-          width={700}
+          width={400}
           height={475}
           className="w-full"
         />
       </div>
-      <div className="">
-        <h1 className="text-4xl lg:font-medium">
+      <div className="lg:w-[49%] space-y-4 lg:text-justify">
+        <h1 className="lg:text-4xl text-2xl font-medium leading-snug lg:leading-tight tracking-tight text-gray-800">
           Intuitive interface for easy
-          <span className="text-primary"> event discovery </span> and seamless
-          registration
+          <span className="text-primary font-bold"> event discovery </span> and
+          seamless registration
         </h1>
-        <p className="text-[16px] my-3 lg:font-medium">
+        <p className="text-[16px] lg:text-lg text-gray-600 my-3 lg:my-4 lg:font-medium leading-relaxed text-justify">
           Our user-friendly platform simplifies the search for relevant events,
           allowing users to effortlessly discover and register for opportunities
           that match their career goals.
