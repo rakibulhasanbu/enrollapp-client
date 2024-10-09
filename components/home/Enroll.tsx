@@ -18,7 +18,7 @@ export const Enroll = () => {
       <div className="my-5 lg:w-[45%] space-y-4">
         <h2 className="text-[28px] lg:text-[36px] font-semibold leading-tight text-[#1E293B]">
           Contribute to
-          <span className="text-primary font-bold"> youth</span> empowerment
+          <span className="text-primary font-medium"> youth</span> empowerment
         </h2>
         <p className="text-[16px] lg:text-lg  my-5 lg:my-4 font-medium text-gray-600 leading-relaxed">
           Create events and share youth development opportunities to empower

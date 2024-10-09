@@ -48,7 +48,7 @@ export const Faq = () => {
       {/* Static Frequently Asked Questions Section */}
       <div className="text-center lg:text-left flex flex-col gap-4 lg:w-[800px]">
         <div>
-          <h1 className="text-[32px] md:text-[40px] font-bold text-gray-900">
+          <h1 className="text-2xl md:text-[40px] font-bold text-gray-900">
             Frequently Asked Questions
           </h1>
         </div>

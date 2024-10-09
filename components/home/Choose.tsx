@@ -16,8 +16,11 @@ export const Choose = () => {
       <div className="lg:w-[49%] space-y-4 lg:text-justify">
         <h1 className="lg:text-4xl text-2xl font-medium leading-snug lg:leading-tight tracking-tight text-gray-800">
           Intuitive interface for easy
-          <span className="text-primary font-bold"> event discovery </span> and
-          seamless registration
+          <span className="text-primary font-medium">
+            {" "}
+            event discovery{" "}
+          </span>{" "}
+          and seamless registration
         </h1>
         <p className="text-[16px] lg:text-lg text-gray-600 my-3 lg:my-4 lg:font-medium leading-relaxed text-justify">
           Our user-friendly platform simplifies the search for relevant events,
