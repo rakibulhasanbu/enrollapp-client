@@ -5,7 +5,9 @@ export const Promotion = () => {
     <div className="flex flex-col-reverse lg:flex-row justify-between  items-center w-full p-4 md:w-[80%] mx-auto">
       <div className="md:w-[45%] space-y-4">
         <h2 className="lg:text-4xl text-2xl font-medium leading-snug lg:leading-tight tracking-tight text-gray-800">
-          <span className="text-primary font-bold">Free event management </span>{" "}
+          <span className="text-primary font-medium">
+            Free event management{" "}
+          </span>{" "}
           tool for organisations and clubs
         </h2>
         <p className="mt-3 lg:mt-4 lg:font-medium text-[16px] lg:text-lg text-gray-600 leading-relaxed">
