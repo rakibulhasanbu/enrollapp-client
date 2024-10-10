@@ -117,8 +117,8 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="hidden md:flex gap-4 cursor-pointer">
-            <AppButton label="Signup" variant="noDesign" href="/auth/sign-up" />
-            <AppButton label="Login" variant="outlined" href="/auth/sign-in" />
+            {/* <AppButton label="Signup" variant="noDesign" href="/auth/sign-up" /> */}
+            <AppButton label="Login" variant="noDesign" href="/auth/sign-in" />
           </div>
         )}
       </div>
