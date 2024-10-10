@@ -16,7 +16,7 @@ export const Enroll = () => {
         />
       </div>
       <div className="my-5 lg:w-[45%] space-y-4">
-        <h2 className="text-[28px] lg:text-[36px] font-semibold leading-tight text-[#1E293B]">
+        <h2 className="text-[28px] 2xl:text-4xl lg:text-3xl font-medium leading-tight text-[#1E293B]">
           Contribute to
           <span className="text-primary font-medium"> youth</span> empowerment
         </h2>

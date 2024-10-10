@@ -27,21 +27,48 @@ function CountdownTimer({ registrationDeadline }) {
     return () => clearInterval(timer);
   }, [calculateTimeLeft]);
 
-  const formatTimeLeft = () => {
-    const { days, hours, minutes, seconds } = timeLeft;
-
-    return `${days ? `${days}d ` : ""}${hours ? `${hours}h ` : ""}${
-      minutes ? `${minutes}min ` : ""
-    }${seconds ? `${seconds}s` : ""}`.trim();
-  };
+  // Updated flip card style for single digits per box
+  const renderFlipCard = (value) => (
+    <div className="relative p-2 w-12 h-12 bg-gray-900 text-white text-3xl font-bold flex justify-center items-center ">
+      <span>{value.toString().padStart(2, "0")}</span>
+    </div>
+  );
 
   return (
-    <h2 className="border-2 font-medium border-borderColor rounded-md md:text-3xl p-4 md:p-6 text-center md:font-medium">
-      <span>Time Left:</span>{" "}
-      <span style={{ whiteSpace: "nowrap" }}>
-        {formatTimeLeft() || <span>Time&aposs up!</span>}
-      </span>
-    </h2>
+    <div className="flex justify-center bg-blue-200 py-2 items-center space-x-3">
+      {/* Days */}
+      <div className="flex flex-col items-center">
+        {renderFlipCard(timeLeft.days || 0)}
+        <span className="text-sm mt-2 text-gray-700 font-bold">DAYS</span>
+      </div>
+
+      {/* Separator */}
+      <span className="text-3xl font-bold text-gray-700">:</span>
+
+      {/* Hours */}
+      <div className="flex flex-col items-center">
+        {renderFlipCard(timeLeft.hours || 0)}
+        <span className="text-sm mt-2 text-gray-700 font-bold">HRS</span>
+      </div>
+
+      {/* Separator */}
+      <span className="text-3xl font-bold text-gray-700">:</span>
+
+      {/* Minutes */}
+      <div className="flex flex-col items-center">
+        {renderFlipCard(timeLeft.minutes || 0)}
+        <span className="text-sm mt-2 text-gray-700 font-bold">MINS</span>
+      </div>
+
+      {/* Separator */}
+      <span className="text-3xl font-bold text-gray-700">:</span>
+
+      {/* Seconds */}
+      <div className="flex flex-col items-center">
+        {renderFlipCard(timeLeft.seconds || 0)}
+        <span className="text-sm mt-2 text-gray-700 font-bold">SECS</span>
+      </div>
+    </div>
   );
 }
 

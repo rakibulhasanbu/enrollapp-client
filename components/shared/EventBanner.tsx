@@ -90,7 +90,7 @@ const EventBanner = ({
   };
 
   return onlyView ? (
-    <div className="w-full flex flex-col items-center justify-center h-72 2xl:h-96 bg-gradient-to-r from-sky-400 to-blue-500 rounded-md relative">
+    <div className="w-full flex flex-col items-center justify-center h-72 lg:h-[500px] 2xl:h-[500px] bg-gradient-to-r from-sky-400 to-blue-500 rounded-md relative">
       {imgSrc && (
         <Image
           src={imgSrc}

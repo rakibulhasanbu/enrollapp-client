@@ -9,7 +9,7 @@ const Banner = () => {
         backgroundImage: "url('/assets/banner.png')",
       }}
     >
-      <h1 className="text-white text-[18px] lg:text-[56px]  lg:max-w-[70%] text-center font-bold ">
+      <h1 className="text-white text-[18px] lg:text-3xl 2xl:text-5xl   lg:max-w-[70%] text-center font-bold ">
         Your <span className="text-[#0074D9]"> Launchpad </span> for Future
         Ready <span className="text-[#0074D9]">Skills & Connections</span>
       </h1>
