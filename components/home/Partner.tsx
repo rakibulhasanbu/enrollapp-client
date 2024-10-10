@@ -14,7 +14,7 @@ export const Partner = () => {
           />
         </div>
         <div className="absolute   text-center">
-          <h1 className="text-2xl  text-center lg:text-[40px] font-semibold lg:font-bold w-full text-gray-800">
+          <h1 className="text-[22px]  text-center lg:text-[40px] font-semibold lg:font-bold w-full text-gray-800">
             <span className="text-white">What</span> Our Partner Says About Us
           </h1>
         </div>

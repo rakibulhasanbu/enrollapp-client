@@ -130,24 +130,26 @@ const Page = () => {
           </p>
         </div>
 
-        <div className=" p-6 rounded-lg ">
+        <div className="p-4 sm:p-6 rounded-lg">
           {/* Pre-registration Starts */}
-          <p className="text-xl font-bold mb-4">
+          <p className="text-base sm:text-xl font-medium  md:font-bold mb-2 sm:mb-4">
             Pre-registration Starts:
             <span className="font-normal">29 September</span>
           </p>
 
           {/* Pre-registration Ends */}
-          <p className="text-xl font-bold mb-4">
+          <p className="text-base sm:text-xl font-medium  md:font-bold mb-2 sm:mb-4">
             Pre-registration Ends:
             <span className="font-normal">6 October</span>
           </p>
 
           {/* Contest Dates */}
-          <p className="text-xl font-bold mb-4">Contest Dates:</p>
+          <p className="text-base sm:text-xl md:font-bold font-medium  mb-2 sm:mb-4">
+            Contest Dates:
+          </p>
 
           {/* Mock Contest */}
-          <p className="text-lg font-semibold mb-4">
+          <p className="text-sm sm:text-lg md:font-semibold font-medium  mb-2 sm:mb-4">
             Mock Contest:
             <span className="font-normal">
               3:00 PM - 5:00 PM, Thursday, October 31, 2024
@@ -155,7 +157,7 @@ const Page = () => {
           </p>
 
           {/* Main Contest */}
-          <p className="text-xl font-semibold mb-4">
+          <p className="text-sm sm:text-lg md:font-semibold font-medium  mb-2 sm:mb-4">
             Main Contest:
             <span className="font-normal">
               8:00 AM - 1:00 PM, Friday, November 1, 2024
@@ -163,10 +165,12 @@ const Page = () => {
           </p>
 
           {/* Contact */}
-          <p className="text-lg font-bold mb-2">For any query:</p>
+          <p className="text-base sm:text-lg md:font-bold font-medium  mb-1 sm:mb-2">
+            For any query:
+          </p>
 
           {/* Mail to */}
-          <p className="text-lg font-semibold mb-4">
+          <p className="text-sm sm:text-lg md:font-semibold font-medium  mb-2 sm:mb-4">
             Mail to:
             <span className="italic">iupc@buetcsefest2024.com</span>
           </p>

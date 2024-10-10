@@ -35,7 +35,7 @@ function CountdownTimer({ registrationDeadline }) {
   );
 
   return (
-    <div className="flex justify-center bg-blue-200 py-2 items-center space-x-3">
+    <div className="flex justify-center bg-blue-200 py-2 items-center space-x-2 lg:space-x-1 xl:space-x-3">
       {/* Days */}
       <div className="flex flex-col items-center">
         {renderFlipCard(timeLeft.days || 0)}
